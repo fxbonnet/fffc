@@ -9,11 +9,11 @@ To run the tool on Windows, Linux or OSX you will need to have Java version 1.8+
 ## Usage example
 
 ```
-./fffc.sh /Users/alan/dev/fffc/testFiles/metaData1.csv /Users/alan/dev/fffc/testFiles/fixedFile1.txt /Users/alan/dev/fffc/testFiles/output2.csv
+./fffc.sh ./metaData1.csv ./fixedFile1.txt ./output.csv
 ```
 or
 ```
-java -jar fffc.jar /Users/alan/dev/fffc/testFiles/metaData1 /Users/alan/dev/fffc/testFiles/fixedFile1.txt /Users/alan/dev/fffc/testFiles/output.csv
+java -jar fffc.jar ./metaData1.csv ./fixedFile1.txt ./output.csv
 ```
 Note: Dates are reformatted from yyyy-mm-dd to dd/mm/yyyy
 
