@@ -88,13 +88,56 @@ public class FixedFileFormatConverter {
 	 * Convert String with date in yyyy-mm-dd format to dd/mm/yyyy
 	 * 
 	 * @param columnString
+	 * @throws IOException If year, month or day is invalid
 	 * @return String with data in dd/mm/yyyy format
 	 */
-	private String convertDateFormat(String columnString) {
+	private String convertDateFormat(String columnString) throws IOException {
 		
 		String year = columnString.substring(0, 4);
 		String month = columnString.substring(5, 7);
 		String day = columnString.substring(8, 10);
+		
+		// Check for errors in the year
+		try {
+			if (year.length() != 4) {
+				throw new IOException("Invalid date in input file (problem with year).");
+			}
+			int y = Integer.valueOf(year).intValue();
+			if (y < 0) {
+				throw new IOException("Invalid date in input file (problem with year).");
+			}
+			
+		} catch (NumberFormatException e) {
+			throw new IOException("Invalid date in input file (problem with year).");
+		}
+		
+		// Check for errors in the month
+		try {
+			if (month.length() != 2) {
+				throw new IOException("Invalid date in input file (problem with month).");
+			}
+			int m = Integer.valueOf(month).intValue();
+			if (m < 1 || m > 12) {
+				throw new IOException("Invalid date in input file (problem with month).");
+			}
+			
+		} catch (NumberFormatException e) {
+			throw new IOException("Invalid date in input file (problem with month).");
+		}		
+		
+		// Check for errors in the month
+		try {
+			if (day.length() != 2) {
+				throw new IOException("Invalid date in input file (problem with day).");
+			}
+			int d = Integer.valueOf(month).intValue();
+			// TODO Improve error checking to check for valid number of days in month based on month and leap year
+			if (d < 1 || d > 31) { 
+				throw new IOException("Invalid date in input file (problem with day).");
+			}			
+		} catch (NumberFormatException e) {
+			throw new IOException("Invalid date in input file (problem with day).");
+		}
 		
 		String reformattedDate = day + "/" + month + "/" + year;
 		
@@ -151,8 +194,15 @@ public class FixedFileFormatConverter {
 					// Convert String to CSV column data
 					if (row.getColumnDataType() == ColumnDataType.DATE) {
 						csvRow[i] = convertDateFormat(columnString);						
-					} else {
+					} else if (row.getColumnDataType() == ColumnDataType.STRING) {
 						csvRow[i] = columnString;
+					} if (row.getColumnDataType() == ColumnDataType.NUMERIC) {
+						// Check for valid numeric data
+						try {
+							Double.valueOf(columnString);							
+						} catch (NumberFormatException e) {
+							throw new IOException("Invalid numeric data in input file.");
+						}
 					}
 				}
 				
