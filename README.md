@@ -1,12 +1,25 @@
 # Fixed File Format converter
 
-Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
+A generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
 
-Feel free to use your favorite language and libraries if needed (but no proprietary libraries, only open source), fork this project and provide your complete code as a pull request (including source and tests).
+The tool is written in java and delivered as an executable jar and shell script that can be run from the command line.
 
-## Use case
+To run the tool on Windows, Linux or OSX you will need to have Java version 1.8+ installed.
 
-Our fixed file format files can have any number of columns
+## Usage example
+
+```
+./fffc.sh ./metaData1.csv ./fixedFile1.txt ./output.csv
+```
+or
+```
+java -jar fffc.jar ./metaData1.csv ./fixedFile1.txt ./output.csv
+```
+Note: Dates are reformatted from yyyy-mm-dd to dd/mm/yyyy
+
+## Example files
+
+The fixed file format files can have any number of columns
 A column can be of 3 formats:
 * date (format yyyy-mm-dd)
 * numeric (decimal separator '.' ; no thousands separator ; can be negative)
@@ -17,15 +30,10 @@ The structure of the file is described in a metadata file in csv format with a l
 * column length
 * column type
 
+
 You should transform the file to a csv file (separator ',' and row separator CRLF)
 
-The dates have to be reformatted to dd/mm/yyyy
-
-The trailing spaces of string columns must be trimmed
-
-The csv file must include a first line with the columns names
-
-## Example
+Note: The output CSV file's first line has the columns names
 
 Data file:
 ```
@@ -49,10 +57,4 @@ Birth date,First name,Last name,Weight
 31/01/1975,Jane,Doe,61.1
 28/11/1988,Bob,Big,102.4
 ```
-
-## Extra requirements
-* files are encoded in UTF-8 and may contain special characters
-* strings columns may contain separator characters like ',' and then the whole string needs to be escaped with " (double quotes). Only CR or LF are forbidden
-* in case the format of the file is not correct, the program should fail but say explicitly why
-* a fixed format file may be very big (several GB)
 
