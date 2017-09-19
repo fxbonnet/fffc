@@ -18,12 +18,6 @@ public class NumericField extends Field{
         if (! value.matches("(\\+|-)?([0-9]+(\\.[0-9]+))")){
             throw new InvalidFieldFormatException(value + " is not a valid numeric value");
         }
-//
-//        try {
-//            Double.valueOf(value);
-//        } catch (NumberFormatException e) {
-//            throw new InvalidFieldFormatException(value + "is not a valid numeric value");
-//        }
     }
 
     @Override
