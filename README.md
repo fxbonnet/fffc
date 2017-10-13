@@ -56,3 +56,13 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+
+
+==========================================Notes===========================================
+1. This project is written in Kotlin
+2. In the "FileFormatter" folder, Run "mvn install"
+3. The ".jar" file will be built in the "Target" folder
+4. Argment Format:
+"source data file location" "metadata file location" "destination data file location" "number of lines per batch"
+5. Command example:
+"C:\Program Files\Java\jre1.8.0_144\bin\java.exe" -jar "D:\GitHub\fffc\FileFormatter\target\FileFormatter-1.0-SNAPSHOT.jar" "D:\GitHub\fffc\FileFormatter\srcFile.txt" "D:\GitHub\fffc\FileFormatter\metaFile.txt" "D:\GitHub\fffc\FileFormatter\destFile.txt" 100
