@@ -14,6 +14,10 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.io.IOUtils;
+
 import com.octo.techtest.exception.ConvertException;
 import com.octo.techtest.metadata.ColumnFormatter;
 
@@ -26,10 +30,10 @@ public class FixedFileConverter {
 
 		List<ColumnFormatter> formatters = ColumnFormatter.initFormatters(metadata);
 
-		PrintWriter pw = null;
+		CSVPrinter csvPrinter = null;
 		try {
 			// open output file;
-			pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream(output), "UTF-8"));
+			csvPrinter = new CSVPrinter(new OutputStreamWriter(new FileOutputStream(output), "UTF-8"), CSVFormat.DEFAULT);
 		} catch (IOException e) {
 			throw new ConvertException("Cannot open output file in UTF-8 format: " + output.getAbsolutePath(), e);
 		}
@@ -47,7 +51,7 @@ public class FixedFileConverter {
 			for (ColumnFormatter formatter : formatters) {
 				data[i++] = formatter.getName();
 			}
-			println(pw, data);
+			csvPrinter.printRecord(data);
 			// read each line from input data file;
 			String line = null;
 			while ((line = br.readLine()) != null) {
@@ -62,7 +66,7 @@ public class FixedFileConverter {
 					data[i++] = formatter.output();
 				}
 				// print formatted data to output file;
-				println(pw, data);
+				csvPrinter.printRecord(data);
 			}
 
 		} catch (ConvertException e) {
@@ -70,32 +74,11 @@ public class FixedFileConverter {
 		} catch (IOException e) {
 			throw new ConvertException("Cannot read data file in UTF-8 format: " + input.getAbsolutePath(), e);
 		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					System.err.println("Failed to close input file: " + input.getAbsolutePath());
-					e.printStackTrace();
-				}
-			}
-			if (pw != null) {
-				pw.close();
-			}
+			IOUtils.closeQuietly(br);
+			IOUtils.closeQuietly(csvPrinter);
 		}
 		System.out.println("Finished converting ...");
 		System.out.println("Total " + lineNo + " lines converted in " + (System.currentTimeMillis() - start) + " ms");
 		System.out.println("=====================================");
 	}
-
-	private static void println(PrintWriter pw, String[] data) {
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < data.length; i++) {
-			sb.append(data[i]);
-			if (i < data.length - 1) {
-				sb.append(",");
-			}
-		}
-		pw.println(sb.toString());
-	}
-
 }

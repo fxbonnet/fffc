@@ -13,6 +13,7 @@ public class TestFixedFileConverter {
 		// all files need to be UTF-8 without BOM encoded.
 		test("normal");
 		test("special-chars");
+		test("quotation-escape");
 		test("big-data");
 		test("wrong-metadata-type");
 		test("wrong-data-type");
@@ -21,7 +22,7 @@ public class TestFixedFileConverter {
 	
 	public static void test(String type){
 		File metadata = new File("resources/"+type+"/metadata.csv");
-		File input = new File("resources/"+type+"/input.csv");
+		File input = new File("resources/"+type+"/input.dat");
 		File output = new File("resources/"+type+"/output.csv");
 		
 		try {

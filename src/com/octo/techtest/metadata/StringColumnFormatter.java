@@ -9,7 +9,7 @@ public class StringColumnFormatter extends ColumnFormatter {
 
 	@Override
 	public String output(){
-		return "\"" + origin.trim() + "\"";
+		return origin.trim();
 	}
 
 }
