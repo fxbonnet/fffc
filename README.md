@@ -56,3 +56,5 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+## My Assumptions
+* Regarding Point 2 above, if no CR or LF, that means no CRLF neither. Line break may or may not present at the end of a record, my implementation is based on there is a line break at the end of each record. However it can be updated to handle multiple records per line.
