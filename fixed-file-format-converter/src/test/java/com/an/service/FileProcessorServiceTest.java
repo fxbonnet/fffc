@@ -41,12 +41,13 @@ public class FileProcessorServiceTest {
         Assert.assertEquals(45,fileProcessorService.getLineSize(columnList));
 
         String[] header = fileProcessorService.generateHeader(columnList);
+        Assert.assertEquals(4,header.length);
 
         fileProcessorService.writeCSVFile(header,outputFilePath);
 
         String rawValue = "1970-01-01John           Smith           81.5";
         List<String> newLine = fileProcessorService.processFileLine(rawValue,columnList,45);
-
+        Assert.assertNotNull(newLine);
 
     }
 

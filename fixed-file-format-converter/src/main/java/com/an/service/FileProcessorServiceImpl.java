@@ -120,29 +120,17 @@ public class FileProcessorServiceImpl implements FileProcessorService {
 
         //Read CSV line by line and use the string array as you want
         for(String[] row : allRows){
-//            System.out.println(row.toString());
-//            System.out.println("row[0["+row[0]);
 
             int startPosition = postion;
 
-            String name = row[0];
-            //System.out.println(row[1]);
             int length = Integer.parseInt(row[1]);
 
-            //postion = postion + (length - 1);
             postion = postion + length;
             int endPosition = postion ;
-            //postion = postion+1;
-
-            //System.out.println(row[2].toLowerCase());
             String type = row[2].trim().toLowerCase();
-            //System.out.println(type.equals("date"));
-            //System.out.println(ColumnType.forValue(type.trim()));
-            //System.out.println(ColumnType.forValue("date"));
             Column column = new Column(row[0],Integer.parseInt(row[1]),ColumnType.forValue(type),startPosition,endPosition);
             columnList.add(column);
         }
-        //System.out.println(columnList);
 
         return  columnList;
 

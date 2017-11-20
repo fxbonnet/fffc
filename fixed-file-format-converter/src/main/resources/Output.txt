@@ -1,1 +1,0 @@
-"Birth date","First name","Last name","Weight"
