@@ -19,3 +19,9 @@ mvn clean package
 com.arun.octo.Runner META_DATA_FILEPATH DATA_FILEPATH OUTPUT_FILEPATH
 ```
 
+### TEST DATA
+Test data is in the following files
+
+```df-s*  --> are files containg fixed format data```
+
+```md-s*  --> are files contain meta data```
