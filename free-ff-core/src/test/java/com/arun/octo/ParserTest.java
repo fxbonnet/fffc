@@ -14,8 +14,8 @@ import static org.junit.Assert.assertThat;
 
 public class ParserTest {
     private Parser parser;
-    private final String metaDataFileName = "md-s2";
-    private final String dataFileName = "df-s2";
+    private final String metaDataFileName = "md-s3";
+    private final String dataFileName = "df-s3";
     private final File metadata = new File(Thread.currentThread().getContextClassLoader().getResource(metaDataFileName).toURI());
     private final File dataFile = new File(Thread.currentThread().getContextClassLoader().getResource(dataFileName).toURI());
 

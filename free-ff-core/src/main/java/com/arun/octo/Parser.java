@@ -98,7 +98,7 @@ public class Parser {
     }
 
     private String escapeStrings(Column column, String substring) {
-        if (column.getColumnType() == ColumnType.STRING && p.matcher(substring).find())
+        if ((column.getColumnType() == ColumnType.STRING || column.getColumnType() == ColumnType.NUMERIC) && p.matcher(substring).find())
             substring = String.format("\"%s\"", substring);
         return substring;
     }
