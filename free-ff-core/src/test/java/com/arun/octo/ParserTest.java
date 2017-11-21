@@ -14,8 +14,10 @@ import static org.junit.Assert.assertThat;
 
 public class ParserTest {
     private Parser parser;
-    private final File metadata = new File(Thread.currentThread().getContextClassLoader().getResource("md-s1").toURI());
-    private final File dataFile = new File(Thread.currentThread().getContextClassLoader().getResource("df-s1").toURI());
+    private final String metaDataFileName = "md-s2";
+    private final String dataFileName = "df-s2";
+    private final File metadata = new File(Thread.currentThread().getContextClassLoader().getResource(metaDataFileName).toURI());
+    private final File dataFile = new File(Thread.currentThread().getContextClassLoader().getResource(dataFileName).toURI());
 
     public ParserTest() throws URISyntaxException {
     }
@@ -55,15 +57,16 @@ public class ParserTest {
     @Test
     public void testWriteCsvFile() throws Exception {
         // Arrange
+        String csvfilename = dataFileName + ".csv";
         parser = new Parser(metadata, dataFile);
         assertThat(parser, notNullValue());
 
         // Act
         MetaData md = parser.parseMetaData();
         List<String> records = parser.parseData(md);
-        parser.write(md.getColumns(), records, "outputfile.csv");
+        parser.write(md.getColumns(), records, csvfilename);
 
         // Assertions
-        assertThat(Files.exists(Paths.get("outputfile.csv")), is(true));
+        assertThat(Files.exists(Paths.get(csvfilename)), is(true));
     }
 }

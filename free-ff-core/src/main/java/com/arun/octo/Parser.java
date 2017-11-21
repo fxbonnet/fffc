@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -37,6 +38,7 @@ public class Parser {
     private File dataFile;
     private final DateTimeFormatter informat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final DateTimeFormatter outformat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private final Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
 
     public Parser(File metadataFile, File dataFile) {
         this.metadataFile = metadataFile;
@@ -85,16 +87,28 @@ public class Parser {
                     start = i == 0 ? 0 : end;
                     end = start + Math.toIntExact(column.getColumnLength());
                     String substring = substring(l, start, end).trim();
-                    if (column.getColumnType() == ColumnType.DATE) {
-                        LocalDate dateTime = LocalDate.parse(substring, informat);
-                        substring = dateTime.format(outformat);
-                    }
+                    substring = formatDate(column, substring);
+                    substring = escapeStrings(column, substring);
                     data[i] = substring;
                 }
                 records.add(Arrays.stream(data).collect(Collectors.joining(",")));
             });
         }
         return records;
+    }
+
+    private String escapeStrings(Column column, String substring) {
+        if (column.getColumnType() == ColumnType.STRING && p.matcher(substring).find())
+            substring = String.format("\"%s\"", substring);
+        return substring;
+    }
+
+    private String formatDate(Column column, String substring) {
+        if (column.getColumnType() == ColumnType.DATE) {
+            LocalDate dateTime = LocalDate.parse(substring, informat);
+            substring = dateTime.format(outformat);
+        }
+        return substring;
     }
 
     public void write(Column[] columns, List<String> records, String fileName) throws IOException {
