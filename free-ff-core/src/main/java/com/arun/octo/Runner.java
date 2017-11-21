@@ -14,8 +14,7 @@ public class Runner {
 
     public static void main(String[] args) {
         if (args.length == 0) {
-            System.out.println("Usage Instructions :");
-            System.out.println("TODO:---- finish this");
+            PrintUsage();
             System.exit(0);
         }
         validateArguements(args);
@@ -35,10 +34,14 @@ public class Runner {
         dataFile = StringUtils.defaultString(args[1]);
         outPutFileName = StringUtils.defaultString(args[2]);
         if (StringUtils.isAnyBlank(metaDataFile, dataFile, outPutFileName)) {
-            System.out.println("All three parameters must be specified");
-            System.out.println("metaDataFile = " + metaDataFile);
-            System.out.println("dataFile = " + dataFile);
-            System.out.println("outPutFileName = " + outPutFileName);
+            PrintUsage();
         }
+    }
+
+    private static void PrintUsage() {
+        System.out.println("All three parameters must be specified");
+        System.out.println("metaDataFile = " + metaDataFile);
+        System.out.println("dataFile = " + dataFile);
+        System.out.println("outPutFileName = " + outPutFileName);
     }
 }
