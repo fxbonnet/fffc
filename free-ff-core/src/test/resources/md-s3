@@ -1,0 +1,12 @@
+Entry,8,numeric
+Per.,4,numeric
+Post Date,12,date
+GL Account,13,numeric
+Description,27,string
+Srce.,5,string
+Cflow,4,string
+Ref.,10,string
+Post,13,string
+Debit,19,numeric
+Credit,13,numeric
+Alloc.,4,string
