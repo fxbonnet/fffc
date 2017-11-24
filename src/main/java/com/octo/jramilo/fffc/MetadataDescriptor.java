@@ -46,6 +46,10 @@ public class MetadataDescriptor {
 				if(bufferedReader != null) {
 					bufferedReader.close();
 				}
+				
+				if(fileReader != null) {
+					fileReader.close();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
