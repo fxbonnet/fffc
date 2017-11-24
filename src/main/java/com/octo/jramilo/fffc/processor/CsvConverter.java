@@ -4,48 +4,34 @@ import java.util.List;
 
 import com.octo.jramilo.fffc.MetadataDescriptor;
 import com.octo.jramilo.fffc.exception.InvalidFormatException;
-import com.octo.jramilo.fffc.field.DateField;
 import com.octo.jramilo.fffc.field.Field;
-import com.octo.jramilo.fffc.field.NumericField;
-import com.octo.jramilo.fffc.field.StringField;
+import com.octo.jramilo.fffc.field.FieldFactory;
 import com.octo.jramilo.fffc.model.Metadata;
+import com.octo.jramilo.fffc.util.Constant;
 
 public class CsvConverter {
 	
 	public static String covert(MetadataDescriptor descriptor, String line) throws InvalidFormatException {
 		List<Metadata> metadataList = descriptor.getMetadataList();
-		StringBuffer sb = new StringBuffer();
+		String[] formattedFields = new String[metadataList.size()];
 		
-		int lastIndex = 0;
-		for(int i = 0; i < metadataList.size(); i++) {
-			Metadata meta = metadataList.get(i);
+		int offset = 0;
+		int idx = 0;
+		for(Metadata meta : metadataList) {
 			int metaLength = meta.getLength();
 			
-			String comma = ",";
-			if((lastIndex + metaLength) > line.length()) {
-				metaLength = line.length() - lastIndex;
-				comma = "";
+			if((offset + metaLength) > line.length()) {
+				metaLength = line.length() - offset;
 			}
 			
-			String parsedData = line.substring(lastIndex, metaLength + lastIndex);
-			lastIndex += metaLength;
+			String parsedData = line.substring(offset, metaLength + offset);
+			offset += metaLength;
 			
-			Field field;
-			String type = meta.getType();
-			if(type.equalsIgnoreCase("string")) {
-				field = new StringField(parsedData);
-			} else if(type.equalsIgnoreCase("numeric")) {
-				field = new NumericField(parsedData);
-			} else if(type.equalsIgnoreCase("date")) {
-				field = new DateField(parsedData);
-			} else {
-				throw new InvalidFormatException("Unknown metadata type!");
-			}
-			
-			sb.append(field.format() + comma);
+			Field field = FieldFactory.getField(meta.getType());
+			formattedFields[idx++] = field.format(parsedData);
 		}
 		
-		return sb.toString();
+		return String.join(Constant.COMMA, formattedFields);
 	}
 
 }

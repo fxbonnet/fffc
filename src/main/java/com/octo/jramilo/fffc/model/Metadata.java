@@ -3,9 +3,9 @@ package com.octo.jramilo.fffc.model;
 public class Metadata {
 	private String name;
 	private int length;
-	private String type;
+	private MetadataType type;
 	
-	public Metadata(String name, int length, String type) {
+	public Metadata(String name, int length, MetadataType type) {
 		this.name = name;
 		this.length = length;
 		this.type = type;
@@ -19,7 +19,7 @@ public class Metadata {
 		return length;
 	}
 	
-	public String getType() {
+	public MetadataType getType() {
 		return type;
 	}
 }

@@ -9,18 +9,19 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
-import com.octo.jramilo.fffc.exception.InvalidMetadataFileException;
+import com.octo.jramilo.fffc.exception.InvalidFileExpection;
+import com.octo.jramilo.fffc.exception.InvalidFormatException;
 import com.octo.jramilo.fffc.model.Metadata;
 
 import static org.junit.Assert.*;
 
-public class MetadataDescriptorTest {
+public class MetadataHelperTest {
 
 	@Rule
     public TemporaryFolder folder = new TemporaryFolder();
 
     @Test
-    public void nominalCase() throws IOException, InvalidMetadataFileException {
+    public void nominalCase() throws IOException, InvalidFileExpection, InvalidFormatException {
         File file = folder.newFile("metadata.txt");
         PrintWriter writer = new PrintWriter(file, "UTF-8");
         writer.write("Birthdate,10,date\n");
@@ -29,10 +30,9 @@ public class MetadataDescriptorTest {
         writer.write("Weight,5,numeric\n");
         writer.close();
         
-        MetadataDescriptor mDescriptor = new MetadataDescriptor();
-        mDescriptor.describe(file);
+        MetadataDescriptor descriptor = MetadataHelper.INSTANCE.describe(file);
         
-        List<Metadata> metaList = mDescriptor.getMetadataList();
+        List<Metadata> metaList = descriptor.getMetadataList();
         assertEquals(4, metaList.size());
         
         Metadata birthdataMeta = metaList.get(0);
@@ -57,31 +57,28 @@ public class MetadataDescriptorTest {
     }
 	
     
-    @Test(expected = InvalidMetadataFileException.class)
-    public void invalidMetaFile() throws IOException, InvalidMetadataFileException {
+    @Test(expected = InvalidFormatException.class)
+    public void invalidMetaFile() throws IOException, InvalidFileExpection, InvalidFormatException {
     	File file = folder.newFile("metadata.txt");
         PrintWriter writer = new PrintWriter(file, "UTF-8");
         writer.write("Birthdate,10,,date\n");
         writer.close();
         
-        MetadataDescriptor mDescriptor = new MetadataDescriptor();
-        mDescriptor.describe(file);
+        MetadataHelper.INSTANCE.describe(file);
     }
     
-    @Test(expected = IllegalArgumentException.class) 
-    public void nullMetadataFile() throws InvalidMetadataFileException, IOException {
-    	MetadataDescriptor mDescriptor = new MetadataDescriptor();
-        mDescriptor.describe(null);
+    @Test(expected = InvalidFileExpection.class) 
+    public void nullMetadataFile() throws IOException, InvalidFileExpection, InvalidFormatException {
+    	MetadataHelper.INSTANCE.describe(null);
     }
     
     @Test
-    public void emptyMetaFile() throws IOException, InvalidMetadataFileException {
+    public void emptyMetaFile() throws IOException, InvalidFileExpection, InvalidFormatException {
     	File file = folder.newFile("metadata.txt");
         
-        MetadataDescriptor mDescriptor = new MetadataDescriptor();
-        mDescriptor.describe(file);
+    	MetadataDescriptor descriptor = MetadataHelper.INSTANCE.describe(file);
         
-        List<Metadata> metaList = mDescriptor.getMetadataList();
+        List<Metadata> metaList = descriptor.getMetadataList();
         assertEquals(0, metaList.size());
     }
 }

@@ -1,18 +1,15 @@
 package com.octo.jramilo.fffc.field;
 
 import com.octo.jramilo.fffc.exception.InvalidFormatException;
+import com.octo.jramilo.fffc.util.Constant;
 
 public class StringField extends Field {
 
-	public StringField(String value) {
-		super(value);
-	}
-
 	@Override
-	public String format() throws InvalidFormatException{
+	public String format(String value) throws InvalidFormatException {
 		value = value.trim();
-		if(value.contains(",")) {
-			value = "\"" + value + "\"";
+		if(value.contains(Constant.COMMA)) {
+			value = Constant.DOUBLE_QUOTE_ESCAPED + value + Constant.DOUBLE_QUOTE_ESCAPED;
 		}
 		return value;
 	}
