@@ -2,8 +2,6 @@ package com.octo.jramilo.fffc.util;
 
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.octo.jramilo.fffc.MetadataDescriptor;
 import com.octo.jramilo.fffc.exception.InvalidFormatException;
 import com.octo.jramilo.fffc.field.Field;

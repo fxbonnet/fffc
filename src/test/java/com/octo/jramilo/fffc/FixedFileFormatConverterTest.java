@@ -143,6 +143,16 @@ public class FixedFileFormatConverterTest {
 	}
 	
 	@Test
+	public void testEmptyInputFile() throws IOException, InvalidFormatException {
+		expectedEx.expect(IllegalArgumentException.class);
+		expectedEx.expectMessage(ErrorMessage.FILE_EMPTY);
+		
+		MetadataDescriptor descriptor = MetadataParser.INSTANCE.parse(createTestMetadataFile());
+        FixedFileFormatConverter converter = new FixedFileFormatConverter(descriptor);
+        converter.convert(folder.newFile("in.dat"), folder.newFile("out.dat"));
+	}
+	
+	@Test
 	public void testNullOutputFile() throws IOException, InvalidFormatException {
 		expectedEx.expect(IllegalArgumentException.class);
 		expectedEx.expectMessage(ErrorMessage.FILE_NULL);

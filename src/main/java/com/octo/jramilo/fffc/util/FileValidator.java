@@ -22,4 +22,16 @@ public class FileValidator {
 			throw new IllegalArgumentException(message);
 		}
 	}
+	
+	public static void validateNonEmpty(File file){
+		String message = null;
+		
+		if(file.length() == 0) {
+			message = ErrorMessage.FILE_EMPTY;
+		}
+		
+		if(message != null) {
+			throw new IllegalArgumentException(message);
+		}
+	}
 }

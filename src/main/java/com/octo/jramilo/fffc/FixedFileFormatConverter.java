@@ -25,7 +25,6 @@ import com.octo.jramilo.fffc.util.FileValidator;
  */
 public class FixedFileFormatConverter {
 	private MetadataDescriptor mDescriptor;
-	private static final String CRLF = "\r\n";
 	
 	public FixedFileFormatConverter(MetadataDescriptor mDescriptor) {
 		this.mDescriptor = mDescriptor;
@@ -52,20 +51,21 @@ public class FixedFileFormatConverter {
 	 */
 	public void convert(File input, File output) throws IOException, InvalidFormatException {
 		FileValidator.validate(input, true);
+		FileValidator.validateNonEmpty(input);
 		FileValidator.validate(output, false);
 		
 		PrintWriter writer = null;
 		LineIterator it = FileUtils.lineIterator(input, Constant.CHARSET_UTF8);
 		try {
 			writer = new PrintWriter(output);
-			writer.print(getHeader() + CRLF);
+			writer.print(getHeader() + Constant.CRLF);
 		    while (it.hasNext()) {
 		        String line = it.nextLine();
 		        if(StringUtils.isAllBlank(line)) {
 					throw new InvalidFormatException(ErrorMessage.BLANK_STRING);
 				}
 				
-		        writer.print(CsvConverter.covert(mDescriptor, line) + CRLF);
+		        writer.print(CsvConverter.covert(mDescriptor, line) + Constant.CRLF);
 		    }
 		} finally {
 		    LineIterator.closeQuietly(it);

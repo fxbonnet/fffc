@@ -9,17 +9,22 @@ import java.util.List;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.rules.TemporaryFolder;
 
 import com.octo.jramilo.fffc.exception.InvalidFormatException;
 import com.octo.jramilo.fffc.model.Metadata;
 import com.octo.jramilo.fffc.model.MetadataType;
+import com.octo.jramilo.fffc.util.ErrorMessage;
 import com.octo.jramilo.fffc.util.MetadataParser;
 
 public class MetadataParserTest {
 
 	@Rule
     public TemporaryFolder folder = new TemporaryFolder();
+	
+	@Rule
+	public ExpectedException expectedEx = ExpectedException.none();
 
     @Test
     public void nominalCase() throws IOException, InvalidFormatException {
@@ -58,8 +63,11 @@ public class MetadataParserTest {
     }
 	
     
-    @Test(expected = InvalidFormatException.class)
-    public void invalidMetaFile() throws IOException, InvalidFormatException {
+    @Test
+    public void extraColumnMetaFile() throws IOException, InvalidFormatException {
+    	expectedEx.expect(InvalidFormatException.class);
+    	expectedEx.expectMessage(ErrorMessage.INVALID_METADATA_FILE);
+    	
     	File file = folder.newFile("metadata.txt");
         PrintWriter writer = new PrintWriter(file, "UTF-8");
         writer.write("Birthdate,10,,date\n");
@@ -68,18 +76,40 @@ public class MetadataParserTest {
         MetadataParser.INSTANCE.parse(file);
     }
     
-    @Test(expected = IllegalArgumentException.class) 
+    @Test 
     public void nullMetadataFile() throws IOException, InvalidFormatException {
+    	expectedEx.expect(IllegalArgumentException.class);
+    	expectedEx.expectMessage(ErrorMessage.FILE_NULL);
+    	
     	MetadataParser.INSTANCE.parse(null);
     }
     
     @Test
     public void emptyMetaFile() throws IOException, InvalidFormatException {
+    	expectedEx.expect(IllegalArgumentException.class);
+    	expectedEx.expectMessage(ErrorMessage.FILE_EMPTY);
+    	
     	File file = folder.newFile("metadata.txt");
         
     	MetadataDescriptor descriptor = MetadataParser.INSTANCE.parse(file);
         
         List<Metadata> metaList = descriptor.getMetadataList();
         assertEquals(0, metaList.size());
+    }
+    
+    @Test
+    public void negativeColumnLength() throws IOException, InvalidFormatException {
+    	expectedEx.expect(InvalidFormatException.class);
+    	expectedEx.expectMessage(ErrorMessage.METADATA_COLUMN_LENGTH_INVALID);
+    	
+    	File file = folder.newFile("metadata.txt");
+        PrintWriter writer = new PrintWriter(file, "UTF-8");
+        writer.write("Birthdate,10,date\n");
+        writer.write("Firstname,-100,String\n");
+        writer.write("Lastname,10,String\n");
+        writer.write("Weight,5,numeric\n");
+        writer.close();
+        
+        MetadataParser.INSTANCE.parse(file);
     }
 }

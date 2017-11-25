@@ -36,6 +36,7 @@ public enum MetadataParser {
 	public MetadataDescriptor parse(final File metadataFile) 
 			throws IOException, InvalidFormatException {
 		FileValidator.validate(metadataFile, true);
+		FileValidator.validateNonEmpty(metadataFile);
 		
 		MetadataDescriptor descriptor = null;
 		LineIterator it = FileUtils.lineIterator(metadataFile, Constant.CHARSET_UTF8);
@@ -44,11 +45,17 @@ public enum MetadataParser {
 		    while (it.hasNext()) {
 		        String line = it.nextLine();
 		        String[] fields = line.split(Constant.COMMA);
+		        
 				if(fields.length != Constant.MAX_METADATA_COLS) {
-					throw new InvalidFormatException("Invalid metadata file!");
+					throw new InvalidFormatException(ErrorMessage.INVALID_METADATA_FILE);
 				}
+				
 				String name = fields[MetadataColumn.NAME.getIndex()];
 				int length = Integer.parseInt(fields[MetadataColumn.LENGTH.getIndex()]);
+				if(length < 0) {
+					throw new InvalidFormatException(ErrorMessage.METADATA_COLUMN_LENGTH_INVALID);
+				}
+				
 				MetadataType type = MetadataType.getMetaType(fields[MetadataColumn.TYPE.getIndex()]);
 				
 				Metadata metadata = new Metadata(name, length, type);
