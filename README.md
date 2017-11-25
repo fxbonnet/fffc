@@ -56,3 +56,21 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+## Answer
+Assumptions :
+* Empty file is not accepted
+* Blank file content is not accepted
+* It is the responsibility of the caller to create the output file before calling the API.
+
+### API Usage
+```
+File metadataFile = getMetadataFile();
+File dataInFile = getDataFile();
+File dataOutFile = createOutputFile();
+
+...
+
+MetadataDescriptor descriptor = MetadataParser.INSTANCE.parse(metadataFile);
+FixedFileFormatConverter converter = new FixedFileFormatConverter(descriptor);
+converter.convert(dataInFile, dataOutFile);
+```
