@@ -1,19 +1,19 @@
 package com.octo.jramilo.fffc;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import com.octo.jramilo.fffc.exception.InvalidFileExpection;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
+import org.apache.commons.lang3.StringUtils;
+
 import com.octo.jramilo.fffc.exception.InvalidFormatException;
 import com.octo.jramilo.fffc.model.Metadata;
-import com.octo.jramilo.fffc.processor.CsvConverter;
+import com.octo.jramilo.fffc.util.Constant;
+import com.octo.jramilo.fffc.util.CsvConverter;
+import com.octo.jramilo.fffc.util.ErrorMessage;
 import com.octo.jramilo.fffc.util.FileValidator;
 
 /**
@@ -43,75 +43,41 @@ public class FixedFileFormatConverter {
 	 * 31/01/1975,Jane,Doe,61.1
 	 * 
 	 * 
-	 * @param input
-	 * @param output
-	 * @throws IOException
-	 * @throws InvalidFormatException
-	 * @throws InvalidFileExpection
+	 * @param input - The input file containing the data
+	 * @param output - The file to output the data.<br/>NOTE: It is the 
+	 * responsibility of the caller to create the file.
+	 * 
+	 * @throws IOException - thrown if there is an input/output exception
+	 * @throws InvalidFormatException - thrown if the file contents format is invalid.
 	 */
-	public void convert(File input, File output) throws IOException, InvalidFormatException, InvalidFileExpection {
-//		FileValidator.validate(input, true);
-//		FileValidator.validate(output, false);
+	public void convert(File input, File output) throws IOException, InvalidFormatException {
+		FileValidator.validate(input, true);
+		FileValidator.validate(output, false);
 		
-		
-		
-		
-		
-		
-		FileReader fileReader = null;
-		BufferedReader bufferedReader = null;
 		PrintWriter writer = null;
-	
+		LineIterator it = FileUtils.lineIterator(input, Constant.CHARSET_UTF8);
 		try {
-			fileReader = new FileReader(input);
-			bufferedReader = new BufferedReader(fileReader);
 			writer = new PrintWriter(output);
-			
-//			Files.lines(Paths.get(input)).forEach(line -> {
-//				writer.print(CsvConverter.covert(mDescriptor, line) + CRLF);
-//			});
-//			
-//			
-//			try (Stream<String> stream = Files.lines(Paths.get(input))) {
-//
-//				stream.forEach(line -> {
-//					writer.print(CsvConverter.covert(mDescriptor, line) + CRLF);
-//				});
-//
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-			
 			writer.print(getHeader() + CRLF);
-			
-			String line;
-			while ((line = bufferedReader.readLine()) != null) {
-				writer.print(CsvConverter.covert(mDescriptor, line) + CRLF);
-			}
-			
+		    while (it.hasNext()) {
+		        String line = it.nextLine();
+		        if(StringUtils.isAllBlank(line)) {
+					throw new InvalidFormatException(ErrorMessage.BLANK_STRING);
+				}
+				
+		        writer.print(CsvConverter.covert(mDescriptor, line) + CRLF);
+		    }
 		} finally {
-			try {
-				if(bufferedReader != null) {
-					bufferedReader.close();
-				}
-				
-				if(fileReader != null) {
-					fileReader.close();
-				}
-				
-				if(writer != null) {
-					writer.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
+		    LineIterator.closeQuietly(it);
+		    if(writer != null) {
+				writer.close();
 			}
 		}
 	}
 	
 	private String getHeader() {
-		return String.join(",", mDescriptor.getMetadataList().stream()
+		return String.join(Constant.COMMA, mDescriptor.getMetadataList().stream()
 			    .map(Metadata::getName)
-			    .collect(Collectors.toList())
-			);
+			    .collect(Collectors.toList()));
 	}
 }

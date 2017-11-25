@@ -1,17 +1,12 @@
 package com.octo.jramilo.fffc.util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 
-import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-
-import com.octo.jramilo.fffc.exception.InvalidFileExpection;
 
 public class FileValidatorTest {
 	private static final String TEST_FILENAME = "file.dat";
@@ -19,29 +14,21 @@ public class FileValidatorTest {
 	@Rule
     public TemporaryFolder folder = new TemporaryFolder();
 	
-	@After
-	public void clean() {
-	    File file = new File(TEST_FILENAME);
-	    if(file.exists()) {
-	    	file.delete();
-	    }
-	}
-	
-	@Test(expected = InvalidFileExpection.class)
-	public void testInputFileNotExist() throws InvalidFileExpection {
+	@Test(expected = IllegalArgumentException.class)
+	public void testInputFileNotExist() throws IOException {
 		File file = new File(TEST_FILENAME);
 		FileValidator.validate(file, true);
 	}
 	
-	@Test(expected = InvalidFileExpection.class)
-	public void testOutputFileNotExist() throws InvalidFileExpection {
+	@Test(expected = IllegalArgumentException.class)
+	public void testOutputFileNotExist() throws IOException {
 		File file = new File(TEST_FILENAME);
 		FileValidator.validate(file, false);
 	}
 	
-	@Test(expected = InvalidFileExpection.class)
-	public void testInputFileNoRead() throws InvalidFileExpection, FileNotFoundException, UnsupportedEncodingException {
-		File file = new File(TEST_FILENAME);
+	@Test(expected = IllegalArgumentException.class)
+	public void testInputFileNoRead() throws IOException {
+		File file = folder.newFile(TEST_FILENAME);
 		PrintWriter writer = new PrintWriter(file, "UTF-8");
         writer.write("Birthdate,10,date\n");
         writer.close();
@@ -51,8 +38,8 @@ public class FileValidatorTest {
 	}
 	
 	@Test
-	public void testOutputFileNoRead() throws InvalidFileExpection, FileNotFoundException, UnsupportedEncodingException {
-		File file = new File(TEST_FILENAME);
+	public void testOutputFileNoRead() throws IOException {
+		File file = folder.newFile(TEST_FILENAME);
 		PrintWriter writer = new PrintWriter(file, "UTF-8");
         writer.write("Birthdate,10,date\n");
         writer.close();
@@ -62,8 +49,8 @@ public class FileValidatorTest {
 	}
 	
 	@Test
-	public void testInputFileNoWrite() throws InvalidFileExpection, FileNotFoundException, UnsupportedEncodingException {
-		File file = new File(TEST_FILENAME);
+	public void testInputFileNoWrite() throws IOException {
+		File file = folder.newFile(TEST_FILENAME);
 		PrintWriter writer = new PrintWriter(file, "UTF-8");
         writer.write("Birthdate,10,date\n");
         writer.close();
@@ -72,9 +59,9 @@ public class FileValidatorTest {
 		FileValidator.validate(file, true);
 	}
 	
-	@Test(expected = InvalidFileExpection.class)
-	public void testOutputFileNoWrite() throws InvalidFileExpection, FileNotFoundException, UnsupportedEncodingException {
-		File file = new File(TEST_FILENAME);
+	@Test(expected = IllegalArgumentException.class)
+	public void testOutputFileNoWrite() throws IOException {
+		File file = folder.newFile(TEST_FILENAME);
 		PrintWriter writer = new PrintWriter(file, "UTF-8");
         writer.write("Birthdate,10,date\n");
         writer.close();
@@ -83,13 +70,13 @@ public class FileValidatorTest {
 		FileValidator.validate(file, false);
 	}
 	
-	@Test(expected = InvalidFileExpection.class)
-	public void testIsDirectory() throws InvalidFileExpection, IOException {
+	@Test(expected = IllegalArgumentException.class)
+	public void testIsDirectory() throws IOException {
 		FileValidator.validate(folder.newFolder(), false);
 	}
 	
-	@Test(expected = InvalidFileExpection.class)
-	public void testNullFile() throws InvalidFileExpection, IOException {
+	@Test(expected = IllegalArgumentException.class)
+	public void testNullFile() throws IOException {
 		FileValidator.validate(null, false);
 	}
 	

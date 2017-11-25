@@ -12,4 +12,8 @@ public class Constant {
 	
 	public static final String CRLF = "\r\n";
 	
+	public static final int MAX_METADATA_COLS = 3;
+	
+	public static final String CHARSET_UTF8 = "UTF-8";
+	
 }
