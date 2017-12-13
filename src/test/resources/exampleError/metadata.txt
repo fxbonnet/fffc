@@ -1,0 +1,4 @@
+Birth date,10,date
+First name,20,string
+Last name,20,string
+Balance,5,numeric
