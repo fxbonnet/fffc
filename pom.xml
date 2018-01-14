@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.truform.fffs</groupId>
-    <artifactId>fffc-core</artifactId>
+    <groupId>com.truform.fffc</groupId>
+    <artifactId>fffc</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>fffc core</name>
+    <name>FFFC</name>
     <url>https://github.com/Truform/fffc</url>
 
     <scm>
