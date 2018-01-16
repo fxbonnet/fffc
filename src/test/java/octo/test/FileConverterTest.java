@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class CsvUtilTest {
+public class FileConverterTest {
 
 	FileConverter fc = new FileConverter();
 	

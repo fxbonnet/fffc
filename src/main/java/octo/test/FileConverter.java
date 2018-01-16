@@ -27,21 +27,18 @@ public class FileConverter {
 			conv.convert(fromFile, toFile, cols);
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
 		}
 	}
 
-	private void convert(String fromPath, String toPath, List<CsvColumn> cols) throws IOException, ParseException {
+	private void convert(String fromPath, String toPath, List<CsvColumn> cols) throws IOException {
 		File toFile = new File(toPath);
-
-		BufferedReader bufferReader = new BufferedReader(new FileReader(fromPath));
 		// clean the data
 		FileUtils.writeStringToFile(toFile, "", false);
 
 		writeCsvHeader(toFile, cols);
+		
+		BufferedReader bufferReader = new BufferedReader(new FileReader(fromPath));
 		String line = null;
-
 		while ((line = bufferReader.readLine()) != null) {
 			String lineToWrite = convertLineToCsvLine(line, cols);
 			FileUtils.writeStringToFile(toFile, lineToWrite.toString(), true);
@@ -95,6 +92,7 @@ public class FileConverter {
 			}
 			FileUtils.writeStringToFile(toFile, "\r\n", true);
 		} catch (IOException e) {
+			e.printStackTrace();
 			throw new RuntimeException("File not found: " + toFile);
 		}
 	}
