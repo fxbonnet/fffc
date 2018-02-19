@@ -1,0 +1,28 @@
+# Created by .ignore support plugin
+
+# User-specific stuff:
+.idea
+
+# IntelliJ
+out/
+
+# Cursive Clojure plugin
+.idea/replstate.xml
+
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files #
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
