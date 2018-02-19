@@ -13,5 +13,8 @@ public class Main {
         String pathToHeaderDescriptor = argv[0];
         String pathToDataSource = argv[1];
         String pathToDataTarget = argv[2];
+
+        ConverterExecutor converterExecutor = new ConverterExecutor(pathToHeaderDescriptor, pathToDataSource, pathToDataTarget);
+        converterExecutor.convert();
     }
 }
