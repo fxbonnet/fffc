@@ -56,3 +56,33 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+
+## Dependencies
+
+All used dependencies are exclusively open source:
+
+ * commons-lang3 -> https://github.com/apache/commons-lang/tree/master/src/main/java/org/apache/commons/lang3
+ * commons-csv -> https://github.com/apache/commons-csv
+ * commons-io -> https://github.com/apache/commons-io
+
+## How to build
+
+The following command use gradle to assemble an executable jar
+
+```
+bash gradlew jar
+```
+
+## How to run
+
+Sample using small data source converter:
+ 
+```
+java -jar build/libs/CSVConverter.jar ./sample/header-descriptor.csv ./sample/small-data-source-file/datas.txt ./sample/small-data-source-file/datastarget.csv
+```
+
+Sample using large data source converter:
+ 
+```
+java -jar build/libs/CSVConverter.jar ./sample/header-descriptor.csv ./sample/large-data-source-file/datas.txt ./sample/large-data-source-file/datastarget.csv
+```
