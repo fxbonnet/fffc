@@ -1,0 +1,4 @@
+1970-01-01John           Smith          Unknown         81.5
+1975-01-31Jane           Doe            Unknown         6F.1
+1988-11-28Bob            Big            Unknown        102.4
+1985-11-22Stellan        Skarsgård      Unknown         -2.4
