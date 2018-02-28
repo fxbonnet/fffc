@@ -27,6 +27,9 @@ In a shell terminal (once the code has been pulled from git):
 mvn package -DskipTests && java -jar fffc-1.0.jar
 ```
 
+Note: skipTests is required as currently there is an issue with Spring Boot Test configurations when running maven package command.
+The unit tests in the source code do not have any dependencies with Spring to run.
+
 Once that is done you will get to the Spring shell. Sample command:
 
 ```
