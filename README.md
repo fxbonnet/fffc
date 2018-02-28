@@ -33,9 +33,9 @@ Once that is done you will get to the Spring shell. Sample command:
 fff2csv --metadata-uri "file:////tmp/metadata.txt" --data-uri "file:////tmp/data.txt" --out-uri "file:////tmp/out.csv"
 ```
 
---metadata-uri is the file path to the metadata file.
---data-uri is the file path to the fixed format data file.
---out-uri is the file path to the csv output file.
+* --metadata-uri is the file path to the metadata file.
+* --data-uri is the file path to the fixed format data file.
+* --out-uri is the file path to the csv output file.
 
 Note: the uris need to be prefixed with file:// and the implementation has only been tested with file:// only.
 
