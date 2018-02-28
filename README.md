@@ -1,3 +1,51 @@
+# Implementation
+
+See below for the problem statement.
+I have implemented this with using Java 8 as the programming language of choice.
+
+Why Java?
+It is still one of the languages that I am most comfortable with, plus for this implementation am using Java 8 with functional approach.
+I used lambda expressions when appropriate and also functional programming model has made it possible to reduce the number of objects
+I need to create.
+For example, there is a requirement to apply different formatting/rules for different types, traditionally with Java (objects focused) I can
+apply various design patterns, maybe strategy or command patterns but doing with the previous versions of Java means I need to create a lot of objects
+and coordinator object.
+Whereas using functional approach it significantly reduces the need to create too many objects.
+
+I also utilised Spring Boot with its Spring Shell plugin to make this application running in an CLI.
+
+
+## Running the application
+
+Prerequisites:
+
+1. Please ensure you have JDK8 and Maven installed.
+
+In a shell terminal (once the code has been pulled from git):
+
+```
+mvn package -DskipTests && java -jar fffc-1.0.jar
+```
+
+Note: skipTests is required as currently there is an issue with Spring Boot Test configurations when running maven package command.
+The unit tests in the source code do not have any dependencies with Spring to run.
+
+Once that is done you will get to the Spring shell. Sample command:
+
+```
+fff2csv --metadata-uri "file:////tmp/metadata.txt" --data-uri "file:////tmp/data.txt" --out-uri "file:////tmp/out.csv"
+```
+
+* --metadata-uri is the file path to the metadata file.
+* --data-uri is the file path to the fixed format data file.
+* --out-uri is the file path to the csv output file.
+
+Note: the uris need to be prefixed with file:// and the implementation has only been tested with file:// only.
+
+To exit the shell prompt type 'exit'
+
+# Problem Statements/Requirements
+
 # Fixed File Format converter
 
 Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
