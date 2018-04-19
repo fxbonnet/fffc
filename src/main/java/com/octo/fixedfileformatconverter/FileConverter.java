@@ -39,6 +39,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * File Converter.
+ *
+ * Converts data from one format in a source file, to another format in a destination file, with the help of meta data
+ * describing the format of the data in the source.
  *
  * @author Mark Zsilavecz
  */

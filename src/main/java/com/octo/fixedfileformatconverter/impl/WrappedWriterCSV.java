@@ -15,6 +15,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wrapped Writer CSV.
@@ -23,9 +25,16 @@ import java.nio.file.StandardOpenOption;
  * be truncated when written to.
  *
  * @author Mark Zsilavecz
+ *
+ * @param <T> the type that the write expects lines in.
  */
 public class WrappedWriterCSV<T> implements WrappedWriter<String[]>
 {
+
+    /**
+     * Logging instance.
+     */
+    public static final Logger LOG = LoggerFactory.getLogger(WrappedWriterCSV.class);
 
     //private final Path output;
     private final BufferedWriter writer;
@@ -39,6 +48,7 @@ public class WrappedWriterCSV<T> implements WrappedWriter<String[]>
                                               StandardOpenOption.CREATE,
                                               StandardOpenOption.TRUNCATE_EXISTING);
         this.csvWriter = new CSVWriter(writer, CHAR_SEPARATOR, CHAR_QUOTE, CHAR_ESCAPE, CHAR_NEWLINE);
+        LOG.info("WrappedWriterCSV created, will write to {}.", output);
     }
 
     /**
@@ -51,7 +61,7 @@ public class WrappedWriterCSV<T> implements WrappedWriter<String[]>
         {
             throw new IOException("Writers are null.");
         }
-        csvWriter.writeNext(line);
+        csvWriter.writeNext(line, false);
         csvWriter.flush();
     }
 

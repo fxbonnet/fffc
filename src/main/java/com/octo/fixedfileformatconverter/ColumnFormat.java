@@ -9,18 +9,30 @@ import java.util.Locale;
 /**
  * Column Format.
  *
- * The column format types.
+ * The column format/data types.
  *
  * @author Mark Zsilavecz
  */
 public enum ColumnFormat
 {
+    /**
+     * A column contains a date.
+     */
     DATE("date"),
+    /**
+     * A column contains a numeric value.
+     */
     NUMERIC("numeric"),
+    /**
+     * A column contains a string value.
+     */
     STRING("string");
 
     private final String format;
 
+    /**
+     * Private constructor.
+     */
     private ColumnFormat(String format)
     {
         this.format = format;

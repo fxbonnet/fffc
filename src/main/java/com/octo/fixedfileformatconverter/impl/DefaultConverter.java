@@ -10,6 +10,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Default Converter.
@@ -22,7 +24,17 @@ import java.util.stream.Collectors;
 public class DefaultConverter implements Converter<DefaultColumnMetaData, String[]>
 {
 
+    /**
+     * Logging instance.
+     */
+    public static final Logger LOG = LoggerFactory.getLogger(DefaultConverter.class);
+    /**
+     * The format that the date string will be converted from.
+     */
     private static final DateTimeFormatter FORMAT_BEFORE;
+    /**
+     * The format that the date string will be converted to.
+     */
     private static final DateTimeFormatter FORMAT_AFTER;
 
     static
@@ -38,6 +50,7 @@ public class DefaultConverter implements Converter<DefaultColumnMetaData, String
     @Override
     public String[] convert(String raw, List<DefaultColumnMetaData> columns) throws InvalidDataFormatException
     {
+        LOG.trace("Converting line: {}", raw);
         String[] parts = new String[columns.size()];
         int indexStart = 0;
         for (int i = 0; i < columns.size(); i++)

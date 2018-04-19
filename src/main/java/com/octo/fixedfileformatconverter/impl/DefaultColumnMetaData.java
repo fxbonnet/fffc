@@ -19,8 +19,17 @@ import java.util.Objects;
 public class DefaultColumnMetaData implements ColumnMetaData
 {
 
+    /**
+     * The name of the column.
+     */
     private final String name;
+    /**
+     * The length/width of the column.
+     */
     private final int length;
+    /**
+     * The format of the column data.
+     */
     private final ColumnFormat format;
 
     /**
