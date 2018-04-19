@@ -49,7 +49,7 @@ public enum ColumnFormat
         }
         catch (IllegalArgumentException | NullPointerException e)
         {
-            throw new InvalidColumnFormatException();
+            throw new InvalidColumnFormatException(value);
         }
     }
 }

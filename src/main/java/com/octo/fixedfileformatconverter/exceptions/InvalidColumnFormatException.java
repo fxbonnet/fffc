@@ -4,27 +4,22 @@
 package com.octo.fixedfileformatconverter.exceptions;
 
 /**
+ * Invalid Column Format Exception.
+ *
+ * Exception thrown when a unknown column format is specified.
  *
  * @author Mark Zsilavecz
  */
-public class InvalidColumnFormatException extends RuntimeException
+public class InvalidColumnFormatException extends Exception
 {
 
-  /**
-   * Creates a new instance of <code>InvalidColumnFormatException</code> without detail message.
-   */
-  public InvalidColumnFormatException()
-  {
-  }
-
-
-  /**
-   * Constructs an instance of <code>InvalidColumnFormatException</code> with the specified detail message.
-   *
-   * @param msg the detail message.
-   */
-  public InvalidColumnFormatException(String msg)
-  {
-    super(msg);
-  }
+    /**
+     * Constructs an instance of <code>InvalidColumnFormatException</code> with the specified detail message.
+     *
+     * @param msg the message.
+     */
+    public InvalidColumnFormatException(String msg)
+    {
+        super(msg);
+    }
 }

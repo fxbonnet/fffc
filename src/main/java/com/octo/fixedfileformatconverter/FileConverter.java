@@ -3,8 +3,6 @@
  */
 package com.octo.fixedfileformatconverter;
 
-import com.octo.fixedfileformatconverter.exceptions.ConversionException;
-import com.octo.fixedfileformatconverter.exceptions.InvalidColumnFormatException;
 import com.octo.fixedfileformatconverter.exceptions.InvalidDataFormatException;
 import com.octo.fixedfileformatconverter.exceptions.InvalidInputOutputFormatException;
 import com.octo.fixedfileformatconverter.exceptions.InvalidMetaDataException;
@@ -96,8 +94,22 @@ public class FileConverter
         // Add other converters as required.
     }
 
-    public void convert(Path meta, Path input, Path output, InputFormat inFormat, OutputFormat outFormat)
-      throws InvalidInputOutputFormatException
+    /**
+     * Process the meta data and input data files and writes out a converted file containing the converted data.
+     *
+     * @param meta the meta data file.
+     * @param input the input data file.
+     * @param output the output data file.
+     * @param inFormat the input format.
+     * @param outFormat the output format.
+     *
+     * @throws InvalidInputOutputFormatException if there there is no converter for the specified input-output formats.
+     * @throws InvalidMetaDataException if the meta data is malformed or not accessible.
+     * @throws InvalidDataFormatException if the input data is malformed or not accessible.
+     * @throws IOException if the output data file could not be written to.
+     */
+    public void process(Path meta, Path input, Path output, InputFormat inFormat, OutputFormat outFormat)
+      throws InvalidInputOutputFormatException, InvalidMetaDataException, InvalidDataFormatException, IOException
     {
         Pair<InputFormat, OutputFormat> key = new Pair<>(inFormat, outFormat);
         if (!converters.containsKey(key))
@@ -121,17 +133,23 @@ public class FileConverter
         catch (InvalidMetaDataException e)
         {
             LOG.error("The meta data file was invalid.", e);
+            throw e;
         }
         catch (InvalidDataFormatException e)
         {
             LOG.error("The data file was invalid.", e);
+            throw e;
         }
-        catch (ConversionException e)
+        catch (IOException e)
         {
-            System.out.printf("%nUnable to perform conversion: %s", e.getMessage());
+            LOG.error("The data file was not accessible.", e);
+            throw e;
         }
     }
 
+    /**
+     * Reads the meta data file
+     */
     private List<DefaultColumnMetaData> readMetadata(Path metadata) throws InvalidMetaDataException
     {
         final CSVParser parser = new CSVParserBuilder().
@@ -139,6 +157,7 @@ public class FileConverter
           withQuoteChar(CHAR_QUOTE).
           withEscapeChar(CHAR_ESCAPE).
           build();
+        int i = 0;
         try (BufferedReader reader = Files.newBufferedReader(metadata, StandardCharsets.UTF_8);
              CSVReader csvReader = new CSVReaderBuilder(reader).withCSVParser(parser).build();)
         {
@@ -146,14 +165,18 @@ public class FileConverter
             String[] line;
             while ((line = csvReader.readNext()) != null)
             {
-                columnMetaData.add(DefaultColumnMetaData.of(line));
+                i++;
+                columnMetaData.add(DefaultColumnMetaData.from(line));
             }
             return new ArrayList<>(columnMetaData);
         }
-        catch (IOException | InvalidColumnFormatException e)
+        catch (IOException e)
         {
-            throw new InvalidMetaDataException("The meta data file is invalid, "
-                                               + "either it is inaccessible or the format is incorrect.", e);
+            throw new InvalidMetaDataException(String.format("Unable to read the meta data file at: %s", metadata));
+        }
+        catch (InvalidMetaDataException e)
+        {
+            throw new InvalidMetaDataException(String.format("The meta data file format is invalid, at line: %d.", i));
         }
     }
 
@@ -161,7 +184,7 @@ public class FileConverter
                                                                            Path input,
                                                                            Path output,
                                                                            Converter<T, String[]> converter)
-      throws ConversionException
+      throws InvalidDataFormatException, IOException
     {
         try (BufferedReader reader = Files.newBufferedReader(input, StandardCharsets.UTF_8);
              WrappedWriter<String[]> writer = new WrappedWriterCSV(output);)
@@ -183,13 +206,14 @@ public class FileConverter
             catch (InvalidDataFormatException e)
             {
                 LOG.error("Unable to convert file.", e);
-                throw new ConversionException(String.format("Unable to convert line: %s", line));
+                throw new InvalidDataFormatException(String.format("Unable to convert line: %s - %s",
+                                                                   line, e.getMessage()));
             }
         }
         catch (IOException e)
         {
             LOG.error("Unable to convert file.", e);
-            throw new ConversionException(String.format("Unable to access file: %s", e.getMessage()));
+            throw new IOException(String.format("Unable to access file: %s - %s", output, e.getMessage()));
         }
 
     }
@@ -206,7 +230,7 @@ public class FileConverter
                 Arguments arguments = optArgs.get();
                 System.out.printf("Using arguments: %s%n", arguments);
                 FileConverter converter = new FileConverter();
-                converter.convert(arguments.getMeta(),
+                converter.process(arguments.getMeta(),
                                   arguments.getInput(),
                                   arguments.getOutput(),
                                   arguments.getInputFormat(),
@@ -227,6 +251,18 @@ public class FileConverter
         {
             help.printHelp("FixedFileFormatConverter",
                            String.format("ERROR: Invalid option: %s", e.getMessage()),
+                           options, "", true);
+        }
+        catch (InvalidMetaDataException e)
+        {
+            help.printHelp("FixedFileFormatConverter",
+                           String.format("ERROR: Malformed or missing meta data: %s", e.getMessage()),
+                           options, "", true);
+        }
+        catch (InvalidDataFormatException | IOException e)
+        {
+            help.printHelp("FixedFileFormatConverter",
+                           String.format("ERROR: Malformed or missing input data: %s", e.getMessage()),
                            options, "", true);
         }
     }

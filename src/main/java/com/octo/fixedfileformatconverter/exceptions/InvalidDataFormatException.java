@@ -4,10 +4,13 @@
 package com.octo.fixedfileformatconverter.exceptions;
 
 /**
+ * Invalid Data Format Exception.
+ *
+ * Exception thrown when the input data is malformed.
  *
  * @author Mark Zsilavecz
  */
-public class InvalidDataFormatException extends RuntimeException
+public class InvalidDataFormatException extends Exception
 {
 
     /**

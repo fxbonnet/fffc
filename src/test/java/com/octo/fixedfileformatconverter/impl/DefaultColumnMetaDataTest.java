@@ -4,7 +4,9 @@
 package com.octo.fixedfileformatconverter.impl;
 
 import com.octo.fixedfileformatconverter.ColumnFormat;
+import com.octo.fixedfileformatconverter.exceptions.InvalidMetaDataException;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import org.junit.Test;
 
 /**
@@ -14,7 +16,7 @@ import org.junit.Test;
 public class DefaultColumnMetaDataTest
 {
 
-    private static final DefaultColumnMetaData TEST_COLUMN = DefaultColumnMetaData.of("test_value", 10, ColumnFormat.STRING);
+    private static final DefaultColumnMetaData TEST_COLUMN = DefaultColumnMetaData.from("test_value", 10, ColumnFormat.STRING);
 
     public DefaultColumnMetaDataTest()
     {
@@ -24,7 +26,7 @@ public class DefaultColumnMetaDataTest
     public void testOf_3args()
     {
         System.out.println("Testing of(String, int, ColumnFormat)");
-        DefaultColumnMetaData column = DefaultColumnMetaData.of("test_value", 10, ColumnFormat.STRING);
+        DefaultColumnMetaData column = DefaultColumnMetaData.from("test_value", 10, ColumnFormat.STRING);
         assertEquals(TEST_COLUMN, column);
     }
 
@@ -36,8 +38,15 @@ public class DefaultColumnMetaDataTest
         {
             "test_value", "10", "string"
         };
-        DefaultColumnMetaData column = DefaultColumnMetaData.of(values);
-        assertEquals(TEST_COLUMN, column);
+        try
+        {
+            DefaultColumnMetaData column = DefaultColumnMetaData.from(values);
+            assertEquals(TEST_COLUMN, column);
+        }
+        catch (InvalidMetaDataException e)
+        {
+            fail("Did not expect exception.");
+        }
     }
 
     @Test
@@ -68,13 +77,20 @@ public class DefaultColumnMetaDataTest
     public void testEquals()
     {
         System.out.println("Testing equals()");
-        DefaultColumnMetaData column1 = DefaultColumnMetaData.of("name", 99, ColumnFormat.NUMERIC);
+        DefaultColumnMetaData column1 = DefaultColumnMetaData.from("name", 99, ColumnFormat.NUMERIC);
         String[] values = new String[]
         {
             "name", "99", "numEric"
         };
-        DefaultColumnMetaData column2 = DefaultColumnMetaData.of(values);
-        assertEquals(column1, column2);
+        try
+        {
+            DefaultColumnMetaData column2 = DefaultColumnMetaData.from(values);
+            assertEquals(column1, column2);
+        }
+        catch (InvalidMetaDataException e)
+        {
+            fail("Did not expect exception.");
+        }
     }
 
 }

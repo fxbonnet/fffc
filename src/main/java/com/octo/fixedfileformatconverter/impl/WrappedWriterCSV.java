@@ -16,16 +16,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
+/**
+ * Wrapped Writer CSV.
+ *
+ * The {@link WrappedWriter} implementation, which writes out a CSV file. If the specified output file exists, it will
+ * be truncated when written to.
+ *
+ * @author Mark Zsilavecz
+ */
 public class WrappedWriterCSV<T> implements WrappedWriter<String[]>
 {
 
-    private final Path output;
+    //private final Path output;
     private final BufferedWriter writer;
     private final CSVWriter csvWriter;
 
     public WrappedWriterCSV(Path output) throws IOException
     {
-        this.output = output;
+        //this.output = output;
         this.writer = Files.newBufferedWriter(output, StandardCharsets.UTF_8,
                                               StandardOpenOption.WRITE,
                                               StandardOpenOption.CREATE,

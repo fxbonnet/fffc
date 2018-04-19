@@ -4,6 +4,9 @@
 package com.octo.fixedfileformatconverter.exceptions;
 
 /**
+ * Invalid Input Output Format Exception.
+ *
+ * Exception thrown when there is no converter of a specified pair of input and output formats.
  *
  * @author Mark Zsilavecz
  */

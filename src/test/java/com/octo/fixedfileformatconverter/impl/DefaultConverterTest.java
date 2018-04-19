@@ -42,16 +42,23 @@ public class DefaultConverterTest
 
         List<DefaultColumnMetaData> columns = Arrays.asList(new DefaultColumnMetaData[]
         {
-            DefaultColumnMetaData.of("Birth date", 10, ColumnFormat.DATE),
-            DefaultColumnMetaData.of("First name", 15, ColumnFormat.STRING),
-            DefaultColumnMetaData.of("Last name", 15, ColumnFormat.STRING),
-            DefaultColumnMetaData.of("Weight", 5, ColumnFormat.NUMERIC)
+            DefaultColumnMetaData.from("Birth date", 10, ColumnFormat.DATE),
+            DefaultColumnMetaData.from("First name", 15, ColumnFormat.STRING),
+            DefaultColumnMetaData.from("Last name", 15, ColumnFormat.STRING),
+            DefaultColumnMetaData.from("Weight", 5, ColumnFormat.NUMERIC)
         });
 
         DefaultConverter instance = new DefaultConverter();
-
-        String[] result = instance.convert(rawGood, columns);
-        assertArrayEquals(expResult, result);
+        try
+        {
+            String[] result = instance.convert(rawGood, columns);
+            assertArrayEquals(expResult, result);
+        }
+        catch (InvalidDataFormatException e)
+        {
+            System.out.println("Error: " + e.getMessage());
+            fail("Expected no exception.");
+        }
 
         try
         {

@@ -6,6 +6,7 @@ package com.octo.fixedfileformatconverter.impl;
 import com.octo.fixedfileformatconverter.ColumnFormat;
 import com.octo.fixedfileformatconverter.ColumnMetaData;
 import com.octo.fixedfileformatconverter.exceptions.InvalidColumnFormatException;
+import com.octo.fixedfileformatconverter.exceptions.InvalidMetaDataException;
 import java.util.Objects;
 
 /**
@@ -31,7 +32,7 @@ public class DefaultColumnMetaData implements ColumnMetaData
      *
      * @return the new {@link DefaultColumnMetaData} instance.
      */
-    public static DefaultColumnMetaData of(String name, int length, ColumnFormat format)
+    public static DefaultColumnMetaData from(String name, int length, ColumnFormat format)
     {
         return new DefaultColumnMetaData(name, length, format);
     }
@@ -43,10 +44,10 @@ public class DefaultColumnMetaData implements ColumnMetaData
      *
      * @return the new {@link DefaultColumnMetaData} instance.
      *
-     * @throws IllegalArgumentException if the array does not contain 3, and only 3 values, or the length value is not
+     * @throws InvalidMetaDataException if the array does not contain 3, and only 3 values, or the length value is not
      * an integer, or the format value is not a valid format.
      */
-    public static DefaultColumnMetaData of(String[] values) throws IllegalArgumentException
+    public static DefaultColumnMetaData from(String[] values) throws InvalidMetaDataException
     {
         if (values.length != 3)
         {
@@ -62,11 +63,13 @@ public class DefaultColumnMetaData implements ColumnMetaData
         }
         catch (NumberFormatException e)
         {
-            throw new IllegalArgumentException("Invalid length value, expected an integer.");
+            throw new InvalidMetaDataException("Invalid length value, expected an integer.");
         }
         catch (InvalidColumnFormatException e)
         {
-            throw new IllegalArgumentException("Invalid format value, expected 'date' or 'numeric' or 'string'.");
+            throw new InvalidMetaDataException(
+              String.format("Invalid format value, expected 'date' or 'numeric' or 'string', got '%s'.",
+                            e.getMessage()));
         }
     }
 
