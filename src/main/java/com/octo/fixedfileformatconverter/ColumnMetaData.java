@@ -6,7 +6,7 @@ package com.octo.fixedfileformatconverter;
 /**
  * Column Meta Data.
  *
- * Holds the meta data for a single column in the fixed format.
+ * Holds the meta data for a single column.
  *
  * @author Mark Zsilavecz
  */

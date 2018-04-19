@@ -12,6 +12,9 @@ package com.octo.fixedfileformatconverter;
  */
 public enum OutputFormat
 {
+    /**
+     * CSV file format.
+     */
     CSV;
 
     /**

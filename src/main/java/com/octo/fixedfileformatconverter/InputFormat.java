@@ -12,6 +12,9 @@ package com.octo.fixedfileformatconverter;
  */
 public enum InputFormat
 {
+    /**
+     * Fixed file format.
+     */
     FIXED_FORMAT;
 
     /**
