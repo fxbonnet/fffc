@@ -141,6 +141,9 @@ public class DefaultColumnMetaData implements ColumnMetaData
         return String.format("ColumnMetaData[name=%s, length=%d, format=%s]", name, length, format);
     }
 
+    /**
+     * Private constructor.
+     */
     private DefaultColumnMetaData(String name, int length, ColumnFormat format)
     {
         this.name = name;

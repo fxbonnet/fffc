@@ -68,14 +68,27 @@ public class WrappedWriterCSV<T> implements WrappedWriter<String[]>
     @Override
     public void close() throws IOException
     {
-        if (csvWriter != null)
+        try
         {
-            csvWriter.close();
+            if (csvWriter != null)
+            {
+                csvWriter.close();
+            }
         }
-        if (writer != null)
+        finally
         {
-            writer.close();
+            try
+            {
+                if (writer != null)
+                {
+                    writer.close();
+                }
+            }
+            finally
+            {
+            }
         }
+
     }
 
 }

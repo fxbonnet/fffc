@@ -43,6 +43,9 @@ public class DefaultConverter implements Converter<DefaultColumnMetaData, String
         FORMAT_AFTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     }
 
+    /**
+     * Default constructor.
+     */
     public DefaultConverter()
     {
     }
