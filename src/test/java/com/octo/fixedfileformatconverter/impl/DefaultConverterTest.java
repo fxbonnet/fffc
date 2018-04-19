@@ -48,10 +48,10 @@ public class DefaultConverterTest
             DefaultColumnMetaData.from("Weight", 5, ColumnFormat.NUMERIC)
         });
 
-        DefaultConverter instance = new DefaultConverter();
+        DefaultConverter converter = new DefaultConverter();
         try
         {
-            String[] result = instance.convert(rawGood, columns);
+            String[] result = converter.convert(rawGood, columns);
             assertArrayEquals(expResult, result);
         }
         catch (InvalidDataFormatException e)
@@ -62,7 +62,7 @@ public class DefaultConverterTest
 
         try
         {
-            String[] resultBad = instance.convert(rawBad1, columns);
+            converter.convert(rawBad1, columns);
             fail("Expecting InvalidDataFormatException");
         }
         catch (InvalidDataFormatException e)
@@ -72,7 +72,7 @@ public class DefaultConverterTest
 
         try
         {
-            String[] resultBad = instance.convert(rawBad2, columns);
+            converter.convert(rawBad2, columns);
             fail("Expecting InvalidDataFormatException");
         }
         catch (InvalidDataFormatException e)
@@ -82,7 +82,7 @@ public class DefaultConverterTest
 
         try
         {
-            String[] resultBad = instance.convert(rawBad3, columns);
+            converter.convert(rawBad3, columns);
             fail("Expecting InvalidDataFormatException");
         }
         catch (InvalidDataFormatException e)

@@ -124,6 +124,7 @@ public class FileConverter
         Converter converter = converters.get(key);
         try
         {
+            // TODO: select meta data type based on input format type.
             List<DefaultColumnMetaData> metaData = readMetadata(meta);
             switch (outFormat)
             {
@@ -222,6 +223,11 @@ public class FileConverter
 
     }
 
+    /**
+     * Entry point.
+     *
+     * @param args arguments.
+     */
     public static void main(String[] args)
     {
         HelpFormatter help = new HelpFormatter();
@@ -323,6 +329,11 @@ public class FileConverter
         }
     }
 
+    /**
+     * Arguments.
+     *
+     * Holds the arguments and options passed to the file converter from the commandline.
+     */
     private static class Arguments
     {
 

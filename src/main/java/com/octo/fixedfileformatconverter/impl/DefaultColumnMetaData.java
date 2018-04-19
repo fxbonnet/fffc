@@ -65,7 +65,7 @@ public class DefaultColumnMetaData implements ColumnMetaData
         String name = values[0];
         try
         {
-            int length = Integer.valueOf(values[1]);
+            Integer length = Integer.valueOf(values[1]);
             ColumnFormat format = ColumnFormat.of(values[2]);
 
             return new DefaultColumnMetaData(name, length, format);
