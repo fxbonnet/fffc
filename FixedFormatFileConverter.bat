@@ -1,0 +1,2 @@
+java.exe -Xms256m -Xmx1024m -Dorg.slf4j.simpleLogger.logFile=System.out -Dorg.slf4j.simpleLogger.defaultLogLevel=trace -Dorg.slf4j.simpleLogger.showDateTime=true -Dorg.slf4j.simpleLogger.dateTimeFormat="yyyy-MM-dd HH:mm:ss:SSS" -Dorg.slf4j.simpleLogger.showThreadName=true -cp lib\*;lib\FixedFileFormatConverter.jar com.octo.fixedfileformatconverter.FileConverter -m meta.txt -i data.txt -o out.csv -u FIXED_FORMAT -c CSV
+pause
