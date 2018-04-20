@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Octo Technologies.
+ * Copyright 2018 OCTO Technology.
  */
 package com.octo.fixedfileformatconverter.impl;
 
