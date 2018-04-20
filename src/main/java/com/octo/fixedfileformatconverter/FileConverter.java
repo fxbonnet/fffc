@@ -177,7 +177,8 @@ public class FileConverter
         }
         catch (IOException e)
         {
-            throw new InvalidMetaDataException(String.format("Unable to read the meta data file at: %s", metadata));
+            throw new InvalidMetaDataException(String.format("Unable to read the meta data file at: %s",
+                                                             metadata.toAbsolutePath()));
         }
         catch (InvalidMetaDataException e)
         {
@@ -230,7 +231,7 @@ public class FileConverter
      */
     public static void main(String[] args)
     {
-        HelpFormatter help = new HelpFormatter();
+
         Options options = createOptions();
         try
         {
@@ -245,35 +246,29 @@ public class FileConverter
                                   arguments.getOutput(),
                                   arguments.getInputFormat(),
                                   arguments.getOutputFormat());
+                //System.exit(0);
             }
             else
             {
-                help.printHelp("FixedFileFormatConverter", "ERROR: ", options, "", true);
+                printHelpAndExit("ERROR: ", options);
             }
         }
         catch (IllegalArgumentException e)
         {
-            help.printHelp("FixedFileFormatConverter",
-                           String.format("ERROR: Invalid argument: %s%n", e.getMessage()),
-                           options, "", true);
+            printHelpAndExit(String.format("ERROR: Invalid argument: %s%n", e.getMessage()), options);
+
         }
         catch (InvalidInputOutputFormatException e)
         {
-            help.printHelp("FixedFileFormatConverter",
-                           String.format("ERROR: Invalid option: %s", e.getMessage()),
-                           options, "", true);
+            printHelpAndExit(String.format("ERROR: Invalid option: %s", e.getMessage()), options);
         }
         catch (InvalidMetaDataException e)
         {
-            help.printHelp("FixedFileFormatConverter",
-                           String.format("ERROR: Malformed or missing meta data: %s", e.getMessage()),
-                           options, "", true);
+            printHelpAndExit(String.format("ERROR: Malformed or missing meta data: %s", e.getMessage()), options);
         }
         catch (InvalidDataFormatException | IOException e)
         {
-            help.printHelp("FixedFileFormatConverter",
-                           String.format("ERROR: Malformed or missing input data: %s", e.getMessage()),
-                           options, "", true);
+            printHelpAndExit(String.format("ERROR: Malformed or missing input data: %s", e.getMessage()), options);
         }
     }
 
@@ -327,6 +322,13 @@ public class FileConverter
             LOG.error("Unexpected exception.", e);
             throw new IllegalArgumentException("Unable to parse arguments.");
         }
+    }
+
+    private static void printHelpAndExit(String msg, Options options)
+    {
+        HelpFormatter help = new HelpFormatter();
+        help.printHelp("FixedFileFormatConverter", msg, options, "", true);
+        throw new IllegalStateException();
     }
 
     /**
