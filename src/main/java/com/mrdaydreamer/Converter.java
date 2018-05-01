@@ -27,7 +27,8 @@ public class Converter {
 			OutputWriter outputWriter = new OutputWriter();
 			outputWriter.write("data/output.csv", data);
 		} catch (IOException | InvalidInputException e) {
-			e.printStackTrace();
+			System.out.println("IOException or invalid input data!");
+			System.exit(-1);
 		}
 	}
 }
