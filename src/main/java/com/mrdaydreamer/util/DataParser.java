@@ -32,6 +32,9 @@ public class DataParser {
 				
 				switch(meta.getDataType()) {
 					case "string":
+						if(chunk.indexOf(",") > 0) {
+							chunk = "\"" + chunk.trim() + "\"";
+						}
 						dataRecord.appendField(chunk.trim());
 						break;
 					case "numeric":
