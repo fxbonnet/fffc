@@ -17,11 +17,6 @@ object MetadataSpec {
     Column("Last name", 15, Type.String),
     Column("Weight", 5, Type.Numeric)
   ))
-
-//  val inputTest =
-//    "1970-01-01John           Smith           81.5\n" +
-//    "1975-01-31Jane           Doe             61.1\n" +
-//    "1988-11-28Bob            Big            102.4"
 }
 
 class MetadataSpec extends Specification {

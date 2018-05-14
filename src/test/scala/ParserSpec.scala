@@ -7,35 +7,29 @@ import Metadata._
 
 import scala.util.Success
 
-class ParserSpec extends Specification {
+class ParserSpec extends Specification with TestUtils {
 
   "Parser should" >> {
 
     "parse a string" >> {
       val str = Source.fromString("abcdefghijklmnopqrstuvwxyz")
-      Parser(Column("string-typed column", 8, Type.String)).flatMap(_.read(str)) mustEqual Success("abcdefgh")
+      new StringParser(Column("string-typed column", 8, Type.String)).read(str, 1) mustEqual Success("abcdefgh")
     }
 
     "parse a numeric" >> {
       val num = Source.fromString("    -134.5abcdefg")
-      Parser(Column("numeric-typed column", 10, Type.Numeric)).flatMap(_.read(num)) mustEqual Success(BigDecimal("-134.5"))
+      new NumericParser(Column("numeric-typed column", 10, Type.Numeric)).read(num, 1) mustEqual Success(BigDecimal("-134.5"))
     }
 
     "parse a date" >> {
       val date = Source.fromString("27-11-2015xyz")
-      Parser(Column("date-typed column", 10, Type.Date)).flatMap(_.read(date)) mustEqual Success(newDate(27,11,2015))
+      new DateParser(Column("date-typed column", 10, Type.Date), "dd-MM-yyyy").read(date, 1) mustEqual Success(newDate(27,11,2015))
     }
-  }
 
-  private def newDate(day: Int, month: Int, year: Int): Date = {
-    val c = Calendar.getInstance()
-    c.set(Calendar.DAY_OF_MONTH, day)
-    c.set(Calendar.MONTH, month - 1)
-    c.set(Calendar.YEAR, year)
-    c.set(Calendar.MILLISECOND, 0);
-    c.set(Calendar.SECOND, 0);
-    c.set(Calendar.MINUTE, 0);
-    c.set(Calendar.HOUR_OF_DAY, 0);
-    c.getTime
+    "record a parsing failure line and column information" >> {
+      val num = Source.fromString("a457b.8c")
+      new NumericParser(Column("numeric-typed column", 8, Type.Numeric)).read(num, 57) must
+        beFailedTry.withThrowable[ParserException]("Parsing error on column 'numeric-typed column' at line 57: java.lang.NumberFormatException")
+    }
   }
 }
