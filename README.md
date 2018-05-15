@@ -1,4 +1,27 @@
-# Fixed File Format converter
+# Fixed File Format Converter
+
+## Run this project tests
+```
+    sbt test
+```
+## Run this project on the command line
+
+* Valid input file example (to standard output)
+```
+    sbt "runMain Convert --metadata <path to fffc project>/src/test/resources/metadata.csv <path to fffc project>/src/test/resources/data2.txt"
+```
+
+* Valid input file example (to file output)
+```
+    sbt "runMain Convert --metadata <path to fffc project>/src/test/resources/metadata.csv --out out1.csv <path to fffc project>/src/test/resources/data2.txt"
+```
+
+* Invalid input file example (to file output)
+```
+    `sbt "runMain Convert --metadata <path to fffc project>/src/test/resources/metadata.csv --out out2.csv <path to fffc project>/src/test/resources/data2.txt"
+```
+
+## Instructions
 
 Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
 
@@ -55,4 +78,3 @@ Birth date,First name,Last name,Weight
 * strings columns may contain separator characters like ',' and then the whole string needs to be escaped with " (double quotes). Only CR or LF are forbidden
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
-
