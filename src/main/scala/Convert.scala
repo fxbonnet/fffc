@@ -1,11 +1,11 @@
-import java.io.{File, FileWriter, PrintWriter}
+import java.io.{File, PrintWriter}
 
 import scala.io.Source
 
-object Convert extends App {
-  val usage = "Usage: Convert [--out <output filename>] --metadata netadata  input filename"
+object Convert {
+  val usage = """Usage: Convert [--out <output filename>] --metadata netadata  input filename"""
 
-  override def main(args: Array[String]) {
+  def main(args: Array[String]) {
 
     if (args.length == 0)
       exit(usage)
@@ -23,8 +23,9 @@ object Convert extends App {
     val outfile = options
       .get('out)
       .map(f=> new PrintWriter(new File(f), "UTF-8"))
+      .getOrElse(new PrintWriter(System.out))
 
-    if(metadata.isEmpty || infile.isEmpty || outfile.isEmpty)
+    if(metadata.isEmpty || infile.isEmpty)
       exit(usage)
 
     val converter = new Converter(Metadata(metadata.get))
@@ -33,15 +34,13 @@ object Convert extends App {
     try {
       converter
         .convert(infile.get, writer)
-        .foreach(outfile.get.print)
+        .foreach(outfile.print)
     } catch {
       case t: Throwable =>
         println(t.getMessage)
     } finally {
-      outfile.foreach { o=>
-        o.flush()
-        o.close()
-      }
+        outfile.flush()
+        outfile.close()
     }
   }
 
@@ -63,8 +62,8 @@ object Convert extends App {
   }
 
   private def exit(message: String) : Unit = {
-    println(message)
-    System.exit(1)
+    Console.err.println(message)
+    sys.exit(0)
   }
 }
 
