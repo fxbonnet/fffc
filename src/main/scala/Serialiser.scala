@@ -1,13 +1,26 @@
 import java.text.SimpleDateFormat
-import java.util.Date
 
 import scala.util.{Try, Success, Failure}
 import Metadata.Column
 
-trait Serialiser[T] {
+/**
+  * Serialiser serialises a value into a String
+  */
+trait Serialiser {
+  /**
+    * serialise a value into a String
+    * @param value the value to serialise
+    * @return the serialised value
+    */
   def write(value: Try[Any]): String
 }
 
+/**
+  * base class for serialisers that use a Column as specification for the serialisation
+  * @param definition the column definition used by this serialiser
+  * @param failOnError whether serialisation should fail if there is no value
+  * @param trim whether the string result of serialisation should be trimmed
+  */
 abstract class ColumnSerialiser(definition: Column, failOnError: Boolean = false, trim: Boolean = false) {
   def writeString(value: Try[String]): String = value match {
     case Success(v) => trimIfRequired(v)
@@ -22,15 +35,32 @@ abstract class ColumnSerialiser(definition: Column, failOnError: Boolean = false
       str
 }
 
-class StringSerialiser(definition: Column, failOnError: Boolean = false, trim: Boolean = false) extends ColumnSerialiser(definition, failOnError, trim) with Serialiser[String] {
+/**
+  * Serialise values from string-typed columns
+  * @param definition the column definition used by this serialiser
+  * @param failOnError whether serialisation should fail if there is no value
+  * @param trim whether the string result of serialisation should be trimmed
+  */
+class StringSerialiser(definition: Column, failOnError: Boolean = false, trim: Boolean = false) extends ColumnSerialiser(definition, failOnError, trim) with Serialiser {
   override def write(value: Try[Any]): String = writeString(value.map(_.toString))
 }
 
-class NumericSerialiser(definition: Column, failOnError: Boolean = false) extends ColumnSerialiser(definition, failOnError) with Serialiser[BigDecimal] {
+/**
+  * Serialise values from numeric-typed columns
+  * @param definition the column definition used by this serialiser
+  * @param failOnError whether serialisation should fail if there is no value
+  */
+
+class NumericSerialiser(definition: Column, failOnError: Boolean = false) extends ColumnSerialiser(definition, failOnError) with Serialiser {
   override def write(value: Try[Any]): String = writeString(value.map(_.toString))
 }
 
-class DateSerialiser(definition: Column, dateFormat: String, failOnError: Boolean = false) extends ColumnSerialiser(definition, failOnError) with Serialiser[Date] {
+/**
+  * Serialise values from date-typed columns
+  * @param definition the column definition used by this serialiser
+  * @param failOnError whether serialisation should fail if there is no value
+  */
+class DateSerialiser(definition: Column, dateFormat: String, failOnError: Boolean = false) extends ColumnSerialiser(definition, failOnError) with Serialiser {
   override def write(value: Try[Any]): String = {
     val format = new SimpleDateFormat(dateFormat)
     writeString(value.map(date => format.format(date)))

@@ -8,10 +8,10 @@ object ConverterSpec {
     "1975-01-31Jane           Doe             61.1\n" +
     "1988-11-28Bob            Big            102.4"
   val expectedCSV =
-    "Birth date,First name,Last name,Weight\n" +
-    "01/01/1970,John,Smith,81.5\n" +
-    "31/01/1975,Jane,Doe,61.1\n" +
-    "28/11/1988,Bob,Big,102.4\n"
+    "Birth date,First name,Last name,Weight\r\n" +
+    "01/01/1970,John,Smith,81.5\r\n" +
+    "31/01/1975,Jane,Doe,61.1\r\n" +
+    "28/11/1988,Bob,Big,102.4\r\n"
 }
 
 class ConverterSpec extends Specification {

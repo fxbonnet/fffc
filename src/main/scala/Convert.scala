@@ -1,22 +1,48 @@
-import java.io.File
+import java.io.{File, FileWriter, PrintWriter}
 
 import scala.io.Source
 
 object Convert extends App {
-  val usage = "Usage: Convert [--metadata netadata] filename"
+  val usage = "Usage: Convert [--out <output filename>] --metadata netadata  input filename"
 
   override def main(args: Array[String]) {
 
     if (args.length == 0)
-      println(usage)
+      exit(usage)
 
     val options = optionMap(args.toList)
-    val metadata = Source.fromFile(new File(options('metadata)), "UTF-8")
-    val infile = Source.fromFile(new File(options('infile)), "UTF-8")
-    val converter = new Converter(Metadata(metadata))
+
+    val metadata = options
+      .get('metadata)
+      .map(f=> Source.fromFile(new File(f), "UTF-8"))
+
+    val infile = options
+      .get('in)
+      .map(f=> Source.fromFile(new File(f), "UTF-8"))
+
+    val outfile = options
+      .get('out)
+      .map(f=> new PrintWriter(new File(f), "UTF-8"))
+
+    if(metadata.isEmpty || infile.isEmpty || outfile.isEmpty)
+      exit(usage)
+
+    val converter = new Converter(Metadata(metadata.get))
     val writer = CSVWriter()
 
-    converter.convert(infile, writer)
+    try {
+      converter
+        .convert(infile.get, writer)
+        .foreach(outfile.get.print)
+    } catch {
+      case t: Throwable =>
+        println(t.getMessage)
+    } finally {
+      outfile.foreach { o=>
+        o.flush()
+        o.close()
+      }
+    }
   }
 
   type OptionMap = Map[Symbol, String]
@@ -27,11 +53,18 @@ object Convert extends App {
       case Nil => map
       case "--metadata" :: value :: tail =>
         optionMap(tail, map ++ Map('metadata -> value))
-      case string :: Nil =>  optionMap(list.tail, map ++ Map('infile -> string))
-      case option :: tail => println(s"Unknown option $option")
-        System.exit(1)
+      case "--out" :: value :: tail =>
+        optionMap(tail, map ++ Map('out -> value))
+      case string :: Nil =>  optionMap(list.tail, map ++ Map('in -> string))
+      case option :: tail =>
+        exit(s"Unknown option $option")
         Map()
     }
+  }
+
+  private def exit(message: String) : Unit = {
+    println(message)
+    System.exit(1)
   }
 }
 

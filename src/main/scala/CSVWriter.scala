@@ -5,9 +5,10 @@ import org.apache.commons.csv.{CSVFormat, CSVPrinter}
 object CSVWriter {
   val defaultFormat = CSVFormat
     .newFormat(',')
-    .withTrim(true)
-    .withRecordSeparator("\n")
+    .withRecordSeparator("\r\n")
     .withIgnoreEmptyLines()
+    .withEscape('\\')
+    .withFirstRecordAsHeader()
 
   def apply(format: CSVFormat = defaultFormat) = new CSVWriter(format)
 }
