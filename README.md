@@ -1,3 +1,17 @@
+
+## How to run
+
+First time running:
+make sure node is installed and run "npm install" and "npm install --only=dev"
+
+Run:
+node index
+
+Test:
+mocha tests
+
+
+
 # Fixed File Format converter
 
 Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
@@ -55,4 +69,7 @@ Birth date,First name,Last name,Weight
 * strings columns may contain separator characters like ',' and then the whole string needs to be escaped with " (double quotes). Only CR or LF are forbidden
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
+
+
+
 

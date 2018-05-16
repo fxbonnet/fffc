@@ -1,0 +1,30 @@
+{
+  "name": "data-file-converter",
+  "version": "1.0.0",
+  "description": "a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codewen/fffc.git"
+  },
+  "author": "Yunyao Yao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codewen/fffc/issues"
+  },
+  "homepage": "https://github.com/codewen/fffc#readme",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "event-stream": "^3.3.4",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^2.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
+  }
+}
