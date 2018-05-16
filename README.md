@@ -2,7 +2,7 @@
 ## How to run
 
 First time running:
-make sure node is installed and run "npm install"
+make sure node is installed and run "npm install" and "npm install --only=dev"
 
 Run:
 node index
