@@ -1,7 +1,11 @@
 group 'com.octo'
 version '1.0-SNAPSHOT'
 
+defaultTasks 'clean', 'build'
+
 apply plugin: 'java'
+apply plugin: 'application'
+mainClassName = "com.octo.fffc.FixedFileConvertor"
 
 sourceCompatibility = 1.8
 
@@ -11,4 +15,19 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.mockito', name:'mockito-core', version:'2.8.47'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group:'joda-time', name:'joda-time', version: '2.9.4'
+    compile group: 'net.sf.opencsv', name: 'opencsv', version: '2.3'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version:'3.5'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.octo.fffc.FixedFileConvertor'
+    }
+    doFirst {
+        from { configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) } }
+    }
 }
