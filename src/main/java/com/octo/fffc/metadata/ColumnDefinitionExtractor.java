@@ -1,5 +1,6 @@
 package com.octo.fffc.metadata;
 
+import com.octo.fffc.Configurator;
 import com.octo.fffc.exception.InvalidInputException;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,11 @@ import static com.octo.fffc.metadata.ColumnDefinition.ColumnDefinitionBuilder;
 @Component
 public class ColumnDefinitionExtractor {
 
-    private static final String FIELD_SEPARATOR = ",";
+    private final String fieldDelimiter;
+
+    public ColumnDefinitionExtractor(Configurator configurator) {
+        this.fieldDelimiter = configurator.getFieldDelimiter();
+    }
 
     /**
      * Parses the given string to generate {@link ColumnDefinition}
@@ -25,7 +30,7 @@ public class ColumnDefinitionExtractor {
      * @throws InvalidInputException
      */
     ColumnDefinition extractDefinitions(String input) throws InvalidInputException {
-        String[] fields = input.split(FIELD_SEPARATOR);
+        String[] fields = input.split(fieldDelimiter);
 
         //Validate that there are 3 fields at-least
         if (fields.length != 3) {

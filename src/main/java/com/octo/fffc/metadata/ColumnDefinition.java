@@ -53,7 +53,6 @@ public class ColumnDefinition {
         public ColumnDefinitionBuilder setLength(String length) throws InvalidInputException {
             try {
                 this.length = Integer.valueOf(length);
-
                 // make sure that the column width is greater than 0
                 if (this.length <= 0) {
                     throw new InvalidInputException("The column length should be greater than 0");

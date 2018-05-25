@@ -1,12 +1,19 @@
 package com.octo.fffc.metadata;
 
 import com.octo.fffc.CauseMatcher;
+import com.octo.fffc.Configurator;
 import com.octo.fffc.exception.InvalidInputException;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
@@ -21,7 +28,9 @@ public class TestColumnDefinitionExtractor {
 
     @Before
     public void setUp() {
-        parser = new ColumnDefinitionExtractor();
+        Configurator configurator = Mockito.mock(Configurator.class);
+        Mockito.when(configurator.getFieldDelimiter()).thenReturn(",");
+        parser = new ColumnDefinitionExtractor(configurator);
     }
 
     @Test
@@ -51,7 +60,7 @@ public class TestColumnDefinitionExtractor {
     @Test
     public void testMetadataWithIncorrectNumberOfFields() throws InvalidInputException {
         expectedEx.expect(InvalidInputException.class);
-        expectedEx.expectMessage("Expecting atleast 3 fields to indicate the column - name, length, dataType");
+        expectedEx.expectMessage(containsString("Expecting atleast 3 fields to indicate the column - name, length, dataType"));
         parser.extractDefinitions("Hello How are you all doing?");
     }
 

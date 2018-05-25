@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,10 +26,10 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class ConfigParserImpl implements ConfigParser {
 
     private static final Logger logger = getLogger(ConfigParserImpl.class);
-    private final ColumnDefinitionExtractor parser;
+    private final ColumnDefinitionExtractor extractor;
 
-    public ConfigParserImpl(ColumnDefinitionExtractor parser) {
-        this.parser = parser;
+    public ConfigParserImpl(ColumnDefinitionExtractor extractor) {
+        this.extractor = extractor;
     }
 
     @Override
@@ -40,7 +39,7 @@ public class ConfigParserImpl implements ConfigParser {
         try (FileInputStream inputStream = new FileInputStream(filePath);
              Scanner sc = new Scanner(inputStream)) {
             while (sc.hasNextLine()) {
-                columns.add(parser.extractDefinitions(sc.nextLine()));
+                columns.add(extractor.extractDefinitions(sc.nextLine()));
                 lineNo++;
             }
         } catch (IOException e) {

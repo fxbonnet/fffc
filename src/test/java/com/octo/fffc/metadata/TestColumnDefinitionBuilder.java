@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static com.octo.fffc.metadata.ColumnDefinition.ColumnDefinitionBuilder;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertTrue;
 
 public class TestColumnDefinitionBuilder {
@@ -31,7 +32,7 @@ public class TestColumnDefinitionBuilder {
     @Test
     public void testColumnDefinitionWithNegativeColumnLength() throws InvalidInputException {
         expectedEx.expect(InvalidInputException.class);
-        expectedEx.expectMessage("The column length should be greater than 0");
+        expectedEx.expectMessage(containsString("The column length should be greater than 0"));
 
         String[] fields = new String[]{"Birth date", "-10", "date",};
         new ColumnDefinitionBuilder()
@@ -45,7 +46,7 @@ public class TestColumnDefinitionBuilder {
     public void testColumnDefinitionWithNonIntegerColumnLength() throws InvalidInputException {
         {
             expectedEx.expect(InvalidInputException.class);
-            expectedEx.expectMessage("The length 10.00 specified is invalid. Please specify a positive integer");
+            expectedEx.expectMessage(containsString("The length 10.00 specified is invalid. Please specify a positive integer"));
             expectedEx.expectCause(new CauseMatcher(NumberFormatException.class, "For input string: \"10.00\""));
 
             String[] fields = new String[]{"Birth date", "10.00", "date",};
