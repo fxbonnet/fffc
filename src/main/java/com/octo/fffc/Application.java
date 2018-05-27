@@ -1,5 +1,6 @@
 package com.octo.fffc;
 
+import com.octo.fffc.converter.Configurator;
 import com.octo.fffc.converter.Converter;
 import com.octo.fffc.exception.InvalidInputException;
 import com.octo.fffc.converter.InputArguments;
@@ -11,25 +12,37 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.File;
 import java.util.List;
 
 @SpringBootApplication
 public class Application implements ApplicationRunner {
 
     private final Converter converter;
+    private final Configurator config;
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
-    public Application(Converter converter) {
+    public Application(Converter converter,
+                       Configurator config) {
         this.converter = converter;
+        this.config = config;
     }
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         List<String> inputs = args.getNonOptionArgs();
-        validateInputArguments(inputs);
-        InputArguments arguments = new InputArguments(inputs.get(0), inputs.get(1), inputs.get(2));
-        logger.info("Transforming the input file : {}", arguments.getInputFile());
-        converter.convert(arguments);
+        System.out.println("Logs for the application could be found here : " + getAbsLocation(config.getLogDirectory()));
+        try {
+            validateInputArguments(inputs);
+            InputArguments arguments = new InputArguments(inputs.get(0), inputs.get(1), inputs.get(2));
+            logger.info("Transforming the input file : {}", arguments.getInputFile());
+            converter.convert(arguments);
+        } catch (InvalidInputException e) {
+            logger.error(e.getMessage());
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            logger.debug("", e);
+        }
     }
 
     private void validateInputArguments(List<String> inputs) throws InvalidInputException {
@@ -43,6 +56,10 @@ public class Application implements ApplicationRunner {
             msg.append(System.lineSeparator());
             throw new InvalidInputException(msg.toString());
         }
+    }
+
+    private String getAbsLocation(String file) {
+        return new File(file).getAbsolutePath();
     }
 
     public static void main(String[] args) {

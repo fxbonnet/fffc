@@ -16,6 +16,15 @@ public class Configurator {
     private String inputDateFormat;
     private String outputDateFormat;
     private String fieldDelimiter;
+    private String logDirectory;
+
+    public String getLogDirectory() {
+        return logDirectory;
+    }
+
+    public void setLogDirectory(String logDirectory) {
+        this.logDirectory = logDirectory;
+    }
 
     public String getInputDateFormat() {
         return inputDateFormat;

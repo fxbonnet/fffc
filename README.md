@@ -56,3 +56,29 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+## Approach
+The tool has been built as a command line tool using java. Some of the properties including the log levels could be tweaked
+from the ``application.properties`` file. The tool directs all the information to the logs. Sufficient care has been taken to ensure
+that we have the flexibility to plug and play different open source / third party libraries (for reading/writing files) or tweak the business logic itself.
+ 
+
+### How to run
+The build tool used for the project is gradle. Hence, you can trigger the build with the following command
+
+```
+./gradlew clean build
+```
+
+The jar(file-format-converter-*.jar) which gets built will be under the `build/libs` directory of the project.
+
+Please use the below command as the trigger. Note that **all the arguments are mandatory** 
+```
+java -jar file-format-converter.*.jar <inputFile> <metadataFile> <outputFile> 
+```
+
+### Future Enhancements
+Although not part of the requirement the tool could be further enhanced to have some of the following features :
+* Ability to read all the files from a directory (recursively !)
+* Create the output file/directory if it does not exist
+* Ability to read and correct the data-type or identify the mismatch in column order
+* Internationalization
