@@ -1,11 +1,25 @@
-# Prerequisite
-
-* The fixed format file to be converted and its corresponding metadata file should be under files folder.
-* Output file will be created under files folder and named as output.csv
-
 # Instructions
 
-* Run FixedFileFormatConverter.java under src/main/java/octo package to start the data conversion
+* After doing  mvn clean compile, Run FixedFileFormatConverter.java under src/main/java/octo package to start the springboot application.
+* You can reach the swagger ui by accessing 
+  ```
+  http://localhost:8080/swagger-ui.html
+  ```
+* Expand the /convert api and specify inputFilePath, metadataFilePath and outputFile.
+Example:
+
+    ```
+        inputFilePath       = files/input
+        metadataFilePath    = files/metadata.csv
+        outputFilePath      = files/output.csv
+    ```
+* Alternatively you can do the conversion using curl as the below example
+  ```
+  curl -X GET --header 'Accept: */*' 'http://localhost:8080/convert?inputFilePath=files%2Finput&metadataFilePath=files%2Fmetadata.csv&outputFilePath=files%2Foutput.csv'
+  ````
+* You can also start the file conversion by running the MainApplication.java. But the prerequisites for running it this way are
+   * The fixed format file to be converted and its corresponding metadata file should be under files folder.
+   * Output file will be created under files folder and named as output.csv
 * Log level can be changed in log4j.properties under resources
 
 # Fixed File Format converter
