@@ -1,11 +1,11 @@
 # Prerequisite
 
-* The fixed format file to be formatted and its corresponding metadata file should be under files folder.
-* Output file will be created under files folder snd named as output.csv
+* The fixed format file to be converted and its corresponding metadata file should be under files folder.
+* Output file will be created under files folder and named as output.csv
 
 # Instructions
 
-* Run FixedFileFormatConverter.java to start the data conversion
+* Run FixedFileFormatConverter.java under src/main/java/octo package to start the data conversion
 * Log level can be changed in log4j.properties under resources
 
 # Fixed File Format converter
