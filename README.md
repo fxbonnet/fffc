@@ -1,6 +1,6 @@
 # Instructions
 
-* After doing  mvn clean compile, Run FixedFileFormatConverter.java under src/main/java/octo package to start the springboot application.
+* After doing  mvn clean package, Run FixedFileFormatConverter.java under src/main/java/octo package to start the springboot application.
 * You can reach the swagger ui by accessing 
   ```
   http://localhost:8080/swagger-ui.html
