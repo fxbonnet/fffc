@@ -13,8 +13,6 @@ buildscript {
     }
 }
 
-sourceCompatibility = 1.8
-
 repositories {
     jcenter()
 }
@@ -27,8 +25,7 @@ springBoot {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
-
+    testCompile 'org.hamcrest:hamcrest-library:1.2.1'
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-data-rest")
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
