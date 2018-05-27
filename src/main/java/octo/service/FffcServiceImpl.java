@@ -8,10 +8,10 @@ import octo.model.ColumnType;
 import octo.util.DataFormatter;
 import octo.util.Validator;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class FffcServiceImpl implements FffcService {
 
     public static final Logger LOG = Logger.getLogger(FffcServiceImpl.class);
@@ -60,20 +60,20 @@ public class FffcServiceImpl implements FffcService {
         try {
             BufferedReader inputFileBuffer = Files.newBufferedReader(Paths.get(inputFileLocation));
             String line;
-            while((line=inputFileBuffer.readLine())!=null){
-                formattedRows.add(getFormattedRow(line,columnMetadataList));
+            while ((line = inputFileBuffer.readLine()) != null) {
+                formattedRows.add(getFormattedRow(line, columnMetadataList));
             }
         } catch (IOException e) {
             LOG.error("Problem parsing input file !!! " + e.getMessage());
             throw new InputFileException("Problem parsing input file !!! " + e.getMessage(), e);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new InputFileException("Problem parsing input file !!! " + e.getMessage(), e);
         }
 
         return formattedRows;
     }
 
-    private String getFormattedRow(String inputRow, List<ColumnMetadata> columnMetadataList){
+    private String getFormattedRow(String inputRow, List<ColumnMetadata> columnMetadataList) {
         LOG.debug("Input Row:: " + inputRow);
         StringBuffer formattedRow = new StringBuffer();
         for (ColumnMetadata metadata : columnMetadataList) {
@@ -89,9 +89,9 @@ public class FffcServiceImpl implements FffcService {
         return formattedRow.toString();
     }
 
-    private String getColumnNamesHeader(List<ColumnMetadata> columnMetadataList){
+    private String getColumnNamesHeader(List<ColumnMetadata> columnMetadataList) {
         StringBuffer columnNameHeader = new StringBuffer();
-        for(ColumnMetadata columnMetadata:columnMetadataList){
+        for (ColumnMetadata columnMetadata : columnMetadataList) {
             if (columnNameHeader.length() != 0) {
                 columnNameHeader.append(CSV_FIELD_SEPARATOR);
             }
