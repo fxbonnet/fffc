@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator/>
+
+    <!-- Log File name pattern -->
+    <property name="LOG_DIRECTORY" source="octo.fffc.logDir" value="logs"/>
+    <property name="LOG_FILE_NAME" value="${LOG_DIRECTORY}/file-converter.log"/>
+    <property name="ROLLING_FILE_NAME" value="${LOG_DIRECTORY}/file-converter-%d{yyyy-MM-dd}.%i.log"/>
+    <springProperty name="FILE_LOG_PATTERN" source="octo.fffc.logPattern"
+                    defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%15.15t] %-40.40logger{39} : %m%n"/>
+
+    <!-- Log file max size for -->
+    <property name="MAX_FILE_SIZE" value="100MB"/>
+    <!-- Log file max size for -->
+    <property name="MAX_HISTORY" value="30"/>
+
+    <appender name="TIME_BASED_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE_NAME}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${ROLLING_FILE_NAME}</fileNamePattern>
+            <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <root level="TRACE">
+        <appender-ref ref="TIME_BASED_FILE"/>
+    </root>
+</configuration>
