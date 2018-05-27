@@ -3,6 +3,7 @@ package com.octo.fffc.formatter;
 import com.octo.fffc.metadata.ColumnDefinition;
 
 import java.util.List;
+import java.util.Optional;
 
 
 /**

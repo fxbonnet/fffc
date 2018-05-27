@@ -22,7 +22,7 @@ public class BufferedFixedFileFormatReader implements FixedFileFormatReader {
         try {
             reader = new BufferedReader(new FileReader(inputFile));
         } catch (FileNotFoundException e) {
-            throw new InvalidInputException("The input file is invalid", e);
+            throw new InvalidInputException("The input file is invalid : " + e.getMessage());
         }
     }
 

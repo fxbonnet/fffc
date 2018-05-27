@@ -1,4 +1,4 @@
-package com.octo.fffc;
+package com.octo.fffc.converter;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

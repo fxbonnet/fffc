@@ -1,19 +1,14 @@
 package com.octo.fffc.metadata;
 
 import com.octo.fffc.CauseMatcher;
-import com.octo.fffc.Configurator;
+import com.octo.fffc.converter.Configurator;
 import com.octo.fffc.exception.InvalidInputException;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;

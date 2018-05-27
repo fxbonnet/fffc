@@ -1,6 +1,6 @@
 package com.octo.fffc.metadata;
 
-import com.octo.fffc.Configurator;
+import com.octo.fffc.converter.Configurator;
 import com.octo.fffc.exception.InvalidInputException;
 import org.springframework.stereotype.Component;
 

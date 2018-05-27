@@ -1,5 +1,6 @@
-package com.octo.fffc;
+package com.octo.fffc.converter;
 
+import com.octo.fffc.exception.InvalidInputException;
 import com.octo.fffc.formatter.CsvFormatter;
 import com.octo.fffc.handlers.BufferedCsvWriter;
 import com.octo.fffc.handlers.BufferedFixedFileFormatReader;
@@ -13,7 +14,9 @@ import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
+import static java.lang.System.lineSeparator;
 import static org.slf4j.LoggerFactory.getLogger;
 
 /**
@@ -42,7 +45,7 @@ public class Converter {
     /**
      * @param inputArguments
      */
-    public void convert(InputArguments inputArguments) {
+    public void convert(InputArguments inputArguments) throws Exception {
         List<ColumnDefinition> definitions = parser.parseFile(inputArguments.getConfigFile());
 
         if (definitions.size() < 1) {
@@ -71,11 +74,10 @@ public class Converter {
 
             // Make sure that every data is written to the output file.
             wr.flush();
-        } catch (IOException ex) {
-            logger.error("Couldn't handle input/output files ", ex.getMessage());
-            logger.debug("", ex);
-        } catch (Exception ex) {
-            logger.error("Couldn't close the file stream", ex);
+            logger.info("Transformation complete !!");
+        } catch (InvalidInputException | IOException e) {
+            logger.error(e.getMessage());
+            logger.debug("", e);
         }
     }
 

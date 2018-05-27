@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 Birth date,First name,Last name,Weight
 01/01/1970,John,Smith,81.5
+=======
+>>>>>>> 4e5d36b... Addition of more test case files + logback correction + log messages
 31/01/1975,Jane,Doe,61.1
 28/11/1988,Bob,Big,102.4

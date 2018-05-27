@@ -1,6 +1,6 @@
 package com.octo.fffc.formatter;
 
-import com.octo.fffc.Configurator;
+import com.octo.fffc.converter.Configurator;
 import com.octo.fffc.metadata.ColumnDefinition;
 import com.octo.fffc.metadata.DataType;
 import org.slf4j.Logger;
