@@ -10,13 +10,11 @@ import org.junit.rules.ExpectedException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static com.octo.fffc.metadata.ColumnDefinition.ColumnDefinitionBuilder;
-import static org.hamcrest.core.StringContains.containsString;
+import static org.hibernate.validator.internal.util.StringHelper.join;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class TestCsvFormatter {
 
@@ -58,44 +56,44 @@ public class TestCsvFormatter {
     public void testFormatterWithValidInputAndDefinitions() {
         String input = "1970-01-01John           Smith           81.5";
         String expectedOutput = "01/01/1970,John,Smith,81.5";
-        Optional<String> output = formatter.format(input, columns);
-        assertEquals(expectedOutput, output.get());
+        String[] output = formatter.format(input, columns);
+        assertEquals(expectedOutput, join(output, ","));
     }
 
     @Test
     public void testFormatterWithInvalidDate() {
         String input = "1970-01001John           Smith           81.5";
-        Optional<String> output = formatter.format(input, columns);
-        assertFalse(output.isPresent());
+        String[] output = formatter.format(input, columns);
+        assertFalse(output.length > 0);
     }
 
     @Test
     public void testFormatterWithMoreColumnsThanDefinition() {
         String input = "1970-01-01John           Smith           81.51970-01001John           Smith           81.5";
-        Optional<String> output = formatter.format(input, columns);
+        String[] output = formatter.format(input, columns);
         String expectedOutput = "01/01/1970,John,Smith,81.5";
-        assertEquals(expectedOutput, output.get());
+        assertEquals(expectedOutput, join(output, ","));
     }
 
     @Test
     public void testFormatterWithLessColumnsThanDefinition() {
         String input = "1970-01-01John           Smith           ";
-        Optional<String> output = formatter.format(input, columns);
-        assertFalse(output.isPresent());
+        String[] output = formatter.format(input, columns);
+        assertFalse(output.length > 0);
     }
 
     @Test
     public void testFormatterWithInvalidDataType() {
         String input = "1970-01-01John           Smith           Risk";
-        Optional<String> output = formatter.format(input, columns);
-        assertFalse(output.isPresent());
+        String[] output = formatter.format(input, columns);
+        assertFalse(output.length > 0);
     }
 
     @Test
     public void testFormatterWithDelimiterInTheInput() {
         String input = "1970-01-01John,,,        Smith           81.5";
         String expectedOutput = "01/01/1970,\"John,,,\",Smith,81.5";
-        Optional<String> output = formatter.format(input, columns);
-        assertEquals(expectedOutput, output.get());
+        String[] output = formatter.format(input, columns);
+        assertEquals(expectedOutput, join(output, ","));
     }
 }

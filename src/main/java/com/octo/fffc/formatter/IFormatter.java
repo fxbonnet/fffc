@@ -1,10 +1,8 @@
 package com.octo.fffc.formatter;
 
-import com.octo.fffc.exception.InvalidInputException;
 import com.octo.fffc.metadata.ColumnDefinition;
 
 import java.util.List;
-import java.util.Optional;
 
 
 /**
@@ -23,7 +21,6 @@ public interface IFormatter {
      * @param input
      * @param definitions
      * @return
-     * @throws InvalidInputException
      */
-    Optional<String> format(String input, List<ColumnDefinition> definitions) throws InvalidInputException;
+    String[] format(String input, List<ColumnDefinition> definitions);
 }

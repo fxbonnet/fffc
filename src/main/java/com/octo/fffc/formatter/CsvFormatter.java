@@ -32,7 +32,7 @@ public class CsvFormatter implements IFormatter {
         this.config = config;
     }
 
-    public Optional<String> format(String input, List<ColumnDefinition> definitions) {
+    public String[] format(String input, List<ColumnDefinition> definitions) {
         String[] output = new String[definitions.size()];
         int length = 0;
         int index = 0;
@@ -44,12 +44,11 @@ public class CsvFormatter implements IFormatter {
             } else {
                 String msg = String.format("Record will be dropped. Couldn't parse the value for column %s", definition);
                 logger.error(msg);
-                return empty();
+                return new String[0];
             }
             length += definition.getLength();
         }
-
-        return Optional.of(join(output, config.getFieldDelimiter()));
+        return output;
     }
 
     private Optional<String> getFormattedValue(String value, DataType type) {
