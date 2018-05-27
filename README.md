@@ -1,3 +1,13 @@
+# Prerequisite
+
+* The fixed format file to be formatted and its corresponding metadata file should be under files folder.
+* Output file will be created under files folder snd named as output.csv
+
+# Instructions
+
+* Run FixedFileFormatConverter.java to start the data conversion
+* Log level can be changed in log4j.properties under resources
+
 # Fixed File Format converter
 
 Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
