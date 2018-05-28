@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+ php-fpm:
+    container_name: hemeld-fffc-php-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hemeld/fffc:local
+    volumes:
+     - ./src:/var/www/html

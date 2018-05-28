@@ -1,10 +1,47 @@
-# Fixed File Format converter
+# A simple Fixed File Format converter using Laravel
+
+# Run the app
+Fastest and simplest is to run it in a container, simply run 
+
+```bash
+docker-compose up 
+```
+
+and then using bash go to /var/www/html/ to run it. 
+
+Your local src directory is mounted in the /var/www/html container directory. 
+
+# convert a file
+```bash
+php artisan fffc:process:file
+```
+
+The app will ask you to select the data file (the file that needs converting to CSV) and then the meta file (the file describing the fixed file format file). 
+
+You should place both data ad meta files in the /var/www/html/storage/app/input directory.
+
+Once the app has run the output can be found in /var/www/html/storage/app/output 
+
+The new csv file produced will have the {input-filename}.csv filename 
+
+Any errors are logged in the {input-filename}-{meta-filename}.log file. The log file uses json format. 
+
+The app will produce a csv file dropping any lines that cannot be processed. If you want to completely halt the processing if there are any errors use the --abortonerror option 
+
+```bash
+php artisan fffc:process:file --abortonerror
+```
+
+
+#Brief
+
+## Fixed File Format converter
 
 Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
 
 Feel free to use your favorite language and libraries if needed (but no proprietary libraries, only open source), fork this project and provide your complete code as a pull request (including source and tests).
 
-## Use case
+### Use case
 
 Our fixed file format files can have any number of columns
 A column can be of 3 formats:
@@ -25,7 +62,7 @@ The trailing spaces of string columns must be trimmed
 
 The csv file must include a first line with the columns names
 
-## Example
+### Example
 
 Data file:
 ```
