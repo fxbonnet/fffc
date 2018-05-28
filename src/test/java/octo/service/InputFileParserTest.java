@@ -49,7 +49,7 @@ public class InputFileParserTest {
 
     @Test
     public void testReadInputFile() {
-        String testInputFileLocation = "files/test/input";
+        String testInputFileLocation = "files/test/input.dat";
         try {
             List<String> formattedFile = ffscService.readInputFile(testInputFileLocation, columnMetadataList);
             Assert.assertEquals(expectedOutput, formattedFile);
@@ -60,7 +60,7 @@ public class InputFileParserTest {
 
     @Test
     public void testReadInvalidInputFile() throws InputFileException {
-        String testInputFileLocation = "files/test/input_invalid";
+        String testInputFileLocation = "files/test/input_invalid.dat";
         thrown.expect(InputFileException.class);
         thrown.expectMessage("Problem parsing input file");
         ffscService.readInputFile(testInputFileLocation, columnMetadataList);
@@ -68,7 +68,7 @@ public class InputFileParserTest {
 
     @Test
     public void testSpecialCharacterInputFile() throws InputFileException,IOException {
-        String testInputFileLocation = "files/test/input_special_character";
+        String testInputFileLocation = "files/test/input_special_character.dat";
         List<String> formattedFile = ffscService.readInputFile(testInputFileLocation, columnMetadataList);
         List<String> expected=Files.readAllLines(Paths.get("files/test/output_special_character.csv"));
         Assert.assertEquals(expected, formattedFile);

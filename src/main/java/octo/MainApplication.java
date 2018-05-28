@@ -16,7 +16,7 @@ public class MainApplication {
 
     public static void main(String args[]) {
         String columnMetadataFilePath = "files/metadata.csv";
-        String inputFilePath = "files/input";
+        String inputFilePath = "files/input.dat";
         String outputFilePath = "files/output.csv";
 
         FffcService fffcService = new FffcServiceImpl();
