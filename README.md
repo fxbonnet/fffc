@@ -56,3 +56,7 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+## Implementation
+
+* Implemented using pandas - a powerful data analysis toolkit - https://pandas.pydata.org/pandas-docs/version/0.22.0/index.html
+* commitizen - cli for commits https://github.com/commitizen/cz-cli  
