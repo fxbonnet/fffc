@@ -22,7 +22,13 @@ if validator.is_valid(dataset) == False:
 
 
 # convert Birth date - column 0 to datetime for formatting
-dataset[columns[0]] = pd.to_datetime(dataset[columns[0]])
+try:
+    dataset[columns[0]] = pd.to_datetime(dataset[columns[0]])
+except:
+    print("Date is invalid - Date Conversion Failed")
+    sys.exit(1)
+
+
 #format date
 dataset[columns[0]] = dataset[columns[0]].dt.strftime("%d/%m/%Y")
 
