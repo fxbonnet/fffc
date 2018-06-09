@@ -56,3 +56,21 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+
+## Usage
+
+To compile the application:
+```
+go build
+```
+
+To run the application:
+```
+./fffc sample_input.txt output.csv
+```
+
+To run unit tests:
+```
+go test
+```
+
