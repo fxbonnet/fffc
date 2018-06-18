@@ -1,0 +1,28 @@
+Requirement to run the application
+Java 1.8.0_171
+
+How to run
+From IDE 
+========
+1. Choose the project from IDE (eclipse) and run as java application
+2. Select meta data file and input data file in the GUI appears
+3. The output file path will be displaced in the same GUI once the input data file is choosen. (Note: the directory of the output file will be same as input data file).
+4. Press on Proceed button for the application to start verification and conversion of the input file.
+5. Progress GUI will display the status of the file conversion.
+6. An alert GUI will appear, if the program encounters an error in the inputs. The program will stop execution after the alert GUI is closed.
+7. Once the conversion is completed, the GUI will display "Conversion completed...." in status text field. Please press on Close button upon seeing this.
+
+From executable jar
+===================
+1. Download the executable jar (CSVConverter)
+2. Double click to start application (Windows)
+3. Select meta data file and input data file in the GUI appears
+4. The output file path will be displaced in the same GUI once the input data file is choosen. (Note: the directory of the output file will be same as input data file).
+5. Press on Proceed button for the application to start verification and conversion of the input file.
+6. Progress GUI will display the status of the file conversion.
+7. An alert GUI will appear, if the program encounters an error in the inputs. The program will stop execution after the alert GUI is closed.
+8. Once the conversion is completed, the GUI will display "Conversion completed...." in status text field. Please press on Close button upon seeing this.
+
+Test Result
+===========
+As this application is GUI based, I have done manual testing. Uploading the test scenarios and results in another file named Test_Result.xls.
