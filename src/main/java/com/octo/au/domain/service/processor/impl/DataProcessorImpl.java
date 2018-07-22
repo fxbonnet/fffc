@@ -26,6 +26,7 @@ public class DataProcessorImpl implements DataProcessor{
   public List<DataRow> getColumnsFromDataFile(File file,Structure metadataStructure) throws IOException, CustomException {
 	  List<DataRow> dataRows = new ArrayList<DataRow>();
 		try (Scanner scanner = new Scanner(file, Constants.ENCODING.name())) {
+			int lineNumber=0;
 			while (scanner.hasNextLine()) {
 				List<DataColumn> dataColumns = new ArrayList<DataColumn>();
 				int beginIndex = 0;
@@ -34,7 +35,11 @@ public class DataProcessorImpl implements DataProcessor{
 				for(ColumnTemplate ct : metadataStructure.getCt()){
 					DataColumn dc = new DataColumn();
 					dc.setColumnIndex(columnIndex);
-					dc.setValue(dataLine.substring(beginIndex, beginIndex+ct.getLength()).trim());
+					try {
+						dc.setValue(dataLine.substring(beginIndex, beginIndex+ct.getLength()).trim());
+					} catch (IndexOutOfBoundsException e) {
+						throw new CustomException(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+Constants.STR_DATA_INCOMPLETE+" on line no. "+(lineNumber+1),e);
+					}
 					dc.setLength(ct.getLength());
 					dc.setType((String)ct.getType());
 					beginIndex=beginIndex+ct.getLength();
@@ -43,6 +48,7 @@ public class DataProcessorImpl implements DataProcessor{
 				}
 				RowBuilder rb = new RowBuilder();
 				dataRows.add(rb.buildDataRow(dataColumns));
+				lineNumber++;
 			}
 		} catch (IOException e) {
 			throw e;

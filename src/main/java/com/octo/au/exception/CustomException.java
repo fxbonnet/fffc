@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.octo.au.exception;
 
 /**
@@ -12,9 +9,13 @@ public class CustomException extends Exception {
   /**
    * 
    */
-  private static final long serialVersionUID = 3746951378297949885L;
+  private static final long serialVersionUID = 1L;
 
   public CustomException(String message) {
     super(message);
   }
+  
+  public CustomException(String message,Throwable e) {
+	    super(message);
+	  }
 }

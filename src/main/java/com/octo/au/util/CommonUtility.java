@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.octo.au.util;
 
 /**

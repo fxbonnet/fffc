@@ -24,4 +24,5 @@ public class Constants {
 	public static final String STR_METADATA_FILE_READ_INITIATED = "Meta data file Read Initiated";
 	public static final String STR_DATA_FILE_READ_COMPLETED = "Data file Read Completed";
 	public static final String STR_CSV_NAME = "OctoData.csv";
+	public static final String STR_DATA_INCOMPLETE = "Incomplete or Missing Data";
 }
