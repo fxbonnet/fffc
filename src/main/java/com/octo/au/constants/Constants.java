@@ -28,6 +28,6 @@ public class Constants {
 	public static final String STR_EXCEPTION_WITH_OUTPUT_FILE = "Exception Occurred while writing to csv file";
 	public static final String STR_NO_FILE_FOUND = "No %s was found at the given location";
 	public static final String STR_EMPTY_FILE = "File is empty.Please check contents";
-	public static final String STR_DEFAULT_TARGET_DATEFORMAT = "dd/mm/yyyy";
+	public static final String STR_DEFAULT_TARGET_DATEFORMAT = "dd/MM/YYYY";
 	public static final String STR_EMPTY = "";
 }
