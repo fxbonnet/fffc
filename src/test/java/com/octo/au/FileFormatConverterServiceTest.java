@@ -27,17 +27,17 @@ public class FileFormatConverterServiceTest extends TestSupport {
 		//no thousands seperator check
 		
 		//meta data file checks
-		//mismatch between data file and metadata file column numbers
+		//mismatch between data file and metadata file column numbers - DONE
 		//if the metadata file contains columns whose type is not String/Date/number
 		
 		
 		/*You should transform the file to a csv file (separator ',' and row separator CRLF)
 		The dates have to be reformatted to dd/mm/yyyy
 		The trailing spaces of string columns must be trimmed
-		The csv file must include a first line with the columns names*/
+		The csv file must include a first line with the columns names - DONE*/
 		
 		/*files are encoded in UTF-8 and may contain special characters
-		strings columns may contain separator characters like ',' and then the whole string needs to be escaped with " (double quotes). Only CR or LF are forbidden
+		strings columns may contain separator characters like ',' and then the whole string needs to be escaped with " (double quotes)-DONE. Only CR or LF are forbidden
 		in case the format of the file is not correct, the program should fail but say explicitly why
 		a fixed format file may be very big (several GB)*/
 		

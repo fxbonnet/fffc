@@ -1,7 +1,6 @@
 package com.octo.au.domain.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import org.apache.commons.fileupload.InvalidFileNameException;
@@ -32,27 +31,35 @@ public class FileFormatConverterServiceImpl implements FileFormatConverterServic
 	 * String)
 	 */
 	@Override
-	public void writeCsvFile(String metadataFile, String dataFile) throws IOException, CustomException {
+	public void writeCsvFile(String metadataFile, String dataFile) throws Exception {
+		
 		if(StringUtils.isEmpty(metadataFile) || StringUtils.isEmpty(dataFile)){
 			throw new InvalidFileNameException(StringUtils.isEmpty(metadataFile)?Constants.STR_METADATA_FILE:Constants.STR_DATA_FILE,Constants.STR_USER_MESSAGE_FILENAME_INVALID);
 		}
-		ClassLoader classLoader = getClass().getClassLoader();
-		//TODO : change this to take the input file path from the User.Check this point for any exceptions thrown
-		File file = new File(classLoader.getResource(metadataFile).getFile());
-		logger.info(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+Constants.STR_METADATA_FILE_READ_INITIATED);
-		TemplateProcessor templateProcessor = new TemplateProcessorImpl();
-		Structure metadataStructure = templateProcessor.createStructureTemplates(file);
-		logger.info(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+Constants.STR_METADATA_FILE_READ_COMPLETED);
 		
-		//TODO : change this to take the input file path from the User.Check this point for any exceptions thrown
-		File dataFileObj = new File(classLoader.getResource(dataFile).getFile());
-		logger.info(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+"Reading Data Lines Initiated");
-		DataProcessor DataProcessor = new DataProcessorImpl();
-		List<DataRow> dataRows = DataProcessor.getColumnsFromDataFile(dataFileObj,metadataStructure);
-		dataRows.stream().forEach(dr -> dr.showItems());
-		logger.info(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+Constants.STR_DATA_FILE_READ_COMPLETED);
+			ClassLoader classLoader = getClass().getClassLoader();
+			Structure metadataStructure = null;
+			if(classLoader.getResource(metadataFile)==null){
+				throw new CustomException(String.format(Constants.STR_EXCEPTION_WITH_INPUT_FILE, Constants.STR_METADATA_FILE,dataFile)+" : "+String.format(Constants.STR_NO_FILE_FOUND,Constants.STR_METADATA_FILE));
+			}
+			File file = new File(classLoader.getResource(metadataFile).getFile());
+			logger.info(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+Constants.STR_METADATA_FILE_READ_INITIATED);
+			TemplateProcessor templateProcessor = new TemplateProcessorImpl();
+			metadataStructure = templateProcessor.createStructureTemplates(file);
+			logger.info(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+Constants.STR_METADATA_FILE_READ_COMPLETED);
 		
-		DataExporter dataExporter = new DataExporterImpl();
-		dataExporter.exportData(dataRows,Constants.STR_CSV_NAME,metadataStructure.getCt());
+			List<DataRow> dataRows = null;
+			if(classLoader.getResource(dataFile)==null){
+				throw new CustomException(String.format(Constants.STR_EXCEPTION_WITH_INPUT_FILE, Constants.STR_DATA_FILE,dataFile)+" : "+String.format(Constants.STR_NO_FILE_FOUND,Constants.STR_DATA_FILE));
+			}
+			File dataFileObj = new File(classLoader.getResource(dataFile).getFile());
+			logger.info(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+"Reading Data Lines Initiated");
+			DataProcessor DataProcessor = new DataProcessorImpl();
+			dataRows = DataProcessor.getColumnsFromDataFile(dataFileObj,metadataStructure);
+			dataRows.stream().forEach(dr -> dr.showItems());
+			logger.info(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+Constants.STR_DATA_FILE_READ_COMPLETED);
+		
+			DataExporter dataExporter = new DataExporterImpl();
+			dataExporter.exportData(dataRows,Constants.STR_CSV_NAME,metadataStructure.getCt());
 	}
 }

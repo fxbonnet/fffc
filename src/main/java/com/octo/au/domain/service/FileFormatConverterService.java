@@ -11,6 +11,7 @@ public interface FileFormatConverterService {
 	 * @param datafile
 	 * @throws IOException
 	 * @throws CustomException 
+	 * @throws Exception 
 	 */
-	void writeCsvFile(String metadataFile, String datafile) throws IOException, CustomException;
+	void writeCsvFile(String metadataFile, String datafile) throws Exception;
 }

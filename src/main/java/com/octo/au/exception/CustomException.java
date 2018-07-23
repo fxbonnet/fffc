@@ -4,7 +4,7 @@ package com.octo.au.exception;
  * @author Amol Kshirsagar
  *
  */
-public class CustomException extends Exception {
+public class CustomException extends RuntimeException {
 
   /**
    * 

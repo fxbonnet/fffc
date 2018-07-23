@@ -4,14 +4,13 @@
 package com.octo.au.domain.service.processor.impl;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.NoSuchElementException;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
-
 import com.octo.au.constants.Constants;
 import com.octo.au.domain.model.format.ColumnTemplate;
 import com.octo.au.domain.model.format.Structure;
 import com.octo.au.domain.service.processor.contract.TemplateProcessor;
+import com.octo.au.exception.CustomException;
 
 /**
  * @author Amol Kshirsagar
@@ -19,7 +18,7 @@ import com.octo.au.domain.service.processor.contract.TemplateProcessor;
  */
 public class TemplateProcessorImpl implements TemplateProcessor{
 	
-  public Structure createStructureTemplates(File file) throws IOException {
+  public Structure createStructureTemplates(File file) throws FileNotFoundException{
 	  Structure structure = new Structure();
 		try (Scanner scanner = new Scanner(file, Constants.ENCODING.name())) {
 			int lineNumber = 0;
@@ -27,8 +26,9 @@ public class TemplateProcessorImpl implements TemplateProcessor{
 				structure.getCt().add(processLine(scanner.nextLine(), lineNumber));
 				lineNumber++;
 			}
-		} catch (IOException e) {
-			throw e;
+			if(lineNumber==0){
+				throw new CustomException(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+String.format(Constants.STR_EXCEPTION_WITH_INPUT_FILE, Constants.STR_METADATA_FILE,file.getName())+" : "+String.format(Constants.STR_EMPTY_FILE));
+			}
 		}
 		return structure;
 	}
@@ -45,9 +45,7 @@ public class TemplateProcessorImpl implements TemplateProcessor{
 				columnTemplate.setLength(Integer.valueOf(length));
 				columnTemplate.setName(name);
 				columnTemplate.setType(type);
-			} else {
-				throw new NoSuchElementException(Constants.STR_CUSTOM_COMMENT_IDENTIFIER+Constants.STR_USER_MESSAGE_NO_NEXTLINE_METADATAFILE);
-			}
+			} 
 		}
 		return columnTemplate;
 	}

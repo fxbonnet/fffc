@@ -18,11 +18,16 @@ public class Constants {
 	public static final String STR_METADATA_FILE = "Metadata File";
 	public static final String STR_DATA_FILE = "Data File";
 	public static final String STR_USER_MESSAGE_FILENAME_INVALID = "Please check the input files for valid names";
-	public static final String STR_USER_MESSAGE_NO_NEXTLINE_DATAFILE = "Empty or invalid line in Data File. Unable to process.";
-	public static final String STR_USER_MESSAGE_NO_NEXTLINE_METADATAFILE = "Empty or invalid line in Data File. Unable to process.";
+	public static final String STR_USER_MESSAGE_NO_NEXTLINE_INPUTFILE = "Empty or invalid line in %s. Unable to process.";
 	public static final String STR_METADATA_FILE_READ_COMPLETED = "Meta data file Read Completed";
 	public static final String STR_METADATA_FILE_READ_INITIATED = "Meta data file Read Initiated";
 	public static final String STR_DATA_FILE_READ_COMPLETED = "Data file Read Completed";
 	public static final String STR_CSV_NAME = "OctoData.csv";
-	public static final String STR_DATA_INCOMPLETE = "Incomplete or Missing Data";
+	public static final String STR_DATA_INCOMPLETE = "Mismatch between the metadata information and the data provided.Please verify";
+	public static final String STR_EXCEPTION_WITH_INPUT_FILE = "Exception Occurred while reading %s named %s";
+	public static final String STR_EXCEPTION_WITH_OUTPUT_FILE = "Exception Occurred while writing to csv file";
+	public static final String STR_NO_FILE_FOUND = "No %s was found at the given location";
+	public static final String STR_EMPTY_FILE = "File is empty.Please check contents";
+	public static final String STR_DEFAULT_TARGET_DATEFORMAT = "dd/mm/yyyy";
+	public static final String STR_EMPTY = "";
 }
