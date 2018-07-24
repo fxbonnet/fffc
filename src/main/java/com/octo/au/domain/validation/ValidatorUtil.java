@@ -3,8 +3,12 @@ package com.octo.au.domain.validation;
 public class ValidatorUtil {
     public static final Validation <String> notNullString = GenericValidation.from(s -> s != null);
     public static final Validation <String> notEmptyString = GenericValidation.from(s -> !s.isEmpty());
+    /*public static final Validation <String> noContainsCarraige = GenericValidation.from(s -> !s.toString().contains("\\r"));
+    public static final Validation <String> noLineFeed = GenericValidation.from(s -> !s.toString().contains("\\n"));*/
+    
     public static final Validation <Integer> notNullInteger = GenericValidation.from(s -> s != null);
     public static final Validation <Integer> greaterThanZero = GenericValidation.from(s -> s > 0);
+    
     public static final Validation <String> stringMoreThan(int size) {
         return GenericValidation.from(s -> ((String) s).length() > size);
     };
@@ -14,6 +18,7 @@ public class ValidatorUtil {
     public static final Validation <String> stringBetween(int morethan, int lessThan) {
         return stringMoreThan(morethan).and(stringLessThan(lessThan));
     };
+    
     public static final Validation <Integer> integerMoreThan(int limit) {
         return GenericValidation.from(s -> s > limit);
     };
@@ -22,5 +27,8 @@ public class ValidatorUtil {
     };
     public static final Validation <Integer> integerBetween(int morethan, int lessThan) {
         return integerMoreThan(morethan).and(integerLessThan(lessThan));
+    };
+    public static final Validation <String> isValidinteger() {
+    	return GenericValidation.from(s -> s.matches("^-?[0-9]\\d*(\\.\\d+)?$"));
     };
 }
