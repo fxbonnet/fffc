@@ -30,6 +30,7 @@ public class DataProcessorImpl implements DataProcessor{
 					List<DataColumn> dataColumns = new ArrayList<DataColumn>();
 					int beginIndex = 0;
 					String dataLine = scanner.nextLine();
+					//TODO:Identify here if dataline.length<metadata columns length.If yes then search for CRLF
 					int columnIndex = 0;
 					for(ColumnTemplate ct : metadataStructure.getCt()){
 						DataColumn dc = new DataColumn();
