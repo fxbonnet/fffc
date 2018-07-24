@@ -56,3 +56,9 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+## Project Submission Description : Amol Kshirsagar [25/07/2018]
+* An executable jar is created from the project using the maven command: 
+clean compile assembly:single
+* Run the executable jar using :
+java -jar fffc-1.0.0-jar-with-dependencies.jar C:\Users\Amol\Desktop\fffc\metadata.csv C:\Users\Amol\Desktop\fffc\data.txt
+* Sample input files are present in the project in the resources folder
