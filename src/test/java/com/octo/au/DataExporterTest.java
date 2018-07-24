@@ -51,7 +51,7 @@ public class DataExporterTest {
 		dc3.setColumnIndex(2);
 		dc3.setLength(15);
 		dc3.setType("string");
-		dc3.setValue("Smith");
+		dc3.setValue("Snith");
 		DataColumn dc4 = new DataColumn();
 		dc4.setColumnIndex(3);
 		dc4.setLength(6);
