@@ -6,6 +6,9 @@ package com.octo.au.domain.service.processor.impl;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import org.springframework.stereotype.Service;
+
 import com.octo.au.constants.Constants;
 import com.octo.au.domain.model.format.ColumnTemplate;
 import com.octo.au.domain.model.format.Structure;
@@ -16,6 +19,7 @@ import com.octo.au.exception.CustomException;
  * @author Amol Kshirsagar
  *
  */
+@Service
 public class TemplateProcessorImpl implements TemplateProcessor{
 	
   public Structure createStructureTemplates(File file) throws FileNotFoundException{

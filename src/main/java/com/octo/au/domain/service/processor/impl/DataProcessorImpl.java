@@ -7,6 +7,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import org.springframework.stereotype.Service;
+
 import com.octo.au.constants.Constants;
 import com.octo.au.domain.model.DataColumn;
 import com.octo.au.domain.model.DataRow;
@@ -21,6 +24,7 @@ import com.octo.au.exception.CustomException;
  * @author Amol Kshirsagar
  *
  */
+@Service
 public class DataProcessorImpl implements DataProcessor{
 	 public List<DataRow> getColumnsFromDataFile(File file,Structure metadataStructure) throws FileNotFoundException {
 		  List<DataRow> dataRows = new ArrayList<DataRow>();

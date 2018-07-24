@@ -15,10 +15,6 @@ public class CommonUtility {
 	}
 
 	public static String dateFormatConverter(String sourceDate, String targetFormat) {
-		/*LocalDate date = LocalDate.parse(sourceDate);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(targetFormat);
-		return formatter.format(date);*/
-		
 		LocalDate date = LocalDate.parse(sourceDate);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(targetFormat);
 		return formatter.format(date).toString();

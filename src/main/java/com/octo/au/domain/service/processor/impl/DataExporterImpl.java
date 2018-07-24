@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.octo.au.constants.Constants;
 import com.octo.au.domain.model.DataColumn;
 import com.octo.au.domain.model.DataRow;
@@ -12,7 +14,7 @@ import com.octo.au.domain.model.format.ColumnTemplate;
 import com.octo.au.domain.service.processor.contract.DataExporter;
 import com.octo.au.util.CSVUtils;
 import com.octo.au.util.CommonUtility;
-
+@Service
 public class DataExporterImpl implements DataExporter {
 	public boolean exportData(List<DataRow> dataRows, String targetFileName, List<ColumnTemplate> columnTemplates)
 			throws IOException {
