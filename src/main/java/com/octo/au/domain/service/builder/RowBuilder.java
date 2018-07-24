@@ -28,10 +28,10 @@ public class RowBuilder {
 	
 	 public void showItems(){
 	      for (DataColumn col : dataRow.getColumns()) {
-	    	  LOG.info("Index : " + col.getColumnIndex());
-	    	  LOG.info(", Value : " + col.getValue());
-	    	  LOG.info(", Type : " + col.getType());
-	    	  LOG.info(", Length : " + col.getLength());
+	    	  LOG.debug("Index : " + col.getColumnIndex());
+	    	  LOG.debug(", Value : " + col.getValue());
+	    	  LOG.debug(", Type : " + col.getType());
+	    	  LOG.debug(", Length : " + col.getLength());
 	      }		
 	   }
 }

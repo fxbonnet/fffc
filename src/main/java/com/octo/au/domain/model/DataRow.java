@@ -9,14 +9,12 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.octo.au.domain.service.builder.RowBuilder;
-
 /**
  * @author Amol Kshirsagar
  *
  */
 public class DataRow extends Row{
-	private static final Logger LOG = LoggerFactory.getLogger(RowBuilder.class);
+	private static final Logger logger = LoggerFactory.getLogger(DataRow.class);
 	private List<DataColumn> columns = new ArrayList<DataColumn>();;
 	/* (non-Javadoc)
 	 * @see com.octo.au.domain.model.Row#rowIndex()
@@ -33,10 +31,10 @@ public class DataRow extends Row{
 
 	   public void showItems(){
 	      for (DataColumn col : columns) {
-	    	 LOG.info("Index : " + col.getColumnIndex());
-	    	 LOG.info(", Value : " + col.getValue());
-	    	 LOG.info(", Length : " + col.getLength());
-	    	 LOG.info(", Type : " + col.getType());
+	    	  logger.debug("Index : " + col.getColumnIndex());
+	    	  logger.debug(", Value : " + col.getValue());
+	    	  logger.debug(", Length : " + col.getLength());
+	    	  logger.debug(", Type : " + col.getType());
 	      }		
 	   }
 

@@ -8,6 +8,23 @@ package com.octo.au.domain.model.format;
  *
  */
 public class ColumnTemplate {
+	/**
+	 * @param name
+	 * @param length
+	 * @param type
+	 * @param index
+	 */
+	public ColumnTemplate(String name, int length, Object type, int index) {
+		super();
+		this.name = name;
+		this.length = length;
+		this.type = type;
+		this.index = index;
+	}
+
+	public ColumnTemplate() {
+	}
+
 	private String name;
 	private int length;
 	private Object type;

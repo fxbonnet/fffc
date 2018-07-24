@@ -33,4 +33,6 @@ public class Constants {
 	public static final String STR_EMPTY = "";
 	public static final String STR_NUMERIC = "numeric";
 	public static final String STR_DATE = "date";
+	public static final String STR_NULL_FILE = "Null file being sent";
+	public static final String STR_NULL_METADATA_FILE = "Structure Obtained from metadata File is Null";
 }
