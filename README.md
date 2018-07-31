@@ -1,3 +1,15 @@
+## Instructions to use
+* Placeholder
+
+
+# Dependencies
+* Python 3.7.0
+
+
+
+
+# Requirements
+
 # Fixed File Format converter
 
 Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
