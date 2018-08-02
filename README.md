@@ -1,11 +1,18 @@
-## Instructions to use
-* Placeholder
+# Instructions to use
+* Clone repo 
+* From your terminal run the following command
 
+```python <FFFC_LOCATION>/file_converter.py <METADATA_CSV_FILE> <FLAT_FILE> <OUTPUT_CSV_FILE>```
+e.g. `~/workspaces/fffc $ python /home/vighy-vbox/workspaces/fffc/file_converter.py data/metadata.csv data/large_data_file data/large_data_file.csv`
 
 # Dependencies
 * Python 3.7.0
 
-
+## TODO
+* Add Tests - Unit tests, Integration test
+* Add doc strings
+* lint all files again
+* Add validations - input file types, parsing, formatting
 
 
 # Requirements
