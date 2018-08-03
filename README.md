@@ -1,27 +1,32 @@
-# Instructions to use
-* Clone repo 
-* From your terminal run the following command
-
-```python <FFFC_LOCATION>/file_converter.py <METADATA_CSV_FILE> <FLAT_FILE> <OUTPUT_CSV_FILE>```
-e.g. `~/workspaces/fffc $ python /home/vighy-vbox/workspaces/fffc/file_converter.py data/metadata.csv data/large_data_file data/large_data_file.csv`
-
-# Dependencies
-* Python 3.7.0
-
-## TODO
-* Add Tests - Unit tests, Integration test
-* Add doc strings
-* lint all files again
-* Add validations - input file types, parsing, formatting
-
-
 # Requirements
 
 # Fixed File Format converter
 
-Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
+The goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
 
-Feel free to use your favorite language and libraries if needed (but no proprietary libraries, only open source), fork this project and provide your complete code as a pull request (including source and tests).
+Languages chosen: Python 3.7.0 
+
+Approach: 
+1. Read the data descriptor file 
+2. Write the header row in the output csv
+3. Read the flat file and write each line being read to the output file 
+
+# Dependencies
+* Python 3.7.0
+
+# Instructions to use
+* Clone repo 
+* In your terminal run the following command
+
+    ```python <FFFC_LOCATION>/file_converter.py <METADATA_CSV_FILE> <FLAT_FILE> <OUTPUT_CSV_FILE>```
+
+    e.g. `~/workspaces/fffc $ python /home/vighy-vbox/workspaces/fffc/file_converter.py data/metadata.csv data/large_data_file data/large_data_file.csv`
+
+
+## TODO
+* Add more test cases
+* Implement async io to speed up the process
+
 
 ## Use case
 

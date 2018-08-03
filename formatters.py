@@ -57,7 +57,6 @@ def format_row(data_row: str, data_descriptor: DataDescriptor,
 
     formatted_row = []
     for descriptor in data_descriptor.data_description:
-        print(data_row[descriptor.start_index: descriptor.end_index])
         current_data = data_row[descriptor.start_index: descriptor.end_index]
         formatter = formatting_mapper[descriptor.data_type]
         formatted_row.append(formatter(current_data))

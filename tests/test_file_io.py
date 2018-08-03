@@ -1,3 +1,5 @@
+""" Module for file input/output testing """
+
 import unittest
 import shutil
 import tempfile
@@ -8,8 +10,10 @@ from file_io import read_file, read_csv, write_csv
 
 
 class FileIoTest(unittest.TestCase):
+    """ Test for file io operations """
 
     def setUp(self):
+        """ Setup data before each test """
         self.test_dir = tempfile.mkdtemp()
 
         # Create temp file
@@ -28,9 +32,11 @@ class FileIoTest(unittest.TestCase):
         self.test_data_content = ["header1", "header2", "header3", "header4"]
 
     def tearDown(self):
+        """ clean up resources after each test """
         shutil.rmtree(self.test_dir)
 
     def _create_temp_file(self, file_name, content, is_csv=False):
+        """ Creates a temp file with some content """
         temp_file_path = path.join(self.test_dir, file_name)
         if is_csv:
             with open(temp_file_path, mode='w', newline='') as csv_file:
@@ -42,18 +48,26 @@ class FileIoTest(unittest.TestCase):
                 tmp_file.write(content)
 
     def test_read_file_content(self):
+        """ test for reading file content """
+
         for line in read_file(self.temp_file_path):
             self.assertEqual(line, self.file_content)
 
     def test_read_csv_content(self):
+        """ test for reading contents of a csv """
+
         for line in read_csv(self.temp_csv_path):
             self.assertEqual(line, self.expected_csv_content)
 
     def test_write_csv_creates_file(self):
+        """ test for checking if a csv file is generated """
+
         write_csv(self.write_csv_file_path, self.test_data_content)
         self.assertTrue(path.exists(self.write_csv_file_path))
 
     def test_write_csv_content(self):
+        """ test for checking contents of the generated csv file"""
+
         write_csv(self.write_csv_file_path, self.test_data_content)
         with open(self.write_csv_file_path, 'r', encoding='utf-8',
                   newline='') as csv_file:

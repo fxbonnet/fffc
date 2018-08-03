@@ -2,9 +2,9 @@
 
 from dataclasses import dataclass
 
+from exceptions import DataDescriptorParseError
 from data_types import DataTypes
 from file_io import read_csv
-from exceptions import DataDescriptorParseError
 
 
 @dataclass
