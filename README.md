@@ -9,7 +9,7 @@ Languages chosen: Python 3.7.0
 Approach: 
 1. Read the data descriptor file 
 2. Write the header row in the output csv
-3. Read the flat file and write each line being read to the output file 
+3. Read the flat file, for each row, validate and format and then write each line being read to the output file 
 
 # Dependencies
 * Python 3.7.0
