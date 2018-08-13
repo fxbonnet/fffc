@@ -62,6 +62,9 @@ public class FileFormatController {
             }
         }
         catch (Exception ex){
+            if(ex instanceof AccessDeniedException){
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
+            }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }

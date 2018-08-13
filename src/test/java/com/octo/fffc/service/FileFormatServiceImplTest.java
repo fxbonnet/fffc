@@ -1,5 +1,7 @@
 package com.octo.fffc.service;
 
+import com.octo.fffc.exceptions.InputFileException;
+import com.octo.fffc.exceptions.MetadataFileException;
 import com.octo.fffc.helper.FileWriterHelper;
 import com.octo.fffc.model.*;
 import com.octo.fffc.service.impl.FileFormatServiceImpl;
@@ -39,11 +41,11 @@ public class FileFormatServiceImplTest {
 
     /**
      * Scenario: Metadata object not generated
-     * Expected: Does not create CSV file
+     * Expected: Does not create CSV file = MetadataFileException
      *
      * @throws Exception
      */
-    @Test
+    @Test(expected = MetadataFileException.class)
     public void test_formatAndCreateFile_noMetaData() throws Exception {
 
         InputRequestDto inputRequestDto = new InputRequestDto();
@@ -59,10 +61,11 @@ public class FileFormatServiceImplTest {
     /**
      * Scenario: XlTable object not generated with information
      * Expected: Does not create CSV file
+     * InputFileException
      *
      * @throws Exception
      */
-    @Test
+    @Test(expected = InputFileException.class)
     public void test_formatAndCreateFile_noXlTable() throws Exception {
 
         InputRequestDto inputRequestDto = new InputRequestDto();
@@ -79,8 +82,6 @@ public class FileFormatServiceImplTest {
         when(converters.convertInputToXlTable(metadata, dataFile)).thenReturn(null);
 
         boolean result = fileFormatService.formatAndCreateFile(inputRequestDto);
-
-        Assert.assertFalse(result);
     }
 
     /**
