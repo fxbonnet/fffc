@@ -1,0 +1,60 @@
+1970-01-01John           Smith           81.5
+1975-01-31Jane           Doe             61.1
+1970-01-01John           WithHugeLastNam 81.5
+1970-01-01 John          WithHugeLastNam 81.5
+1975-01-31  Jane         Micheal         61.1
+1988-11-28   Bob         Stevie          99.4
+1988-11-28Bob            Big$5%6        102.4
+1975-01-31Jane           Doe with ,,     61.1
+1988-11-28Bob            Big  ,,        102.4
+1970-01-01John           WithHugeLastNam 81.5
+1970-01-01 John          WithHugeLastNam 81.5
+1975-01-31  Jane         Micheal         61.1
+1988-11-28   Bob         Stevie          99.4
+1975-01-31Jane           Micheal         61.1
+1988-11-28Bob            Stevie          99.4
+1970-01-01John           Smith           81.5
+1988-11-28Bob            Big$5%6        102.4
+1988-11-28Bob            Big            102.4
+1988-11-28Bob            Big$5%6        102.4
+1975-01-31Jane           Doe             61.1
+1988-11-28Bob            Big$5%6        102.4
+1970-01-01John           WithHugeLastNam 81.5
+1970-01-01 John          WithHugeLastNam 81.5
+1975-01-31  Jane         Doe with ,,     61.1
+1988-11-28   Bob         Stevie          99.4
+1975-01-31  Jane         Micheal         61.1
+1988-11-28Bob            Big$5%6        102.4
+1988-11-28Bob            Stevie          99.4
+1970-01-01John           Smith           81.5
+1975-01-31Jane           Doe             61.1
+1970-01-01John           Smith           81.5
+1975-01-31Jane           Doe             61.1
+1988-11-28Bob            Big            102.4
+1970-01-01John           WithHugeLastNam 81.5
+1970-01-01 John          WithHugeLastNam 81.5
+1975-01-31  Jane         Micheal         61.1
+1988-11-28   Bob         Stevie          99.4
+1975-01-31Jane           Micheal         61.1
+1988-11-28Bob            Stevie          99.4
+1970-01-01John           Smith           81.5
+1975-01-31Jane           Doe             61.1
+1988-11-28Bob            Big     ddd    102.4
+1970-01-01John           Smith ,./098    81.5
+1975-01-31Jane           Doe             61.1
+1988-11-28Bob            Big   ;/;$**   102.4
+1970-01-01John           WithHugeLastNam 81.5
+1970-01-01 John          WithHugeLastNam 81.5
+1975-01-31  Jane         Micheal         61.1
+1988-11-28   Bob         Stevie          99.4
+1975-01-31  Jane         Micheal         61.1
+1988-11-28   Bob         Stevie          99.4
+1988-11-28Bob            Stevie          99.4
+1970-01-01John           Smith           81.5
+1975-01-31Jane           Doe             61.1
+1988-11-28Bob            Big            102.4
+1970-01-01 John          WithHugeLastNam 81.5
+1975-01-31  Jane         Micheal         61.1
+1988-11-28   Bob         Stevie          99.4
+1988-11-28   Bob         Stevie          99.4
+1988-11-28Bob            Big$5%6        102.4
