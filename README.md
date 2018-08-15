@@ -1,8 +1,27 @@
+# Requirements
+
 # Fixed File Format converter
 
-Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
+The goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
 
-Feel free to use your favorite language and libraries if needed (but no proprietary libraries, only open source), fork this project and provide your complete code as a pull request (including source and tests).
+Languages chosen: Python 3.7.0 
+
+Approach: 
+1. Read the data descriptor file 
+2. Write the header row in the output csv
+3. Read the flat file, for each row, validate and format and then write each line being read to the output file 
+
+# Dependencies
+* Python 3.7.0
+
+# Instructions to use
+* Clone repo 
+* In your terminal run the following command
+
+    ```python <FFFC_LOCATION>/file_converter.py <METADATA_CSV_FILE> <FLAT_FILE> <OUTPUT_CSV_FILE>```
+
+    e.g. `~/workspaces/fffc $ python /home/vighy-vbox/workspaces/fffc/file_converter.py data/metadata.csv data/large_data_file data/large_data_file.csv`
+
 
 ## Use case
 
@@ -56,3 +75,9 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+
+## Interview Feedback dislikes and my counter arguments
+- Mostly individual contributor, doubts whether he's a team player [A look at my Linkedin profile would suggest I'm a good team player and that I can work independently]
+- While saying he's 'managing' people, it seems to be re-directing tasks to others without knowing what's the task [I politely disagree, It is not possible to delegate tasks without knowing what the task is about and who in the team is best suited to complete those tasks]
+- Doesn't know how to build Ci/CD [Agree, Haven't developer a CI/CD pipeline, have only used existing infrastructure, but given a chance, I can pick it up fairly quickly]
+- Doesn't know cloud services although stating 'responsible for migrating apps to AWS' [AWS knowledge has not been mentioned as a skill in my CV. The infrastructure for connecting to AWS has already been developed and I as a user have used the services to use AWS]
