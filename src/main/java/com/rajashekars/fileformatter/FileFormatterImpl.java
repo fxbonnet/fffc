@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Objects.requireNonNull;
+import static com.rajashekars.fileformatter.metadata.Metadata.NO_OF_COLUMN_TYPES;
+import static com.rajashekars.fileformatter.metadata.Metadata.DATE_FORMATTER;
 
 public class FileFormatterImpl implements FileFormatter {
 
@@ -49,6 +51,12 @@ public class FileFormatterImpl implements FileFormatter {
 
         writeCsvHeaders(csvWriter);
 
+        writeCsvData(dataStream, csvWriter);
+
+        return stringWriter.toString();
+    }
+
+    private void writeCsvData(InputStream dataStream, CSVWriter csvWriter) {
         try (LineIterator it = IOUtils.lineIterator(dataStream, StandardCharsets.UTF_8)) {
 
             if (!it.hasNext()) {
@@ -62,11 +70,11 @@ public class FileFormatterImpl implements FileFormatter {
 
                 String[] resultArray = new String[metadataColumns.size()];
 
-                for (int i = 0, previousIndex = 0; i < metadataColumns.size(); i++) {
+                int previousIndex = 0;
+                for (int i = 0; i < metadataColumns.size(); i++) {
                     Column column = metadataColumns.get(i);
-                    String dataStr = line.substring(previousIndex, previousIndex + column.getLength());
 
-                    dataStr = dataStr.trim();
+                    String dataStr = line.substring(previousIndex, previousIndex + column.getLength()).trim();
 
                     resultArray[i] = (column.getType().equals(DataFormat.DATE))
                             ? formatDate(dataStr)
@@ -85,8 +93,6 @@ public class FileFormatterImpl implements FileFormatter {
             LOG.error("Error encountered while converting dataStream to csv", e);
             throw new FileFormatterException("Error encountered while converting dataStream to csv");
         }
-
-        return stringWriter.toString();
     }
 
     private void writeCsvHeaders(CSVWriter csvWriter) {
@@ -104,11 +110,8 @@ public class FileFormatterImpl implements FileFormatter {
     }
 
     private String formatDate(String dateStr) {
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // TODO extract away
-
         try {
-            LocalDate formatDateTime = LocalDate.parse(dateStr, formatter);
+            LocalDate formatDateTime = LocalDate.parse(dateStr, DATE_FORMATTER);
 
             DateTimeFormatter resultFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -130,8 +133,8 @@ public class FileFormatterImpl implements FileFormatter {
             }
 
             do {
-                if (nextLine.length != 3) {
-                    throw new InvalidMetadataFormatException("Number of columns: " + nextLine.length + ", expected 3 columns");
+                if (nextLine.length != NO_OF_COLUMN_TYPES) {
+                    throw new InvalidMetadataFormatException("Number of columns: " + nextLine.length + ", expected " + NO_OF_COLUMN_TYPES + " columns");
                 }
                 Column column = new Column();
                 column.setName(nextLine[0]);
