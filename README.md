@@ -56,3 +56,22 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+
+## Solution
+
+###### FileConverterUtil is utility which can help to parse fixed width file to csv. [univocity-parse](https://www.univocity.com/pages/univocity_parsers_documentation) is the java-api which is being used for parsing the file.
+
+**To execute this demo, following three inputs are required as VM arguments:**
+* Metadata File Path – VM argument can be passed using -Dmetadata
+* Input File Path – VM argument can be passed using -Dinput
+* Output File Path – VM argument can be passed using -Doutput
+
+To parse Fixed with File, following code snippet can be used.
+```
+FileProcessor fileProcessor = new FileProcessor(metadataFile);
+fileProcessor.parseFixedWidthFile(inputFile, outputFile);
+```
+
+In above sample code, metadata, inputFile and outputFile are variables which contains path of the input files which should be passed to process the file.
+
+Sample demo class “ParsingFixedWidthFileDemo” is available which is showing how to use this utility.
