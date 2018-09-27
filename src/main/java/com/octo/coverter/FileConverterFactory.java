@@ -29,7 +29,7 @@ public final class FileConverterFactory {
 
     }
 
-    public final synchronized FileConverter getConverter(AppConfig appConfig) {
+    public final FileConverter getConverter(AppConfig appConfig) {
 
 
         switch (appConfig.getOutputFileFormat()) {

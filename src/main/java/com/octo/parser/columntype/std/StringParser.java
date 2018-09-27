@@ -13,15 +13,15 @@ public class StringParser implements TypeParser<String> {
     @Override
     public String parse(String value) {
 
-        if (StringUtils.isBlank(value)) {
+        if (StringUtils.isEmpty(value)) {
             return StringUtils.EMPTY;
         }
-
-        value = value.trim();
 
         if (StringUtils.containsOnly(value, ILLEGAL_CHARS)) {
             throw new FixedFileParserException("Illegal escape sequence character found in text");
         }
+
+        value = value.trim();
 
         return StringUtils.containsAny(value, SEPARATOR_CHAR) ? StringUtils.wrap(value, WRAPPER_CHAR) : value;
     }

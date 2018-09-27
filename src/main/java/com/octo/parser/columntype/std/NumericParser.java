@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class NumericParser implements TypeParser<String> {
 
-    private final String NUMERIC_PATTERN = "^-?[0-9].+";
+    private final String NUMERIC_PATTERN = "\\d*\\.?\\d+$";
 
     @Override
     public String parse(String value) {

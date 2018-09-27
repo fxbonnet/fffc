@@ -25,7 +25,6 @@ public interface SyncFileConverter<T> extends FileConverter<T> {
         long lineNum = 1;
         try (Scanner scanner = new Scanner(file, StandardCharsets.UTF_8.name())) {
 
-
             while (scanner.hasNext()) {
                 List<T> elements = parseLine(lineNum, scanner.nextLine());
                 writeLine(lineNum, elements);
@@ -39,7 +38,6 @@ public interface SyncFileConverter<T> extends FileConverter<T> {
         } finally {
             cleanUp();
         }
-
 
         return true;
     }
