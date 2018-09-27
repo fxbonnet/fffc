@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * Concrete implementation for converting to CSV files synchronously.
+ */
 public final class CSVFileConverter implements SyncFileConverter<String> {
 
 

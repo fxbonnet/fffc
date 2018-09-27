@@ -56,3 +56,7 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+
+## Usage:
+java -jar target/fffc-1.0-SNAPSHOT-jar-with-dependencies.jar -iFile=/Users/workspaces/octo/fffc/src/test/resources/input.txt -iFileMetaData=/Users/workspaces/octo/fffc/src/test/resources/metadata.txt -oFile=/Users/workspaces/octo/fffc/src/test/resources/output.txt -oFileFormat=csv
+

@@ -6,6 +6,20 @@ import com.octo.exception.FixedFileFormatCoverterException;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * This class is responsible for parsing the input arguments for the file converter.
+ * <pre>
+ *     Mandatory parameters:
+ *     -iFile=<path>
+ *         absolute path to the source file to be converted
+ *     -iFileMetaData=<path>
+ *         absolute path to the metadata for the source file
+ *     -oFile=<output file>
+ *         absolute path to the target file to be created
+ *     -oFileFormat=csv
+ *         supported format: csv
+ * </pre>
+ */
 public class ArgumentParser {
 
     private static final String INPUT_FILE = "-iFile";
@@ -22,6 +36,11 @@ public class ArgumentParser {
     private FileFormat outputFileFormat;
 
 
+    /**
+     * Parse the input arguments
+     * @param args
+     * @return
+     */
     public Boolean parseArgs(String[] args) {
         if (!Objects.isNull(args)) {
 

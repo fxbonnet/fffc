@@ -11,7 +11,7 @@ import com.octo.parser.metadata.ColumnData;
 import java.util.List;
 
 /**
- * Hello world!
+ * Fixed file format converter Application
  */
 public class App {
 
@@ -27,6 +27,11 @@ public class App {
         this.fileConverterFactory = fileConverterFactory;
     }
 
+    /**
+     * Initiate the file conversion process
+     *
+     * @param args
+     */
     public void start(String[] args) {
         if (!argumentParser.parseArgs(args)) {
             return;

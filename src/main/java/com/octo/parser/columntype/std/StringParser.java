@@ -4,6 +4,9 @@ import com.octo.exception.FixedFileParserException;
 import com.octo.parser.columntype.TypeParser;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * Standard string data parser.
+ */
 public class StringParser implements TypeParser<String> {
 
     private final char[] ILLEGAL_CHARS = {'\n', '\r'};

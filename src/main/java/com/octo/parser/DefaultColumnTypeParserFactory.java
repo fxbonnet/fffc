@@ -10,6 +10,10 @@ import com.octo.parser.metadata.ColumnType;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Default singleton factory for type parsers. Factory uses a flyweight pattern so that too
+ * many object of  {@link TypeParser} are generated.
+ */
 public class DefaultColumnTypeParserFactory implements ColumnTypeParserFactory<String> {
 
 
@@ -21,6 +25,10 @@ public class DefaultColumnTypeParserFactory implements ColumnTypeParserFactory<S
         typeParsers = new HashMap<>();
     }
 
+    /**
+     * Singleton instance of factory
+     * @return
+     */
     public static DefaultColumnTypeParserFactory instance() {
 
         if (instance == null) {

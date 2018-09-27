@@ -4,12 +4,27 @@ import com.octo.exception.FixedFileFormatCoverterException;
 
 import java.util.Objects;
 
+/**
+ * Holds the metadata of a column in the input file
+ */
 public class ColumnData {
 
+    /**
+     * Name of the column
+     */
     private String name;
+    /**
+     * length of the column in the fixed length file
+     */
     private int length;
+    /**
+     * Type of column data
+     */
     private ColumnType columnType;
 
+    /**
+     * @param params a line in the metadata file represented as array of string
+     */
     public ColumnData(String[] params) {
 
         if (Objects.isNull(params) || params.length < 3) {

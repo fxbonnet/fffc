@@ -10,7 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Metadata file parser
+ */
 public class FileMetaDataParser {
+    /**
+     *
+     * @param inputFormatFileName absolute path to the metadata file.
+     * @return a list of {@link ColumnData}
+     */
     public List<ColumnData> parse(String inputFormatFileName) {
 
         File file = new File(inputFormatFileName);

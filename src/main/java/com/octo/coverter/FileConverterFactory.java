@@ -5,6 +5,9 @@ import com.octo.exception.FixedFileFormatCoverterException;
 import com.octo.parser.DefaultColumnTypeParserFactory;
 import com.octo.config.AppConfig;
 
+/**
+ * A factory for available {@link FileConverter}
+ */
 public final class FileConverterFactory {
 
 
@@ -15,6 +18,11 @@ public final class FileConverterFactory {
 
     }
 
+    /**
+     * Provide a singleton instance of {@link FileConverterFactory}
+     *
+     * @return
+     */
     public static FileConverterFactory instance() {
 
         if (instance == null) {
@@ -29,6 +37,12 @@ public final class FileConverterFactory {
 
     }
 
+    /**
+     * Returns a {@link FileConverter} for the given {@link FileFormat} property of the {@link AppConfig}
+     *
+     * @param appConfig
+     * @return throw {@link FixedFileFormatCoverterException} if the {@link FileFormat} is not supported.
+     */
     public final FileConverter getConverter(AppConfig appConfig) {
 
 

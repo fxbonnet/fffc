@@ -4,6 +4,9 @@ import com.octo.exception.FixedFileParserException;
 import com.octo.parser.columntype.TypeParser;
 import org.apache.commons.lang3.StringUtils;
 
+/***
+ * standard Numeric data parser
+ */
 public class NumericParser implements TypeParser<String> {
 
     private final String NUMERIC_PATTERN = "\\d*\\.?\\d+$";

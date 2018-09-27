@@ -8,6 +8,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Standard date parser
+ */
 public class DateParser implements TypeParser<String> {
     private final String EXP_DATE_FORMAT = "\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])";
     private final SimpleDateFormat FROM_FORMAT = new SimpleDateFormat("yyyy-mm-dd");
