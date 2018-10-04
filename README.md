@@ -4,6 +4,19 @@ Your goal is to write a generic tool to convert fixed file format files to a csv
 
 Feel free to use your favorite language and libraries if needed (but no proprietary libraries, only open source), fork this project and provide your complete code as a pull request (including source and tests).
 
+## Note for reviewer
+
+* I took a couple of shortcuts just to save time as technical test generally take a bit
+of time to get production level ready.
+* the runner can easily be refactored to support any file format descriptors with minimal effort.
+* The file parsing and transforming are seperate components independent of each other.
+* Any impl questions do not hesitate to ask. JUnit coverage could be greater. 
+* There is room for utilising mock objects etc. to decouple parsing.  
+* The application can easily be changed to append to make it a low memory parser. As memory
+is not a limitation I simply left it bloated. To parse large files change your jvm -Xmx settings.
+* All JUnit test data should either have a factory to get the associated test objects. I simply didnt
+at the time to save a framework setup.
+
 ## Use case
 
 Our fixed file format files can have any number of columns
@@ -55,4 +68,3 @@ Birth date,First name,Last name,Weight
 * strings columns may contain separator characters like ',' and then the whole string needs to be escaped with " (double quotes). Only CR or LF are forbidden
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
-
