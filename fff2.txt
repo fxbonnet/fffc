@@ -1,0 +1,30 @@
+1970-01-01John           Middle         Smith          81.5 180.11000001asdfjkffdf2000-12-31 9283&&&&&&&&
+1975-01-02Jane           RandomMiddleNamDoe            61.1 83.62  00001asdfjkffdf2000-12-31 399.&&&&&&&&
+1988-11-03Bob            Magic          Big            102.465.98      9asdfjkffdf2000-12-31 399.!!!!!!!!
+2000-12-04Steve          DoesThisWork   LastName       62.75198.    1000asdfjkffdf2000-12-31 399.........
+1970-01-05AAAAAAAAAAAAAAABBBBBBBBBBBBBBBCCCCCCCCCCCCCCC181.5180.19999999asdfjkffdf2000-12-31 399.&&&&&&&&
+1970-01-06John           Middle         Smith          81.5 180.19999999asdfjkffdf2000-12-31 399.&&&&&&&&
+1970-01-07John           Middle         Smith          81.5 180.19999999asdfjkffdf2000-12-31 399.&&&&&&&&
+1970-01-08John           Middle         Smith          81.5 180.19999999asdfjkffdf2000-12-31 399.&&&&&&&&
+1970-01-09John           Middle         Smith          81.5 180.19999999asdfjkffdf2000-12-31 399.&&&&&&&&
+1970-01-10John           Middle         Smith          81.5 180.19999999asdfjkffdf2000-12-31 399.&&&&&&&&
+1970-01-11John           Middle         Smith          81.5 180.19999999asdfjkffdf2000-12-31 399.&&&&&&&&
+1975-01-12Jane           RandomMiddleNamDoe            61.1 83.629999999asdfjkffdf2000-12-31 399.&&&&&&&&
+1988-11-13Bob            Magic          Big            102.465.989999999asdfjkffdf2000-12-31 399.&&&&&&&&
+2000-12-14Steve          DoesThisWork   LastName       62.75198.79999999asdfjkffdf2000-12-31 399.&&&&&&&&
+1970-01-15AAAAAAAAAAAAAAABBBBBBBBBBBBBBBCCCCCCCCCCCCCCC181.5180.19999999asdfjkffdf2000-12-31 399.&&&&&&&&
+1970-01-16John                          Smith          81.5 180.19999999asdfjkf///2000-12-31 399.&&&&&&&&
+1970-01-17John           Middle         Smith          81.5 180.19999999asdfjkf2332000-12-31 399.&&&&&&&&
+1970-01-18John           Middle         Smith          81.5 180.1   1292asdfjkffd22000-12-31 399.&&&&&&&&
+1970-01-19John           Middle         Smith          81.5 180.1 123459asdfjkf1822000-12-31 399.&&&&&&&&
+1970-01-20John           Middle         Smith          81.5 180.1-394830asdfjk28392000-12-31 399.&&&&&&&&
+1970-01-21John           Middle         Smith          81.5 180.1-93.398asdfjk-1832000-12-31 399.&&&&&&&&
+1975-01-22Jane           RandomMiddleNamDoe            61.1 83.62-399330asdfjkf1322000-12-31 399.&&&&&&&&
+1988-11-23Bob            Magic          Big            102.465.98    0.3asdfjk3*()2000-12-31 399.&&&&&&&&
+2000-12-24Steve          DoesThisWork   LastName       62.75198.70.32423asdfjkf!!!2000-12-31 399.&&&&&&&&
+1970-01-25AAAAAAAAAAAAAAABBBBBBBBBBBBBBBCCCCCCCCCCCCCCC181.5180.12939394asdfjkf2342000-12-31 399.&&&&&&&&
+1970-01-26John           Middle         Smith          81.5 180.12394829asdfjkff432000-12-31 399.&&&&&&&&
+1970-01-27John           Middle         Smith          81.5 180.12938492asdfjkff132000-12-31 399.&&&&&&&&
+1970-01-28John           Middle         Smith          81.5 180.12394803asdfjkff122000-12-31 399.&&&&&&&&
+1970-01-29John           Middle         Smith          81.5 180.12394844asdfjkff112000-12-31-99.2&&&&&&&&
+1970-01-30John           Middle         Smith          81.5 180.12938492asdfjkff102000-12-31-399.&&&&&&&&

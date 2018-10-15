@@ -1,0 +1,11 @@
+Birth date,First name,Middle name,Last name,Weight,Height
+01/01/1970,John,Middle,Smith,81.5,180.1
+31/01/1975,Jane,RandomMiddleNam,Doe,61.1,83.62
+28/11/1988,Bob,Magic,Big,102.4,65.98
+29/02/2000,Steve,DoesThisWork,LastName,62.75,198.7
+01/01/1970,AAAAAAAAAAAAAAA,BBBBBBBBBBBBBBB,CCCCCCCCCCCCCCC,181.5,180.1
+01/01/1970,John,Middle,Smith,81.5,180.1
+01/01/1970,John,Middle,Smith,81.5,180.1
+01/01/1970,John,Middle,Smith,81.5,180.1
+01/01/1970,John,Middle,Smith,81.5,180.1
+01/01/1970,John,Middle,Smith,81.5,180.1

@@ -1,0 +1,11 @@
+Birth date,10,date
+First name,15,string
+Middle name,15,string
+Last name,15,string
+Weight,5,numeric
+Height,5,numeric
+Salary,7,numeric
+Random String,10,string
+Random Date,10,date
+Magic Number,5,numeric
+Extra Column,8,String

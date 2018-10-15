@@ -1,0 +1,4 @@
+        Special String      ,     10      ,      string
+            Random date    , 10    ,     date
+                   Another Special String,     10,      string
+         Random Number       ,             15           , numeric
