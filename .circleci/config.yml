@@ -32,13 +32,18 @@ jobs:
           command: |
             . venv/bin/activate
 
+      - run:
+          name: Build builder Docker image
+          command: |
+            docker build -t ${DOCKER_REGISTRY}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH}
+
       - deploy:
           name: Push application Docker image
           timeout: 1200
           command: |
-            docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}
-            docker push brianhhq/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH}
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            docker push ${DOCKER_REGISTRY}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH}
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker tag brianhhq/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH} brianhhq/${CIRCLE_PROJECT_REPONAME}:latest
-              docker push brianhhq/${CIRCLE_PROJECT_REPONAME}:latest
+              docker tag ${DOCKER_REGISTRY}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH} ${DOCKER_REGISTRY}/${CIRCLE_PROJECT_REPONAME}:latest
+              docker push ${DOCKER_REGISTRY}/${CIRCLE_PROJECT_REPONAME}:latest
             fi
