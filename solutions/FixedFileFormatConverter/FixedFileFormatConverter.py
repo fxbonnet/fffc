@@ -13,9 +13,10 @@ class FixedFileFormatConverter:
     parse_dates = []
     dtypes = {}
     length_limit = {}
+    column_read_width = []
     output_filename = "output"
     output_count = 0
-    chunk_size = 1  # Number of rows to read
+    chunk_size = 3  # Number of rows to read
     nup_of_process = 4
 
     def __init__(self):
@@ -65,6 +66,7 @@ class FixedFileFormatConverter:
                     column_type = "object"
                     self.dtypes[row["column name"]] = column_type
                 self.length_limit[row["column name"]] = int(row["column length"])
+                self.column_read_width.append(int(row["column length"]))
             self.headers = df[["column name"]]["column name"].tolist()
             parse_dates_df = df.loc[df["column type"] == "date"]
             self.parse_dates = parse_dates_df[["column name"]]["column name"].tolist()
@@ -120,11 +122,10 @@ class FixedFileFormatConverter:
         :return:
         """
         try:
-            reader = pd.read_csv(filename,
-                                 sep="\s+",
+            reader = pd.read_fwf(filename,
                                  names=self.headers,
+                                 widths=self.column_read_width,
                                  parse_dates=self.parse_dates,
-                                 dtype=self.dtypes,
                                  encoding="utf-8",
                                  chunksize=self.chunk_size,
                                  )

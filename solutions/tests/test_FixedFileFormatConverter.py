@@ -6,6 +6,7 @@ from FixedFileFormatConverter import FixedFileFormatConverter
 LOG = logging.getLogger()
 LOG.addHandler(logging.StreamHandler())
 
+
 class FixedFileFormatConverterTestCase(unittest.TestCase):
 
     def setUp(self):
