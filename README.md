@@ -56,3 +56,7 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+## Solutions
+Please see [README](solutions/README.md)
+ for details
+
