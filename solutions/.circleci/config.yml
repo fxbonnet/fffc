@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6-stretch
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - dependencies-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+            python manage.py migrate
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: dependencies-{{ checksum "requirements.txt" }}
+
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            . venv/bin/activate
+
+      - deploy:
+          name: Push application Docker image
+          timeout: 1200
+          command: |
+            docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}
+            docker push brianhhq/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH}
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker tag brianhhq/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_BRANCH} brianhhq/${CIRCLE_PROJECT_REPONAME}:latest
+              docker push brianhhq/${CIRCLE_PROJECT_REPONAME}:latest
+            fi
