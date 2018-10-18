@@ -24,7 +24,7 @@ docker pull brianhhq/fffc
 ## Running the tests
 
 ```
-
+python -m unittest tests.FixedFileFormatConverterTestCase
 ```
 
 

@@ -2,6 +2,7 @@
 from converter import FixedFileFormatConverter
 import logging
 import os
+import sys
 import argparse
 
 LOG = logging.getLogger()
@@ -33,8 +34,11 @@ def main():
     data = args.data
     output = args.output
     fixed_file_format_converter = FixedFileFormatConverter(metadata=metadata, raw_data=data, output=output)
-    fixed_file_format_converter.load_metadata()
-    fixed_file_format_converter.load_raw_data()
+    if not fixed_file_format_converter.load_metadata():
+        sys.exit(1)
+
+    result = fixed_file_format_converter.load_raw_data()
+    print("Please see the following output files: "+";".join(result))
 
 
 if __name__ == "__main__":

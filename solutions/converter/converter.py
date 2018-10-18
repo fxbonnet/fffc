@@ -17,7 +17,7 @@ class FixedFileFormatConverter:
     default_output_filename = "output"
     output_count = 0
     chunk_size = 10**6  # Number of rows to read
-    nup_of_process = 4
+    num_of_process = 4
 
     def __init__(self, metadata, raw_data, output=None):
         if output is None:
@@ -33,24 +33,25 @@ class FixedFileFormatConverter:
         to see if column length is integer
         :param index:
         :param row:
-        :return:
+        :return: True or False
         """
         if row["column type"] not in self.legal_column_types:
             LOG.error("Invalid column type `{}` at line num {}".format(row["column type"], index+1))
-            sys.exit(1)
+            return False
         try:
             int(row["column length"])
         except ValueError:
             LOG.error("Invalid column length `{}` at line num {}. It should be integer.".format(row["column length"],
                                                                                                 index+1))
-            sys.exit(1)
+            return False
+        return True
 
     def load_metadata(self):
         """
         read metadata file into memory
         extract all the date column
         extract all the columns" names
-        :param filename:
+        extract column_read_width for each column
         :return:
         """
         try:
@@ -63,7 +64,8 @@ class FixedFileFormatConverter:
             LOG.debug("Head of Metadata:")
             LOG.debug(df.head())
             for index, row in df.iterrows():
-                self.validate_metadata(index, row)
+                if not self.validate_metadata(index, row):
+                    return False
                 if row["column type"] == "numeric":
                     column_type = "float64"
                     self.dtypes[row["column name"]] = column_type
@@ -75,9 +77,15 @@ class FixedFileFormatConverter:
             self.headers = df[["column name"]]["column name"].tolist()
             parse_dates_df = df.loc[df["column type"] == "date"]
             self.parse_dates = parse_dates_df[["column name"]]["column name"].tolist()
+            LOG.debug(self.headers)
+            LOG.debug(self.length_limit)
+            LOG.debug(self.dtypes)
+            LOG.debug(self.column_read_width)
+            LOG.debug(self.parse_dates)
         except Exception as e:
             LOG.error(e)
-            sys.exit(1)
+            return False
+        return True
 
     def validate_raw_data(self, index, row):
         """
@@ -85,7 +93,7 @@ class FixedFileFormatConverter:
         to see if column length is within the limit
         :param index:
         :param row:
-        :return:
+        :return: True or False
         """
         for column in self.headers:
             if column in self.parse_dates:
@@ -93,7 +101,7 @@ class FixedFileFormatConverter:
                     pd.to_datetime(row[column])
                 except Exception as e:
                     LOG.error("Error - Invalid Date format value: `{}` at line num {}".format(e.args[1], index+1))
-                    sys.exit(1)
+                    return False
             elif len(str(row[column])) > self.length_limit[column]:
                 LOG.error("Error - Invalid length of value: `{}` at line num {}. The length of column `{}` should be \
 {} instead of {}".format(
@@ -103,7 +111,8 @@ class FixedFileFormatConverter:
                     self.length_limit[column],
                     len(str(row[column])))
                 )
-                sys.exit(1)
+                return False
+        return True
 
     def process_raw_data(self, chunk):
         """
@@ -128,6 +137,7 @@ class FixedFileFormatConverter:
         :param filename:
         :return:
         """
+        results = []
         try:
             reader = pd.read_fwf(self.raw_data,
                                  names=self.headers,
@@ -136,14 +146,13 @@ class FixedFileFormatConverter:
                                  encoding="utf-8",
                                  chunksize=self.chunk_size,
                                  )
-            pool = mp.Pool(self.nup_of_process)
-            print("Please see the following output files:")
+            pool = mp.Pool(self.num_of_process)
             for chunk in reader:
                 self.output_count += 1
                 result = pool.apply_async(self.process_raw_data, [chunk])
-                print(result.get())
+                results.append(result.get())
             pool.close()
         except Exception as e:
-            LOG.error("Errors while reading file: `{}`".format(filename))
+            LOG.error("Errors while reading file: `{}`".format(self.raw_data))
             LOG.error(e)
-            sys.exit(1)
+        return results
