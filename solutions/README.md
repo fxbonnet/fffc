@@ -21,6 +21,13 @@ docker login
 docker pull brianhhq/fffc
 ```
 
+### Usage
+
+```bash
+python main.py -h
+python main.py --metadata <metadata_filename> --data <data_filename> 
+```
+
 ## Running the tests
 
 ```
