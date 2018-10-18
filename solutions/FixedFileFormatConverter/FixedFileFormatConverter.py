@@ -14,13 +14,18 @@ class FixedFileFormatConverter:
     dtypes = {}
     length_limit = {}
     column_read_width = []
-    output_filename = "output"
+    default_output_filename = "output"
     output_count = 0
-    chunk_size = 3  # Number of rows to read
+    chunk_size = 10**6  # Number of rows to read
     nup_of_process = 4
 
-    def __init__(self):
-        pass
+    def __init__(self, metadata, raw_data, output=None):
+        if output is None:
+            self.output_filename = self.default_output_filename
+        else:
+            self.output_filename = output
+        self.metadata = metadata
+        self.raw_data = raw_data
 
     def validate_metadata(self, index, row):
         """
@@ -40,7 +45,7 @@ class FixedFileFormatConverter:
                                                                                                 index+1))
             sys.exit(1)
 
-    def load_metadata(self, filename):
+    def load_metadata(self):
         """
         read metadata file into memory
         extract all the date column
@@ -49,7 +54,7 @@ class FixedFileFormatConverter:
         :return:
         """
         try:
-            df = pd.read_csv(filename,
+            df = pd.read_csv(self.metadata,
                              sep=",",
                              names=["column name", "column length", "column type"],
                              encoding="utf-8",
@@ -111,9 +116,11 @@ class FixedFileFormatConverter:
         LOG.debug(chunk.head())
         for index, row in chunk.iterrows():
             self.validate_raw_data(index, row)
-        chunk.to_csv(self.output_filename+"_"+str(self.output_count)+".csv", date_format="%d/%m/%Y", index=False)
+        filename = self.output_filename+"_"+str(self.output_count)+".csv"
+        chunk.to_csv(filename, date_format="%d/%m/%Y", index=False)
+        return filename
 
-    def load_raw_data(self, filename):
+    def load_raw_data(self):
         """
         read data file into memory
         convert date to dd/mm/yyyy format
@@ -122,7 +129,7 @@ class FixedFileFormatConverter:
         :return:
         """
         try:
-            reader = pd.read_fwf(filename,
+            reader = pd.read_fwf(self.raw_data,
                                  names=self.headers,
                                  widths=self.column_read_width,
                                  parse_dates=self.parse_dates,
@@ -130,9 +137,12 @@ class FixedFileFormatConverter:
                                  chunksize=self.chunk_size,
                                  )
             pool = mp.Pool(self.nup_of_process)
+            print("Please see the following output files:")
             for chunk in reader:
                 self.output_count += 1
-                pool.apply_async(self.process_raw_data, [chunk])
+                result = pool.apply_async(self.process_raw_data, [chunk])
+                print(result.get())
+            pool.close()
         except Exception as e:
             LOG.error("Errors while reading file: `{}`".format(filename))
             LOG.error(e)
