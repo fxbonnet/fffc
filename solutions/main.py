@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from FixedFileFormatConverter import FixedFileFormatConverter
+from converter import FixedFileFormatConverter
 import logging
 import os
 import argparse

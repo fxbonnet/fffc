@@ -1,1 +1,1 @@
-from .test_FixedFileFormatConverter import FixedFileFormatConverterTestCase
+from .test_converter import FixedFileFormatConverterTestCase

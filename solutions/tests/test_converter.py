@@ -1,7 +1,7 @@
 import unittest
 import logging
 import os
-from FixedFileFormatConverter import FixedFileFormatConverter
+from converter import FixedFileFormatConverter
 
 LOG = logging.getLogger()
 LOG.addHandler(logging.StreamHandler())
