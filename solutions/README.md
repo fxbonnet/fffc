@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/brianhhq/fffc.svg?style=svg&circle-token=54fea42b442b3eade1ecddea434cbb6c19535a84)](https://circleci.com/gh/brianhhq/fffc)
 #  Fixed File Format converter Solution
 
 A generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
