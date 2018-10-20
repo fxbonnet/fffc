@@ -25,9 +25,26 @@ docker pull brianhhq/fffc
 ### Usage
 
 ```bash
-python main.py -h
-python main.py --metadata <metadata_filename> --data <data_filename> 
+sudo docker run -d -t --name converter brianhhq/fffc sh
+sudo docker exec -t converter python main.py -h
+sudo docker exec -t converter python main.py --metadata metadata --data data
+sudo docker exec -t converter cat output_1.csv
 ```
+
+#### Run Program with default data
+```bash
+sudo docker exec -t converter python main.py --metadata metadata --data data
+sudo docker exec -t converter cat output_1.csv
+```
+
+#### RUN Program with your test data
+copy file from host to container
+```bash
+sudo docker cp <host_file_name> converter:/app
+sudo docker exec -t converter python main.py --metadata metadata --data data
+sudo docker exec -t converter cat output_1.csv
+```
+
 
 ## Running the tests
 

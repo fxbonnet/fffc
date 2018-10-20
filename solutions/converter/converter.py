@@ -17,7 +17,7 @@ class FixedFileFormatConverter:
     default_output_filename = "output"
     output_count = 0
     chunk_size = 10**6  # Number of rows to read
-    num_of_process = 4
+    num_of_process = mp.cpu_count()
 
     def __init__(self, metadata, raw_data, output=None):
         if output is None:
