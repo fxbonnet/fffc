@@ -13,8 +13,6 @@ jobs:
           - v1-dependencies-{{ checksum "requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-          - v1-docker-images-{{ .Branch }}
-          - v1-docker-images-
 
       - run:
           name: install dependencies
@@ -33,6 +31,36 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
+            python -m unittest tests.FixedFileFormatConverterTestCase
+
+      - restore_cache:
+          keys:
+          - v1-docker-images-{{ .Branch }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-docker-images-
+          paths:
+            - ~/caches/app.tar
+
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i ~/caches/app.tar | true
+
+            # We wait a few seconds/minutes until all cached images appears in the daemon
+            # before starting a build.
+            if [ -e ~/caches/app.tar ]; then
+              for image in application; do
+                i=0
+                while [ $i -le 10 ]; do
+                  if ! docker image history $image:cache; then
+                    sleep 5
+                  fi
+                  i=$(( $i+1 ))
+                done
+              done
+            fi
+            docker image ls
 
       - run:
           name: Build builder Docker image
