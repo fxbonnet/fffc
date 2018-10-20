@@ -31,7 +31,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python -m unittest tests.FixedFileFormatConverterTestCase
+            cd solutions && python -m unittest tests.FixedFileFormatConverterTestCase
 
       - restore_cache:
           keys:
