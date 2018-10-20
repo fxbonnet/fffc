@@ -1,3 +1,12 @@
+
+# Python script
+Please install pandas with command below if you not installed already
+pip install pandas
+then please use below command to run the script.
+
+python ffc.py -i data.txt -c metadata.txt -o output.csv -d ","
+
+
 # Fixed File Format converter
 
 Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
