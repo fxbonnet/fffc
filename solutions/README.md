@@ -49,7 +49,7 @@ sudo docker exec -t converter cat output_1.csv
 ## Running the tests
 
 ```
-python -m unittest tests.FixedFileFormatConverterTestCase
+sudo docker exec -t converter python -m unittest tests.FixedFileFormatConverterTestCase
 ```
 
 
