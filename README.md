@@ -58,5 +58,5 @@ Birth date,First name,Last name,Weight
 
 ##Run fixed file formatter application
 ```
->java -jar fffc-0.0.1-SNAPSHOT.jar inputfilePath metadatafilePath outputFilePath
-Eg:java -jar fffc-0.0.1-SNAPSHOT.jar C:\\MyInputFile.txt C:\\MyMetadataFile.txt C:\\MyOutPutFile.csv
+>java -jar fffc-0.0.1-SNAPSHOT-jar-with-dependencies.jar inputfilePath metadatafilePath outputFilePath
+Eg:java -jar fffc-0.0.1-SNAPSHOT-jar-with-dependencies.jar C:\\MyInputFile.txt C:\\MyMetadataFile.txt C:\\MyOutPutFile.csv
