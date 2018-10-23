@@ -56,7 +56,7 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
-Run fixed file formatter application
+##Run fixed file formatter application
 ```
 >java -jar fffc-0.0.1-SNAPSHOT.jar inputfilePath metadatafilePath outputFilePath
 Eg:java -jar fffc-0.0.1-SNAPSHOT.jar C:\\MyInputFile.txt C:\\MyMetadataFile.txt C:\\MyOutPutFile.csv
