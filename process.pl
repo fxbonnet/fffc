@@ -26,7 +26,7 @@ SetLogs("info","Filname : $metadata_file");
 #-- only proceed if file is "txt" file
 if ($ext eq ".txt") {
 
-  SetLogs("info","Initialize ReadInputFile");
+  SetLogs("info","Initialize ReadMetadata");
 
   #-- convert metadata into readable format
   my @metadata = ReadMetadata($metadata_file);
@@ -37,8 +37,22 @@ if ($ext eq ".txt") {
     push (@headers, $_->[0]);
   }
 
+  if (scalar @headers == 0 ) {
+    SetLogs("error","there are no header fields in Metadata File : $metadata_file");
+    #-- show error MESSAGE
+    die colored("there are no header fields in Metadata File : $metadata_file \n\n",'red');
+  }
+
+  SetLogs("info","Initialize ReadMetadata");
+
   #-- read input file and store in an array
   my @daily_summary = ReadInputFile($data, @metadata);
+
+  if (scalar @daily_summary == 0 ) {
+    SetLogs("error","there are no data in array from reading DataFile : $data");
+    #-- show error MESSAGE
+    die colored("there are no data in array from reading DataFile : $data \n\n",'red');
+  }
 
   SetLogs("info","We have processed the file and stored data in daily_summary array");
 

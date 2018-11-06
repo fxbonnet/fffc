@@ -10,19 +10,21 @@ if (@ARGV != 2) {
   die   "usage : perl process.pl MetadataFile DataFile \n";
 }
 
-my ($file) = @ARGV;
+my ($metadata_file, $data_file) = @ARGV;
 
 #-- get extention of file with . to check weather it is .csv or not
-my ($ext) = $file =~ /(\.[^.]+)$/;
+my ($ext) = $metadata_file =~ /(\.[^.]+)$/;
+my ($data_ext) = $data_file =~ /(\.[^.]+)$/;
 
-is($ext, '.txt', "file has correct extention");
+is($ext, '.txt', "Metadata file has correct extention");
+is($data_ext, '.txt', "Data file has correct extention");
 
 
 sub simple_validate {
   #-- open file and read it
-  open (my $data, '<', $file) or  die "could not open $file \n";
+  open (my $data, '<', $metadata_file) or  die "could not open $metadata_file \n";
   while ( my $string = <$data>) {
-    if ( length $string < 178 ) {
+    if ( length $string < 1 ) {
       return 0;
     } else {
     return 1;
