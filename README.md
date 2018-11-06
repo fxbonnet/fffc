@@ -19,7 +19,7 @@
   - log.conf is set to log everything
   - For Test :  perl test.t MetadataFile DataFile
 
-########### NOTE ###########
+# ########## NOTE ########## #
 
 If you don't have perl installed and find it difficult to install please let me know asap so I can provide Docker image as well.
 I simply did not include it because it will be overkill for such a small task.
