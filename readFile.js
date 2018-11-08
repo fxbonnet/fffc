@@ -142,6 +142,7 @@ function generate_csv(dataFile, metaData, wherToSave) {
       const metaArray = data.toString().split("\n");
       writeToFile(wherToSave, createFileHeader(metaArray).concat("\n"));
       rl.on("line", line => {
+        line = stringSanitizer(line, /[!@#$%^&*\?]/g);
         writeToFile(wherToSave, lineFormater(line, metaArray).concat("\n"));
       });
       console.log("Working...");
