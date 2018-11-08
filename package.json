@@ -1,0 +1,23 @@
+{
+  "name": "fffc",
+  "version": "1.0.0",
+  "description": "Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bayat-Alireza/fffc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bayat-Alireza/fffc/issues"
+  },
+  "homepage": "https://github.com/Bayat-Alireza/fffc#readme",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
