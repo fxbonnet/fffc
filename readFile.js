@@ -12,7 +12,6 @@ function readLine(filePath) {
     input: fs.createReadStream(filePath),
     crlfDelay: Infinity
   });
-
   return rl;
 }
 
@@ -29,7 +28,7 @@ async function dataColumns(metaDataFilePath) {
  * @param {String} lineString
  * @param {RegExp} regex
  */
-function stringSanitizer(lineString, regex = /[!@#$%^&*\s]/g) {
+function stringSanitizer(lineString, regex = /[^a-zA-Z0-9\-,\.]/g) {
   return lineString.replace(regex, "");
 }
 
@@ -39,10 +38,7 @@ function stringSanitizer(lineString, regex = /[!@#$%^&*\s]/g) {
  */
 function reformatDate(dateString) {
   try {
-    if (Date.parse(dateString) !== 0) {
-      const dateElements = dateString.split("-").reverse();
-      return dateElements.join("/").toString();
-    } else {
+    if (typeof Date.parse(dateString) === "number") {
       const dateElements = dateString.split("-").reverse();
       return dateElements.join("/").toString();
     }
@@ -129,8 +125,6 @@ function lineFormater(line, metaArray) {
 }
 /**
  * Create the data.csv file
- * Node: where to "whereToSave" is optional
- * and if omitted, the fill will be saved in the same directory as datafile.csv
  * @param {String} dataFile
  * @param {String} metaData
  * @param {String} wherToSave
@@ -142,7 +136,8 @@ function generate_csv(dataFile, metaData, wherToSave) {
       const metaArray = data.toString().split("\n");
       writeToFile(wherToSave, createFileHeader(metaArray).concat("\n"));
       rl.on("line", line => {
-        line = stringSanitizer(line, /[!@#$%^&*\?]/g);
+        const regex = new RegExp(/[^a-zA-Z0-9\-,\.\s]/g);
+        line = stringSanitizer(line, regex);
         writeToFile(wherToSave, lineFormater(line, metaArray).concat("\n"));
       });
       console.log("Working...");
@@ -163,14 +158,6 @@ function writeToFile(path = "datafile.csv", input) {
   });
   logger.write(input);
   logger.end();
-}
-function memoryUsage() {
-  const used = process.memoryUsage();
-  for (let key in used) {
-    console.log(
-      `${key} ${Math.round((used[key] / 1024 / 1024) * 100) / 100} MB`
-    );
-  }
 }
 
 module.exports.stringSanitizer = stringSanitizer;
