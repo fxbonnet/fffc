@@ -1,0 +1,655 @@
+2018-11-13 02:25:50,041 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:25:50,054 [main] ERROR com.octo.fffcapp.converter.FFFConverter - File location error.
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: Input file path is not set.
+	at com.octo.fffcapp.file.FileManager.checkFileLocations(FileManager.java:55) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.checkFileLocations(FFFConverter.java:48) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:26) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.invalidFileConversionTest(FFFConverterTest.java:41) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206) [.cp/:?]
+2018-11-13 02:25:50,077 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Exiting...
+2018-11-13 02:25:50,079 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:25:50,079 [main] ERROR com.octo.fffcapp.converter.FFFConverter - File location error.
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: Input file path is not set.
+	at com.octo.fffcapp.file.FileManager.checkFileLocations(FileManager.java:55) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.checkFileLocations(FFFConverter.java:48) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:26) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.validFileConversionTest(FFFConverterTest.java:32) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206) [.cp/:?]
+2018-11-13 02:25:50,080 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Exiting...
+2018-11-13 02:31:01,963 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:31:01,974 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:31:02,037 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:31:02,050 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:31:02,053 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:31:02,053 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:31:02,054 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:31:02,055 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:40:29,925 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:40:29,929 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:40:29,978 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:40:29,983 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:40:29,985 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:40:29,985 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:40:29,985 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:40:29,989 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:42:24,126 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:42:24,130 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:42:24,176 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:42:24,179 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:42:24,180 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:42:24,180 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:42:24,180 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:42:24,185 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:43:42,840 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:43:42,844 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:43:42,891 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:43:42,894 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:43:42,895 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:43:42,895 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:43:42,896 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:43:42,900 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:48:55,598 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:48:55,602 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:48:55,658 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:48:55,661 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:48:55,684 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:48:55,684 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [null].
+2018-11-13 02:50:02,290 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:50:02,295 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:50:02,351 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:50:02,355 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:50:02,371 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:50:02,374 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:50:02,375 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:50:02,377 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:53:04,999 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:53:05,003 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:53:05,070 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:53:05,075 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Done.
+2018-11-13 02:57:58,646 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:57:58,650 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:57:58,707 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:58:13,246 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:58:13,251 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:58:13,300 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:58:13,304 [main] INFO  com.octo.fffcapp.FFFConverterApp - Done.
+2018-11-13 02:58:30,265 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:58:30,269 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:58:30,342 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:59:06,730 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:59:06,735 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [invalid].
+2018-11-13 02:59:06,738 [main] ERROR com.octo.fffcapp.converter.FFFConverter - Unable to read metadate file [invalid].
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: java.nio.file.NoSuchFileException: invalid
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:28) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.loadMetadata(FFFConverter.java:59) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:30) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.invalidFileLocationTest(FFFConverterTest.java:55) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206) [.cp/:?]
+Caused by: java.nio.file.NoSuchFileException: invalid
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:361) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:407) ~[?:1.8.0_172]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384) ~[?:1.8.0_172]
+	at java.nio.file.Files.newInputStream(Files.java:152) ~[?:1.8.0_172]
+	at java.nio.file.Files.newBufferedReader(Files.java:2784) ~[?:1.8.0_172]
+	at java.nio.file.Files.lines(Files.java:3744) ~[?:1.8.0_172]
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:23) ~[classes/:?]
+	... 30 more
+2018-11-13 02:59:06,753 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:59:06,753 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:59:06,827 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 02:59:55,846 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:59:55,850 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [invalid].
+2018-11-13 02:59:55,854 [main] ERROR com.octo.fffcapp.converter.FFFConverter - Unable to read metadate file [invalid].
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: java.nio.file.NoSuchFileException: invalid
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:28) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.loadMetadata(FFFConverter.java:59) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:30) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.invalidFileLocationTest(FFFConverterTest.java:55) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206) [.cp/:?]
+Caused by: java.nio.file.NoSuchFileException: invalid
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:361) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:407) ~[?:1.8.0_172]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384) ~[?:1.8.0_172]
+	at java.nio.file.Files.newInputStream(Files.java:152) ~[?:1.8.0_172]
+	at java.nio.file.Files.newBufferedReader(Files.java:2784) ~[?:1.8.0_172]
+	at java.nio.file.Files.lines(Files.java:3744) ~[?:1.8.0_172]
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:23) ~[classes/:?]
+	... 30 more
+2018-11-13 02:59:55,864 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 02:59:55,864 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 02:59:55,935 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 03:13:36,809 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:13:36,814 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [invalid].
+2018-11-13 03:13:36,818 [main] ERROR com.octo.fffcapp.converter.FFFConverter - Unable to read metadate file [invalid].
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: java.nio.file.NoSuchFileException: invalid
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:28) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.loadMetadata(FFFConverter.java:59) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:30) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.invalidFileLocationTest(FFFConverterTest.java:55) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.junit.runners.Suite.runChild(Suite.java:128) [junit-4.12.jar:4.12]
+	at org.junit.runners.Suite.runChild(Suite.java:27) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.junit.runners.Suite.runChild(Suite.java:128) [junit-4.12.jar:4.12]
+	at org.junit.runners.Suite.runChild(Suite.java:27) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:105) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.runClasses(JUnitCore.java:62) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.runClasses(JUnitCore.java:49) [junit-4.12.jar:4.12]
+	at com.octo.fffcapp.TestSuiteRunner.main(TestSuiteRunner.java:9) [test-classes/:?]
+Caused by: java.nio.file.NoSuchFileException: invalid
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:361) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:407) ~[?:1.8.0_172]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384) ~[?:1.8.0_172]
+	at java.nio.file.Files.newInputStream(Files.java:152) ~[?:1.8.0_172]
+	at java.nio.file.Files.newBufferedReader(Files.java:2784) ~[?:1.8.0_172]
+	at java.nio.file.Files.lines(Files.java:3744) ~[?:1.8.0_172]
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:23) ~[classes/:?]
+	... 46 more
+2018-11-13 03:13:36,829 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:13:36,829 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 03:13:36,874 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 03:13:54,185 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:13:54,188 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [invalid].
+2018-11-13 03:13:54,191 [main] ERROR com.octo.fffcapp.converter.FFFConverter - Unable to read metadate file [invalid].
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: java.nio.file.NoSuchFileException: invalid
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:28) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.loadMetadata(FFFConverter.java:59) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:30) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.invalidFileLocationTest(FFFConverterTest.java:55) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.junit.runners.Suite.runChild(Suite.java:128) [junit-4.12.jar:4.12]
+	at org.junit.runners.Suite.runChild(Suite.java:27) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.junit.runners.Suite.runChild(Suite.java:128) [junit-4.12.jar:4.12]
+	at org.junit.runners.Suite.runChild(Suite.java:27) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:105) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.runClasses(JUnitCore.java:62) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.runClasses(JUnitCore.java:49) [junit-4.12.jar:4.12]
+	at com.octo.fffcapp.TestSuiteRunner.main(TestSuiteRunner.java:9) [test-classes/:?]
+Caused by: java.nio.file.NoSuchFileException: invalid
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:361) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:407) ~[?:1.8.0_172]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384) ~[?:1.8.0_172]
+	at java.nio.file.Files.newInputStream(Files.java:152) ~[?:1.8.0_172]
+	at java.nio.file.Files.newBufferedReader(Files.java:2784) ~[?:1.8.0_172]
+	at java.nio.file.Files.lines(Files.java:3744) ~[?:1.8.0_172]
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:23) ~[classes/:?]
+	... 46 more
+2018-11-13 03:13:54,199 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:13:54,199 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 03:13:54,244 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 03:14:10,705 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:14:10,708 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [invalid].
+2018-11-13 03:14:10,711 [main] ERROR com.octo.fffcapp.converter.FFFConverter - Unable to read metadate file [invalid].
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: java.nio.file.NoSuchFileException: invalid
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:28) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.loadMetadata(FFFConverter.java:59) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:30) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.invalidFileLocationTest(FFFConverterTest.java:55) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.junit.runners.Suite.runChild(Suite.java:128) [junit-4.12.jar:4.12]
+	at org.junit.runners.Suite.runChild(Suite.java:27) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.junit.runners.Suite.runChild(Suite.java:128) [junit-4.12.jar:4.12]
+	at org.junit.runners.Suite.runChild(Suite.java:27) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:105) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.runClasses(JUnitCore.java:62) [junit-4.12.jar:4.12]
+	at org.junit.runner.JUnitCore.runClasses(JUnitCore.java:49) [junit-4.12.jar:4.12]
+	at com.octo.fffcapp.TestSuiteRunner.main(TestSuiteRunner.java:9) [test-classes/:?]
+Caused by: java.nio.file.NoSuchFileException: invalid
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:361) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:407) ~[?:1.8.0_172]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384) ~[?:1.8.0_172]
+	at java.nio.file.Files.newInputStream(Files.java:152) ~[?:1.8.0_172]
+	at java.nio.file.Files.newBufferedReader(Files.java:2784) ~[?:1.8.0_172]
+	at java.nio.file.Files.lines(Files.java:3744) ~[?:1.8.0_172]
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:23) ~[classes/:?]
+	... 46 more
+2018-11-13 03:14:10,719 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:14:10,720 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 03:14:10,764 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 03:14:49,420 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:14:49,424 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [invalid].
+2018-11-13 03:14:49,426 [main] ERROR com.octo.fffcapp.converter.FFFConverter - Unable to read metadate file [invalid].
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: java.nio.file.NoSuchFileException: invalid
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:28) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.loadMetadata(FFFConverter.java:59) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:30) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.invalidFileLocationTest(FFFConverterTest.java:55) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206) [.cp/:?]
+Caused by: java.nio.file.NoSuchFileException: invalid
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:361) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:407) ~[?:1.8.0_172]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384) ~[?:1.8.0_172]
+	at java.nio.file.Files.newInputStream(Files.java:152) ~[?:1.8.0_172]
+	at java.nio.file.Files.newBufferedReader(Files.java:2784) ~[?:1.8.0_172]
+	at java.nio.file.Files.lines(Files.java:3744) ~[?:1.8.0_172]
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:23) ~[classes/:?]
+	... 30 more
+2018-11-13 03:14:49,435 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:14:49,436 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 03:14:49,504 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 03:24:32,550 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:24:32,554 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [invalid].
+2018-11-13 03:24:32,557 [main] ERROR com.octo.fffcapp.converter.FFFConverter - Unable to read metadate file [invalid].
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: java.nio.file.NoSuchFileException: invalid
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:28) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.loadMetadata(FFFConverter.java:59) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:30) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.invalidFileLocationTest(FFFConverterTest.java:55) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252) [surefire-junit4-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141) [surefire-junit4-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112) [surefire-junit4-2.12.4.jar:2.12.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189) [surefire-api-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165) [surefire-booter-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85) [surefire-booter-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115) [surefire-booter-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75) [surefire-booter-2.12.4.jar:2.12.4]
+Caused by: java.nio.file.NoSuchFileException: invalid
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:361) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:407) ~[?:1.8.0_172]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384) ~[?:1.8.0_172]
+	at java.nio.file.Files.newInputStream(Files.java:152) ~[?:1.8.0_172]
+	at java.nio.file.Files.newBufferedReader(Files.java:2784) ~[?:1.8.0_172]
+	at java.nio.file.Files.lines(Files.java:3744) ~[?:1.8.0_172]
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:23) ~[classes/:?]
+	... 36 more
+2018-11-13 03:24:32,574 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:24:32,574 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 03:24:32,620 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 03:27:11,657 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:27:11,661 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [invalid].
+2018-11-13 03:27:11,664 [main] ERROR com.octo.fffcapp.converter.FFFConverter - Unable to read metadate file [invalid].
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: java.nio.file.NoSuchFileException: invalid
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:28) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.loadMetadata(FFFConverter.java:59) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:30) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.invalidFileLocationTest(FFFConverterTest.java:55) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252) [surefire-junit4-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141) [surefire-junit4-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112) [surefire-junit4-2.12.4.jar:2.12.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189) [surefire-api-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165) [surefire-booter-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85) [surefire-booter-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115) [surefire-booter-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75) [surefire-booter-2.12.4.jar:2.12.4]
+Caused by: java.nio.file.NoSuchFileException: invalid
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:361) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:407) ~[?:1.8.0_172]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384) ~[?:1.8.0_172]
+	at java.nio.file.Files.newInputStream(Files.java:152) ~[?:1.8.0_172]
+	at java.nio.file.Files.newBufferedReader(Files.java:2784) ~[?:1.8.0_172]
+	at java.nio.file.Files.lines(Files.java:3744) ~[?:1.8.0_172]
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:23) ~[classes/:?]
+	... 36 more
+2018-11-13 03:27:11,682 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 03:27:11,683 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 03:27:11,729 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
+2018-11-13 04:14:12,121 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 04:14:12,125 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [invalid].
+2018-11-13 04:14:12,128 [main] ERROR com.octo.fffcapp.converter.FFFConverter - Unable to read metadate file [invalid].
+com.octo.fffcapp.exception.FixedFileFormatConverterIOException: java.nio.file.NoSuchFileException: invalid
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:28) ~[classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.loadMetadata(FFFConverter.java:59) [classes/:?]
+	at com.octo.fffcapp.converter.FFFConverter.process(FFFConverter.java:30) [classes/:?]
+	at com.octo.fffcapp.FFFConverterTest.invalidFileLocationTest(FFFConverterTest.java:55) [test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78) [junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:78) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:84) [mockito-core-2.10.0.jar:?]
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39) [mockito-core-2.10.0.jar:?]
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:161) [mockito-core-2.10.0.jar:?]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252) [surefire-junit4-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141) [surefire-junit4-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112) [surefire-junit4-2.12.4.jar:2.12.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_172]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_172]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_172]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_172]
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189) [surefire-api-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165) [surefire-booter-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85) [surefire-booter-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115) [surefire-booter-2.12.4.jar:2.12.4]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75) [surefire-booter-2.12.4.jar:2.12.4]
+Caused by: java.nio.file.NoSuchFileException: invalid
+	at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107) ~[?:1.8.0_172]
+	at sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:214) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:361) ~[?:1.8.0_172]
+	at java.nio.file.Files.newByteChannel(Files.java:407) ~[?:1.8.0_172]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:384) ~[?:1.8.0_172]
+	at java.nio.file.Files.newInputStream(Files.java:152) ~[?:1.8.0_172]
+	at java.nio.file.Files.newBufferedReader(Files.java:2784) ~[?:1.8.0_172]
+	at java.nio.file.Files.lines(Files.java:3744) ~[?:1.8.0_172]
+	at com.octo.fffcapp.file.FileReader.read(FileReader.java:23) ~[classes/:?]
+	... 36 more
+2018-11-13 04:14:12,151 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Checking file locations.
+2018-11-13 04:14:12,152 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse metadata file [files/input/metadata.txt].
+2018-11-13 04:14:12,207 [main] INFO  com.octo.fffcapp.converter.FFFConverter - Attempting to parse data file [files/input/data.txt] and to write int file [files/output/output.csv].
