@@ -107,17 +107,12 @@ function extractColumnsMetaData(metaStirng) {
  * @param {*} metaArray
  */
 function createFileHeader(metaArray) {
-  header = "";
-  const metaLenght = metaArray.length;
-  for (let i = 0; i < metaLenght; i++) {
-    if (i < metaLenght - 1) {
-      header += extractColumnsMetaData(metaArray[i])[0];
-      header += ",";
-    } else {
-      header += extractColumnsMetaData(metaArray[i])[0];
-    }
+  let headerArray = [];
+  const metaLength = metaArray.length;
+  for (let i = 0; i < metaLength; i++) {
+    headerArray.push(extractColumnsMetaData(metaArray[i])[0]);
   }
-  return header;
+  return headerArray.join();
 }
 
 /**
@@ -126,30 +121,25 @@ function createFileHeader(metaArray) {
  * @param {Array} metaArray
  */
 function lineFormater(line, metaArray) {
-  let newLine = "";
+  let lineArray = [];
   let substringFromChar = 0;
   try {
-    const metaLenght = metaArray.length;
-    for (let i = 0; i < metaLenght; i++) {
+    const metaLength = metaArray.length;
+    for (let i = 0; i < metaLength; i++) {
       const substringToChar = parseInt(extractColumnsMetaData(metaArray[i])[1]);
       const dataType = extractColumnsMetaData(metaArray[i])[2];
       let subString = line.substring(
         substringFromChar,
         substringFromChar + substringToChar
       );
-      subString = checkDataType(subString, dataType.trim());
-      if (subString.toString().includes(",")) {
+      subString = checkDataType(subString, dataType.trim()).toString();
+      if (subString.includes(",")) {
         subString = '"'.concat(subString).concat('"');
       }
-      if (i < metaLenght - 1) {
-        newLine += subString;
-        newLine += ",";
-      } else {
-        newLine += subString;
-      }
+      lineArray.push(stringSanitizer(subString, /\s/g));
       substringFromChar = substringFromChar + substringToChar;
     }
-    return stringSanitizer(newLine, /\s/g);
+    return lineArray.join();
   } catch (ex) {
     console.log(ex.message);
     process.exit(1);
@@ -167,9 +157,9 @@ function generate_csv(fixedFileFormat, metadataFile, wherToSave) {
       const rl = readLine(fixedFileFormat);
       const metaArray = data.toString().split("\n");
       let i = 0;
+      const regex = new RegExp(/[^a-zA-Z0-9\-,\.\s]/g);
       rl.on("line", line => {
         try {
-          const regex = new RegExp(/[^a-zA-Z0-9\-,\.\s]/g);
           line = stringSanitizer(line, regex);
           if (i === 0) {
             writeToFile(wherToSave, createFileHeader(metaArray).concat("\n"));
