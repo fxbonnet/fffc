@@ -2,6 +2,7 @@ const readline = require("readline");
 const fs = require("fs");
 const util = require("util");
 const readFile = util.promisify(fs.readFile);
+let recordProcessed = 0;
 
 /**
  * To read a big file line by line
@@ -156,8 +157,8 @@ function generate_csv(fixedFileFormat, metadataFile, wherToSave) {
     .then(data => {
       const rl = readLine(fixedFileFormat);
       const metaArray = data.toString().split("\n");
-      let i = 0;
       const regex = new RegExp(/[^a-zA-Z0-9\-,\.\s]/g);
+      let i = 0;
       rl.on("line", line => {
         try {
           line = stringSanitizer(line, regex);
@@ -170,16 +171,15 @@ function generate_csv(fixedFileFormat, metadataFile, wherToSave) {
           }
         } catch (ex) {
           console.log(ex.message);
+          clearInterval(refreshInterval);
           process.exit(1);
         }
       });
-      rl.on("end", () => {
-        console.log(i);
-      });
-      console.log("Please wait...");
+      console.log(`Please wait...`);
     })
     .catch(err => {
       console.log(new Error(err.message));
+      clearInterval(refreshInterval);
       return;
     });
 }
@@ -195,12 +195,26 @@ function writeToFile(path = "datafile.csv", input) {
       flags: "a"
     });
     logger.write(input);
+    recordProcessed++;
   } catch (ex) {
     console.log(new Error("While saving the file something went wrong"));
   } finally {
     logger.end();
   }
 }
+let z = 0;
+const refreshInterval = setInterval(() => {
+  if (z === recordProcessed) {
+    clearInterval(refreshInterval);
+    console.log(`\nDone.`);
+    process.exit(0);
+  }
+  z = recordProcessed;
+  process.stdout.write(
+    `\t${recordProcessed.toLocaleString()} records processed`
+  );
+  process.stdout.cursorTo(0, process.stdout);
+}, 500);
 
 module.exports.stringSanitizer = stringSanitizer;
 module.exports.reformatDate = reformatDate;
