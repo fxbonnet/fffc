@@ -158,17 +158,11 @@ function generate_csv(fixedFileFormat, metadataFile, wherToSave) {
       const rl = readLine(fixedFileFormat);
       const metaArray = data.toString().split("\n");
       const regex = new RegExp(/[^a-zA-Z0-9\-,\.\s]/g);
-      let i = 0;
+      writeToFile(wherToSave, createFileHeader(metaArray).concat("\n"));
       rl.on("line", line => {
         try {
           line = stringSanitizer(line, regex);
-          if (i === 0) {
-            writeToFile(wherToSave, createFileHeader(metaArray).concat("\n"));
-            writeToFile(wherToSave, lineFormater(line, metaArray).concat("\n"));
-            i++;
-          } else {
-            writeToFile(wherToSave, lineFormater(line, metaArray).concat("\n"));
-          }
+          writeToFile(wherToSave, lineFormater(line, metaArray).concat("\n"));
         } catch (ex) {
           console.log(ex.message);
           clearInterval(refreshInterval);
