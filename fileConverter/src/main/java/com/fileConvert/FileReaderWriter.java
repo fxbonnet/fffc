@@ -78,9 +78,16 @@ public class FileReaderWriter {
 
 						txtParser.append(txtValues[i] + CustomMessage.DELIMITER);
 
-					else if (i == 2 && txtValues[i].length() < 6 && !txtValues[i].matches(","))
-						txtParser.append(txtValues[i]);
-					else {
+					else if (i == 2 && txtValues[i].length() < 6 && !txtValues[i].matches(",")) {
+						try {
+						Float weightValue = Float.parseFloat(txtValues[i]);
+						txtParser.append(weightValue);
+						}catch(NumberFormatException e)
+						{
+							throw new CustomException(CustomMessage.INVALID_WEIGHT);
+
+						}
+					}else {
 						if (i == 0)
 							throw new CustomException(CustomMessage.INVALID_FIRST_NAME);
 						else if (i == 1)
