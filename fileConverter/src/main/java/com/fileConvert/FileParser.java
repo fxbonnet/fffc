@@ -8,44 +8,61 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.text.ParseException;
-import java.util.Date;
+import java.util.List;
 
-public class FileParser implements IParser{
+import com.common.CustomMessage;
+import com.exception.CustomException;
+import com.model.MetaData;
+
+public class FileParser implements IParser {
 
 	/**
-	 * This method read,validate and format the input text file and write it to the
-	 * CSV file.
+	 * This method read,validate and format the input text file as per the metadata
+	 * file and write it to the CSV file.
 	 * 
-	 * @param textFilePath A variable of type String.
-	 * @param csvFilePath  A variable of type String.
+	 * @param textFilePath     A variable of type String.
+	 * @param csvFilePath      A variable of type String.
+	 * @param metaDataFilePath A variable of type String.
 	 * @return void.
 	 * @exception CustomException On error.
 	 */
 
-	public void readWriteFile(String textFilePath, String csvFilePath) throws CustomException {
+	public void readWriteFile(String textFilePath, String csvFilePath, String metaDataFilePath) throws CustomException {
 
 		BufferedReader txtBufferReader = null;
+		BufferedReader metaDataBufferReader = null;
 
 		BufferedWriter csvBufferWriter = null;
 		FileOutputStream fileOutputStream = null;
 		FileInputStream fileInputStream = null;
+		FileInputStream metaDatafileInputStream = null;
+
 		try {
+			// creates Metafile reader.
+			metaDatafileInputStream = getMetaDataFile(metaDatafileInputStream, metaDataFilePath);
+			metaDataBufferReader = new BufferedReader(new InputStreamReader(metaDatafileInputStream, "UTF8"));
+
+			// Creates input text file reader.
 			fileInputStream = getTextFile(fileInputStream, textFilePath);
-			fileOutputStream = getCSVFile(fileOutputStream, csvFilePath);
-
-			String nextLine = null;
-
 			txtBufferReader = new BufferedReader(new InputStreamReader(fileInputStream, "UTF8"));
+
+			// Creates output CSV writter.
+			fileOutputStream = getCSVFile(fileOutputStream, csvFilePath);
 			csvBufferWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, "UTF-8"));
 
+			String nextLine = null;
+			// Parse metafile data.
+			List<MetaData> metadataValues = new MetaDataFileReader().parseMetaFile(metaDataBufferReader);
+			
 			int i = 0;
+			// Reads the text input file line by line and writes to the output CSV file.
 			while ((nextLine = txtBufferReader.readLine()) != null) {
 
-				nextLine = validate(nextLine);
+				nextLine = new TextFileReader().parseTextFile(nextLine, metadataValues);
 				if (i == 0) {
 					// writes the header information in CSV file.
-					csvBufferWriter.write(CustomMessage.HEADER_FORMAT);
+					String headerNames = new MetaDataFileReader().writeCSVHeader(metadataValues);
+					csvBufferWriter.write(headerNames);
 					i = -1;
 
 				}
@@ -66,71 +83,39 @@ public class FileParser implements IParser{
 				csvBufferWriter.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				// throw new CustomException(CustomMessage.RESOURCE_EXCEPTION);
+				throw new CustomException(CustomMessage.RESOURCE_EXCEPTION);
 			}
 
 		}
-
-	} 
-	/**
-	 * This method validates the text data line by line and format the text that
-	 * need to be written in CSV.
-	 * 
-	 * @param txtRead A variable of type String.
-	 * @return String.
-	 * @exception CustomException On error.
-	 */
-
-	private String validate(String txtRead) throws CustomException {
-		String txtDate = null;
-		StringBuilder txtParser = new StringBuilder();
-		if (txtRead != null && txtRead.length() > 0) {
-			try {
-				txtDate = CustomMessage.CSV_DATE_FORMAT
-						.format((Date) CustomMessage.TXT_DATE_FORMAT.parse(txtRead.trim().substring(0, 10).toString()));
-				txtParser.append(txtDate + CustomMessage.DELIMITER);
-			} catch (ParseException e) {
-
-				throw new CustomException(CustomMessage.DATE_PARSE_EXCEPTION);
-			}
-			String txtReadTemp = txtRead.trim().substring(10, txtRead.trim().length());
-			String[] txtValues = txtReadTemp.replaceAll("\\s+", " ").split(" ");
-			if (txtValues.length == 3) {
-				for (int i = 0; i < txtValues.length; i++) {
-
-					if (txtValues[i].length() < 16 && i < 2)
-
-						txtParser.append(txtValues[i] + CustomMessage.DELIMITER);
-
-					else if (i == 2 && txtValues[i].length() < 6 && !txtValues[i].matches(",")) {
-						try {
-							Float weightValue = Float.parseFloat(txtValues[i]);
-							txtParser.append(weightValue);
-						} catch (NumberFormatException e) {
-							throw new CustomException(CustomMessage.INVALID_WEIGHT);
-
-						}
-					} else {
-						if (i == 0)
-							throw new CustomException(CustomMessage.INVALID_FIRST_NAME);
-						else if (i == 1)
-							throw new CustomException(CustomMessage.INVALID_LAST_NAME);
-						else
-							throw new CustomException(CustomMessage.INVALID_WEIGHT);
-					}
-
-				}
-			} else
-				throw new CustomException(CustomMessage.INVALID_DATA);
-
-		}
-		return txtParser.append(CustomMessage.NEW_LINE).toString();
 
 	}
 
 	/**
-	 * This method creates a FileInputStream by opening a connection to an actual
-	 * file, the file named by the File object file in the file system.
+	 * This method creates a FileInputStream by opening a connection to an metadata
+	 * csv file.
+	 * 
+	 * @param metaDatafileInputStream A variable of type FileInputStream.
+	 * @param metaDataFilePath        A variable of type String.
+	 * @return FileInputStream.
+	 * @exception CustomException On error.
+	 */
+
+	private FileInputStream getMetaDataFile(FileInputStream metaDatafileInputStream, String metaDataFilePath)
+			throws CustomException {
+		try {
+			metaDatafileInputStream = new FileInputStream(metaDataFilePath);
+
+		} catch (FileNotFoundException e) {
+
+			throw new CustomException(CustomMessage.METADATA_FILE_NOT_FOUND);
+		}
+
+		return metaDatafileInputStream;
+	}
+
+	/**
+	 * This method creates a FileInputStream by opening a connection to an text
+	 * input file.
 	 * 
 	 * @param fileInputStream A variable of type FileInputStream.
 	 * @param textFilePath    A variable of type String.
@@ -151,8 +136,7 @@ public class FileParser implements IParser{
 	}
 
 	/**
-	 * This method Creates a file output stream to write to the file represented by
-	 * the specified File object.
+	 * This method Creates a file output stream to write to the output csv file.
 	 * 
 	 * @param fileOutputStream A variable of type FileOutputStream.
 	 * @param csvFilePath      A variable of type String.
@@ -170,5 +154,4 @@ public class FileParser implements IParser{
 		return fileOutputStream;
 	}
 
-	
 }

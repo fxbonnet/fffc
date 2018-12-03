@@ -1,16 +1,9 @@
 package com.fileConvert;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.text.ParseException;
-import java.util.Date;
 import java.util.Scanner;
+
+import com.common.CustomMessage;
+import com.exception.CustomException;
 
 /*
  * Fixed File Format converter.
@@ -26,15 +19,27 @@ public class FileReaderWriter {
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
+		
+		//Enter text file name and location
 		System.out.println(CustomMessage.TEXT_FILE_PATH);
 		String textFilePath = scanner.nextLine();
 		System.out.println(CustomMessage.TEXT_FILE_PATH_ENTERED + textFilePath);
+		
+		//Enter output csv file name and location
 		System.out.println(CustomMessage.CSV_FILE_PATH);
 		String csvFilePath = scanner.nextLine();
 		System.out.println(CustomMessage.CSV_FILE_PATH_ENTERED + csvFilePath);
-		if (textFilePath.trim().length() > 0 && csvFilePath.trim().length() > 0) {
+		
+		//Enter metadata csv file name and location.
+		System.out.println(CustomMessage.METADATA_FILE_PATH);
+		String metaDataFilePath = scanner.nextLine();
+		System.out.println(CustomMessage.METADATA_FILE_PATH_ENTERED + metaDataFilePath);
+
+		//validate the location is entered or not.
+		if (textFilePath.trim().length() > 0 && csvFilePath.trim().length() > 0
+				&& metaDataFilePath.trim().length() > 0) {
 			try {
-				new FileParser().readWriteFile(textFilePath, csvFilePath);
+				new FileParser().readWriteFile(textFilePath, csvFilePath, metaDataFilePath);
 				System.out.println(CustomMessage.CONVERT_FILE_COMPLETED);
 
 			} catch (CustomException e) {
