@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require "octo/fffc"
+
+include Octo::Fffc::Clients
+
+# initialize console client
+console_client = ConsoleClient.new
+
+# execute console client
+# exit 0 or exceptions will make it non-0
+exit console_client.run()

@@ -1,0 +1,8 @@
+# Gemfile
+source 'https://rubygems.org'
+
+group :development, :test do
+  gem 'rspec', '~> 3.6.0'
+  gem 'rspec_junit_formatter', '~> 0.3.0'
+  gem 'simplecov', '~> 0.16.1'
+end

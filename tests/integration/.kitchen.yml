@@ -1,0 +1,124 @@
+---
+platforms:
+  - name: windows-2016
+    driver:
+      name: vagrant
+      box:  mwrock/Windows2016
+      gui: false
+      box_check_update: false
+      vm_hostname: win16
+      platform: windows
+      linked_clone: true
+      customize:
+        memory: 512
+        clipboard: 'bidirectional'
+      synced_folders:
+        - [ "./../../src/.build" , "c:/app/app-gem" ]
+        - [ "./../../src/octo-fffc/spec/octo/data" , "c:/app/app-data" ]
+        - [ "scripts" , "c:/app/app-scripts" ]
+    transport:
+      name: winrm
+
+  - name: windows-2012R2
+    driver:
+      name: vagrant
+      box:  mwrock/Windows2012R2
+      gui: false
+      box_check_update: false
+      vm_hostname: win81-64
+      platform: windows
+      linked_clone: true
+      customize:
+        memory: 512
+        clipboard: 'bidirectional'
+      synced_folders:
+        - [ "./../../src/.build" , "c:/app/app-gem" ]
+        - [ "./../../src/octo-fffc/spec/octo/data" , "c:/app/app-data" ]
+        - [ "scripts" , "c:/app/app-scripts" ]
+    transport:
+      name: winrm
+
+  # - name: windows-10
+  #   driver:
+  #     name: vagrant
+  #     box:  vasalvit/windows-10
+  #     gui: false
+  #     box_check_update: false
+  #     vm_hostname: win10
+  #     platform: windows
+  #     linked_clone: true
+  #     customize:
+  #       memory: 512
+  #       clipboard: 'bidirectional'
+  #     synced_folders:
+  #       - [ "./../../src/.build" , "c:/app/app-gem" ]
+  #       - [ "./../../src/octo-fffc/spec/octo/data" , "c:/app/app-data" ]
+  #       - [ "scripts" , "c:/app/app-scripts" ]
+  #   transport:
+  #     name: winrm
+
+  # - name: windows-8.1
+  #   driver:
+  #     name: vagrant
+  #     box:  therealslimpagey/Windows_8_Puppet
+  #     gui: false
+  #     box_check_update: false
+  #     vm_hostname: win81
+  #     platform: windows
+  #     linked_clone: true
+  #     customize:
+  #       memory: 512
+  #       clipboard: 'bidirectional'
+  #     synced_folders:
+  #       - [ "./../../src/.build" , "c:/app/app-gem" ]
+  #       - [ "./../../src/octo-fffc/spec/octo/data" , "c:/app/app-data" ]
+  #       - [ "scripts" , "c:/app/app-scripts" ]
+  #   transport:
+  #     name: winrm
+
+  - name: drecom/ubuntu-ruby
+    driver:
+      name: docker
+    driver_config:
+      image: drecom/ubuntu-ruby
+      platform: ubuntu
+      volume:
+        - "$(pwd)/../../src/.build:/app-gem"
+        - "$(pwd)/../../src/octo-fffc/spec/octo/data:/app-data"
+        - "$(pwd)/scripts:/app-scripts"
+
+  - name: drecom/centos-ruby
+    driver:
+      name: docker
+    driver_config:
+      image: drecom/centos-ruby
+      platform: rhel
+      volume:
+        - "$(pwd)/../../src/.build:/app-gem"
+        - "$(pwd)/../../src/octo-fffc/spec/octo/data:/app-data"
+        - "$(pwd)/scripts:/app-scripts"
+
+suites:
+  - name: win-server-integration
+    provisioner:
+      name: shell
+      script: scripts/01-gem-test.ps1
+    includes:
+      - windows-2016
+      - windows-2012R2
+   
+  # - name: win-desktop-integration
+  #   provisioner:
+  #     name: shell
+  #     script: scripts/01-gem-test.ps1
+  #   includes:
+  #     - windows-10
+  #     - windows-8.1
+  
+  - name: linux-integration
+    provisioner:
+      name: shell
+      script: scripts/01-gem-test.sh
+    includes:
+      - drecom/ubuntu-ruby
+      - drecom/centos-ruby

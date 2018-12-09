@@ -1,0 +1,46 @@
+# More info at https://github.com/guard/guard#readme
+guard :yield do
+
+    # app changes
+    watch(%r{^octo-fffc/lib/(.+)\.rb$}) { |m|
+       
+        file_path = m[0]
+
+        puts "#{m[0]}   #{m[1]}"
+
+        file_name      = File.basename(file_path, '.rb')
+        test_file_name = "#{m[1]}_spec.rb" 
+        puts "Changed file: #{file_path} -> #{test_file_name}"
+
+        target_cmd = [
+            "echo $(pwd)",
+            "cd octo-fffc",
+            "bundle exec rspec spec/#{test_file_name}"
+        ].join(" && ")
+
+        puts "Running: #{target_cmd}"
+        system(target_cmd)
+    }
+
+    # spec changes
+    watch(%r{^octo-fffc/spec/(.+)\.rb$}) { |m|
+       
+        file_path = m[0]
+
+        puts "#{m[0]}   #{m[1]}"
+
+        # file_name      = File.basename(file_path, '.rb')
+        test_file_name = "#{m[1]}.rb" 
+        puts "Changed file: #{file_path} -> #{test_file_name}"
+
+        target_cmd = [
+            "echo $(pwd)",
+            "cd octo-fffc",
+            "bundle exec rspec spec/#{test_file_name}"
+        ].join(" && ")
+
+        puts "Running: #{target_cmd}"
+        system(target_cmd)
+    }
+
+end 

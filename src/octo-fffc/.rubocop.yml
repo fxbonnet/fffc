@@ -1,0 +1,12 @@
+AllCops:
+  Include:
+    - 'lib/**/*.rb'
+  Exclude:
+     - '.bundle/**/*'
+     - 'Gemfile'
+     - 'bin/**/*'
+     - 'coverage/**/*'
+     - 'spec/**/*'
+     - 'target/**/*'
+     - 'test/**/*'
+     - 'tmp/**/*'
