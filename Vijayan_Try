@@ -1,0 +1,31 @@
+import pandas as pd
+import numpy as np
+import pandasvalidation as pv
+import time
+import datetime
+from schema import Schema, And, Use, Optional
+from io import StringIO
+from pandas_schema import Column, Schema
+from pandas_schema.validation import LeadingWhitespaceValidation, TrailingWhitespaceValidation, CanConvertValidation, MatchesPatternValidation, InRangeValidation, InListValidation
+
+schema = Schema([{'Birth date':   And(str, len),
+                  'First name':   And(str, len),
+                  'Last name':   And(str, len),
+                  'Weight':  And(Use(int))}])
+
+df = pd.read_fwf('C:\\Users\yenis\OneDrive\Desktop\Programming\Python\csv\project1\Source1.txt')
+df.to_csv('C:\\Users\yenis\OneDrive\Desktop\Programming\Python\csv\project1\Target4.csv')
+
+with open('C:\\Users\yenis\OneDrive\Desktop\Programming\Python\csv\project1\Target4.csv') as csvfile:
+    readCSV = csv.reader(csvfile, delimiter=',')
+    for row in readCSV:
+        print(row[0],row[1],row[2],row[3])
+
+with open('C:\\Users\yenis\OneDrive\Desktop\Programming\Python\csv\project1\Target4.csv') as csvfile:
+    readCSV = csv.reader(csvfile, delimiter=',')
+    for row in readCSV:
+
+        row[1] = 
+
+errors = schema.validate(test_data)
+
