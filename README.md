@@ -1,5 +1,38 @@
 # Fixed File Format converter
 
+
+#Design
+There are four aspects of functionality:
+ 1. File Reading
+ 2. File Processing
+ 3. MetaData Reading
+ 4. File Writing
+ 
+ Each of the above aspect is made generic and injectable to the service. Since the input files could be large, the file is read progressively in configurable size of batches.
+ The processing and writing is hence performed on the input batch.
+ 
+ The application can be run by executing RunMain class. The class bootstraps spring application context and invokes the service.
+ The input could have been very well scanned and taken dynamically but for demo purpose and to be self-contained,the input refers to the files in resources folder.
+ 
+ #Functional Test
+ The functional tests are data driven with test data sets located at following path:
+ src/test/resources/testData
+ 
+ Each data set contains:
+ 1. Input file
+ 2. Metadata file
+ 3. Expected output file
+ 4. File describing the test case  
+ 
+ The tests can be run by executing:
+ mvn test (as usual)
+ or by executing FixedFileFormatConversionServiceFunctionalTest if running from IDE.
+ 
+ #Unit Test
+FormatConvertHelperTest is written as a sample unit test. 
+
+
+#Task
 Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
 
 Feel free to use your favorite language and libraries if needed (but no proprietary libraries, only open source), fork this project and provide your complete code as a pull request (including source and tests).

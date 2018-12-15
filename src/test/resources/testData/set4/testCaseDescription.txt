@@ -1,0 +1,2 @@
+Description:
+Test case with one of the value containing invalid character in numeric data
