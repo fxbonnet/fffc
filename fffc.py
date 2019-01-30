@@ -16,6 +16,31 @@ supported_types = (
 )
 
 
+def process_metadata_line(metadata_row):
+    if len(metadata_row) != 3:
+        return (None, "Metadata file should have only 3 columns: column name, it's length and data type.")
+    column_name = metadata_row[0].strip()
+    column_type = metadata_row[2]
+    column_length = metadata_row[1]
+    if len(column_name) < 1:
+        return (None, "Column name cannot be empty in metadata file.")
+    # parse int value with extra care
+    try:
+        column_length = int(metadata_row[1])
+    except ValueError:
+        return (None, "Error happened while parsing length for {} column.".format(column_name))
+    if column_length < 1:
+        return (None, "Length should be greater than 0 for {} column".format(column_name))
+    print(column_length)
+    if column_type not in supported_types:
+        return (None, "Unsupported {} type was found for {} column".format(column_type, column_name))
+    column = {
+        'name': column_name,
+        'length': column_length,
+        'type': column_type,
+    }
+    return (column, None)
+
 def load_metadata(filename):
     # init metadata
     metadata = {
@@ -27,25 +52,9 @@ def load_metadata(filename):
     with open(filename, 'r', encoding="utf-8") as csv_file:
         reader = csv.reader(csv_file)
         for row in reader:
-            if len(row) != 3:
-                return (None, "Metadata file should have only 3 columns: column name, it's length and data type.")
-            column_type = row[2]
-            # parse int value with extra care
-            length = 0  # ??
-            try:
-                length = int(row[1])
-            except ValueError:
-                return (None, "")
-
-            name = row[0]
-            
-            if column_type not in supported_types:
-                return (None, "Unsupported type was found in the metadata: " + column_type)
-            column = {
-                'name': row[0],  # length should be greated than 0?
-                'length': int(row[1]),  # positive value?
-                'type': column_type,
-            }
+            column, err = process_metadata_line(row)
+            if err:
+                return (None, err)
             metadata['columns'].append(column)
     metadata['line_length'] = sum([int(val['length']) for val in metadata['columns']])
     return (metadata, None)
@@ -85,7 +94,11 @@ def parse_raw_data(line, metadata):
 def print_console_header():
     print("fffc")
     print("----")
-    print("Simple as 1, 2, 3. Specify the argument file with .data extension.")
+    print("Simple as 1, 2, 3. Specify the argument filename with .data extension.")
+    print()
+    print("For example:")
+    print("  $ python3 fffc.py test_fixtures/original.data")
+    print()
 
 def read_arguments():
     if len(sys.argv) != 2:
@@ -96,7 +109,8 @@ def read_arguments():
 
 def convert_to_csv(input_data, metadata, output_csv):
     if not os.path.isfile(input_data):
-        return (None, "Data file doesn't exist. Please, double check the correct path to the input data.")
+        print("Data file doesn't exist. Please, double check the correct path to the input data.")
+        exit(-1)
     # Collect column names for CSV header from metadata
     headers = (column['name'] for column in metadata['columns'])
     # Save header to CSV file
