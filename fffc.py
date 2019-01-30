@@ -68,7 +68,6 @@ def parse_numeric(value):
 
 def parse_raw_data(line, metadata):
     line = line.replace('\n', '').replace('\r', '')
-    print(len(line))
     if len(line) != metadata['line_length']:
         return (None, "Length of the line is not according to the metadata.")
     parsed_values = []
@@ -83,23 +82,9 @@ def parse_raw_data(line, metadata):
         parsed_values.append(res)
     return (tuple(parsed_values), None)
 
-def save_csv(filename, data, metadata):
-    for column in metadata['columns']:
-        length = column['length']
-    headers = (column['name'] for column in metadata['columns'])        
-    with open(filename, 'w', newline="\n", encoding="utf-8") as f:
-        writer = csv.writer(f, delimiter=delimiter)
-        writer.writerow(headers)
-        writer.writerows(data)
-
-def load_data(filename):
-    if not os.path.isfile(filename):
-        return (None, "Data file doesn't exist. Please, double check the correct path to the input data.")
-    text_file = open(filename, "r", encoding="utf-8")
-    return (text_file.readlines(), None)
-
 def print_console_header():
     print("fffc")
+    print("----")
     print("Simple as 1, 2, 3. Specify the argument file with .data extension.")
 
 def read_arguments():
@@ -109,8 +94,31 @@ def read_arguments():
     base = os.path.splitext(filename)[0]
     return (filename, base + '.meta', base + '.csv', None)
 
+def convert_to_csv(input_data, metadata, output_csv):
+    if not os.path.isfile(input_data):
+        return (None, "Data file doesn't exist. Please, double check the correct path to the input data.")
+    # Collect column names for CSV header from metadata
+    headers = (column['name'] for column in metadata['columns'])
+    # Save header to CSV file
+    csv_file = open(output_csv, 'w', newline="\n", encoding="utf-8")
+    csv_writer = csv.writer(csv_file, delimiter=delimiter)
+    csv_writer.writerow(headers)
+    csv_file.flush()
+    with open(input_data, "r", encoding="utf-8") as text_file:
+        line_number = 0
+        for line in text_file:
+            line_number += 1
+            structured_data, err = parse_raw_data(line, metadata)
+            if err:
+                print("Error found in line " + str(line_number) + ": " + err)
+                continue
+            csv_writer.writerow(structured_data)
+            csv_file.flush()
+    csv_file.close()
+
 
 if __name__ == "__main__":
+    print_console_header()
     # read arguments from the command line. We expect only one argument
     input_data, input_metadata, output_csv, err = read_arguments()
     if err:
@@ -121,21 +129,5 @@ if __name__ == "__main__":
     if err:
         print(err)
         exit(-1)
-    raw_data, err = load_data(input_data)
-    if err:
-        print(err)
-        exit(-1)
-    # prepare an empty data list for processed data
-    structured_data = []
-    for index, line in enumerate(raw_data):
-        res, err = parse_raw_data(line, metadata)
-        if err:
-            print("Error found in line " + str(index+1) + ": " + err)
-            continue
-        structured_data.append(res)
-    if not structured_data:
-        print("No CSV file was created because of found errors during the processing data.")
-        exit(-1)
-    # Save processed data to CSV file
-    save_csv(output_csv, structured_data, metadata)
-    print("Done")
+    convert_to_csv(input_data, metadata, output_csv)
+    print("Finished")
