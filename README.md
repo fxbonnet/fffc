@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/stanhordiyenko/fffc.svg?branch=master)](https://travis-ci.org/stanhordiyenko/fffc) [![codecov](https://codecov.io/gh/stanhordiyenko/fffc/branch/master/graph/badge.svg)](https://codecov.io/gh/stanhordiyenko/fffc)
+
 # Fixed File Format converter
 
 Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.

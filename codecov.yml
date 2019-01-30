@@ -1,0 +1,2 @@
+ignore:
+  - "*_tests.py"  # ignore unit test files
