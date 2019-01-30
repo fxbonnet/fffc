@@ -52,7 +52,7 @@ def load_metadata(filename):
 
 def parse_date(value):
     try:
-        return (datetime.datetime.strptime(value, "%Y-%m-%d").strftime("%d/%m/%Y"), None)
+        return (datetime.datetime.strptime(value.strip(), "%Y-%m-%d").strftime("%d/%m/%Y"), None)
     except ValueError:
         return (None, "Couldn't parse the date. Passed value: " + value)
 
@@ -67,7 +67,8 @@ def parse_numeric(value):
     return (res[0], None)
 
 def parse_raw_data(line, metadata):
-    line = line.strip()
+    line = line.replace('\n', '').replace('\r', '')
+    print(len(line))
     if len(line) != metadata['line_length']:
         return (None, "Length of the line is not according to the metadata.")
     parsed_values = []

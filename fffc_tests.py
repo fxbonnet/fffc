@@ -19,6 +19,9 @@ class ParseMethods(unittest.TestCase):
     def test_parse_date(self):
         self.assertEqual(fffc.parse_date("1985-06-08"), ("08/06/1985", None))
 
+    def test_parse_date1(self):
+        self.assertEqual(fffc.parse_date("1985-6-8"), ("08/06/1985", None))
+
 
 if __name__ == '__main__':
     unittest.main()
