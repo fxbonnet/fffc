@@ -69,4 +69,7 @@ Birth date,First name,Last name,Weight
 All lines from data file that do not comply with metadata information will be 
 skipped. A proper error message will be displayed in the console.
 
+Travis CI and CodeCov are used in this repository. Refer to badges in the top 
+of `README.md` file for more information.
+
 :rocket: Enjoy.
