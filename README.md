@@ -66,7 +66,7 @@ Birth date,First name,Last name,Weight
 * run `python3 fffc.py test_fixtures/original.data`
 * navigate to `test_fixtures` folder to find `original.csv` file with processed and structured data.
 
-All lines from data file that do not comply with metadata informationj will be 
+All lines from data file that do not comply with metadata information will be 
 skipped. A proper error message will be displayed in the console.
 
 :rocket: Enjoy.
