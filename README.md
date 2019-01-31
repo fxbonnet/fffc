@@ -58,3 +58,15 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+## Getting Started
+
+* make sure that you have Python 3.x installed. fffc doesn't have any other dependencies;
+* get the latest code from GitHub;
+* navigate to fffc folder;
+* run `python3 fffc.py test_fixtures/original.data`
+* navigate to `test_fixtures` folder to find `original.csv` file with processed and structured data.
+
+All lines from data file that do not comply with metadata informationj will be 
+skipped. A proper error message will be displayed in the console.
+
+:rocket: Enjoy.

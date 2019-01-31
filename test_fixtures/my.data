@@ -1,28 +1,12 @@
 1970-01-01John           Gold           81.50:)All good with this line                 
+1985-06-08      Станислав      Гордиенко77.60:)Cyrilic text should be fine             
+2001-11-29             写汉Wong           54.00:)Chinese characters                      
+1995-11-11Mila           Tu              11.00:(Line is shorter than expected
+1996-9-1  David          Guero          -2.88:)Another date format                     
+Wrong line
 
-1970-01-01John           Gold           81.50:)All good with this line                 
-
-1970-15-01John           Smith          81.50
-1975-01-31Jane-yuweufgwejhfvjw-asdgajshgfahjs           Бондаревичекном-61.1
-1988-02-30Стас           Гордиенко       77.2
-1970-01-01John           Smith          8-1.5
-1970-01-01John           Smith        44441.5
-1970-01-01John           Smith,Black     81.5
-1970-01-01John'O MCcollonSmith           81.5
-1970-01-01John           Smith          -81.5
-1970-01-01读写汉字-学中文         汉语            1600
-3098-01-01John           Smith           81,5
-3098-01-01 语                             8175
-3098-01-01Бонда          Бондаревичек    8175
-3098-01-01                               8175
-3098-01-01ÅåÆ-æØø       1Å,å,Ä,ä,Ö,ö     8175
-sdasdasdadJohn           Smith          81.50
-1985-6-8  John $%^^^&&*&*#!@!  Smith    81.50
-
-
-明日香
-Bissen
-Bjorn
-Bjornsen
-Melgaard
-Meng
+01-02-2012Alice          Meldenson       5.35:(Wrong date format                       
+2001-01-17Melgaärd                 Björn 1.00:)Should be parsed successfully           
+Some text First          Last            0.00:(Text instead of date                    
+1977-01-14First name     Last name       0.00:) Symbols: ~!@#$%^&*()_+[]{},./<>?;':"   
+1988-12-31Yu             Gu              f   :(Wrong numeric value                     

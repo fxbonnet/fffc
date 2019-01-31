@@ -31,7 +31,6 @@ def process_metadata_line(metadata_row):
         return (None, "Error happened while parsing length for {} column.".format(column_name))
     if column_length < 1:
         return (None, "Length should be greater than 0 for {} column".format(column_name))
-    print(column_length)
     if column_type not in supported_types:
         return (None, "Unsupported {} type was found for {} column".format(column_type, column_name))
     column = {
