@@ -40,9 +40,13 @@ class ParseMethods(unittest.TestCase):
         self.assertEqual(fffc.parse_numeric("-5,00"), (None, "No numeric value can be found. Passed value: -5,00"))
         self.assertEqual(fffc.parse_numeric(""), (None, "No numeric value can be found. Passed value: "))
 
-    def test_parse_date(self):
+    def test_parse_date_successful(self):
         self.assertEqual(fffc.parse_date("1985-06-08"), ("08/06/1985", None))
         self.assertEqual(fffc.parse_date("1985-6-8"), ("08/06/1985", None))
+
+    def test_parse_date_failed(self):
+        self.assertEqual(fffc.parse_date("Wrong date"), (None, "Couldn't parse the date. Passed value: Wrong date"))
+        self.assertEqual(fffc.parse_date("08-06-1985"), (None, "Couldn't parse the date. Passed value: 08-06-1985"))
 
 class MetadataMethods(unittest.TestCase):
     def test_process_metadata_line_successful(self):
@@ -55,6 +59,20 @@ class MetadataMethods(unittest.TestCase):
         self.assertEqual(fffc.process_metadata_line(["", "10", "date"]), (None, "Column name cannot be empty in metadata file."))
         self.assertEqual(fffc.process_metadata_line(["Column name", "0", "numeric"]), (None, 'Length should be greater than 0 for Column name column'))
         self.assertEqual(fffc.process_metadata_line(["Column name", "5", "unsupported"]), (None, 'Unsupported unsupported type was found for Column name column'))
+        self.assertEqual(fffc.process_metadata_line(["Column name", "f", "numeric"]), (None, 'Error happened while parsing length for Column name column.'))
+
+    def test_load_metadata_successful(self):
+        metadata, err = fffc.load_metadata("test_fixtures/original.meta")
+        self.assertIsNone(err)
+        self.assertEqual(metadata['line_length'], 45)
+
+    def test_load_metadata_failed(self):
+        metadata, err = fffc.load_metadata("test_fixtures/failed.meta")
+        self.assertIsNotNone(err)
+        self.assertEqual(err, "Unsupported wrongtype type was found for Last name column")
+        metadata, err = fffc.load_metadata("test_fixtures/nosuchfile.meta")
+        self.assertIsNotNone(err)
+        self.assertEqual(err, "Metadata couldn't be found. Please, double check the data file has the metadata.")
 
 
 if __name__ == '__main__':
