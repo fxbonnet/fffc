@@ -18,8 +18,8 @@ def get_file_checksum(filename):
     return hasher.hexdigest()
 
 
-class FffcMethod(unittest.TestCase):
-    def test(self):
+class FffcMethods(unittest.TestCase):
+    def test_convert_to_csv_successful(self):
         '''This unit test covers a success execution path of the application'''
         original_data_filename = "test_fixtures/original.data"
         original_metadata = "test_fixtures/original.meta"
@@ -30,6 +30,7 @@ class FffcMethod(unittest.TestCase):
             self.fail(err)
         fffc.convert_to_csv(original_data_filename, metadata, original_csv_filename)
         self.assertEqual(get_file_checksum(original_csv_filename), "6dfed0fb473d0dae1b005464da638e157169520c")
+
 
 class ParseMethods(unittest.TestCase):
     def test_parse_numeric_successful(self):
@@ -47,6 +48,35 @@ class ParseMethods(unittest.TestCase):
     def test_parse_date_failed(self):
         self.assertEqual(fffc.parse_date("Wrong date"), (None, "Couldn't parse the date. Passed value: Wrong date"))
         self.assertEqual(fffc.parse_date("08-06-1985"), (None, "Couldn't parse the date. Passed value: 08-06-1985"))
+
+    def test_parse_raw_data_successful(self):
+        metadata = {
+            'line_length': 12,
+            'columns': [
+                { 'name': 'Full name', 'length': 10, 'type': 'string'},
+                { 'name': 'Age', 'length': 2, 'type': 'numeric'}
+            ]
+        }
+        res, err = fffc.parse_raw_data("Stanislav 33", metadata)
+        self.assertIsNone(err)
+        self.assertEqual(res, ("Stanislav", '33'))
+
+    def test_parse_raw_data_failed(self):
+        metadata = {
+            'line_length': 12,
+            'columns': [
+                { 'name': 'Full name', 'length': 10, 'type': 'string'},
+                { 'name': 'Age', 'length': 2, 'type': 'numeric'}
+            ]
+        }
+        res, err = fffc.parse_raw_data("Stanislav Hordiyenko 33", metadata)
+        self.assertIsNotNone(err)
+        self.assertEqual(err, "Length of the line is not according to the metadata.")
+        res, err = fffc.parse_raw_data("Stanislav 3f", metadata)
+        print(res)
+        self.assertIsNotNone(err)
+        self.assertEqual(err, "No numeric value can be found. Passed value: 3f")
+
 
 class MetadataMethods(unittest.TestCase):
     def test_process_metadata_line_successful(self):
