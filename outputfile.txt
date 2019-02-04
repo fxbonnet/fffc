@@ -1,0 +1,9 @@
+Birth date,First name,Last name,Weight
+01/01/1970,John,Smith,81.5
+31/01/1975,Jane,Doe,61.1
+28/11/1988,Bob,Big,102.4
+28/11/1988,Kate❤️❤️❤️....@#♦️♦️,Trailing utf8,123.4
+28/11/1988,Kate❤️❤️❤️.😃..@#♦️,Non-trailing,123.4
+28/11/1988,Bob,"Bigger,Biggest",102.4
+28/11/1988,Bob 'Mad Dog',Double-quotes,102.4
+28/11/1988,'Bob 'Mad Dog',Double-quotes,102.4

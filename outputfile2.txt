@@ -1,0 +1,4 @@
+Movie Name,Rating,Release date
+Predator,5,01/01/1987
+The Terminator,5,01/01/1984
+Skin Deep,4,01/01/1989

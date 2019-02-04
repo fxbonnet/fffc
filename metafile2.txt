@@ -1,0 +1,3 @@
+Movie Name,25,string
+Rating,1,numeric
+Release date,10,date
