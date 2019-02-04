@@ -7,7 +7,3 @@
   (with-open [reader (io/reader file-path)]
     (doall
       (csv/read-csv reader))))
-
-
-(comment (read-csv "resources/test/meta/meta-1.csv")
-         (slurp (io/file "resources/test/meta/meta-1.csv")))

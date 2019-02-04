@@ -3,7 +3,6 @@
             [clojure.spec.alpha :as spec]
             [clojure.data.csv :as csv]
             [clojure.java.io :as io]
-            [clj-time.format :as tf]
             [com.fffc.csv :as fffc-csv]
             [com.fffc.data :as data]))
 
@@ -37,10 +36,6 @@
                        (update-in [:column-length] data/string->int)
                        (update-in [:column-type] keyword))]
     column-def))
-
-(comment (zipmap [:column-name :column-length :column-type] ["First name" "string"] )
-         (update-in {:column-name "First name", :column-length "string"} [:column-length] data/string->int)
-         (data/string->int "string"))
 
 (defn column-definitions [meta-data-file-path]
   "Read the meta data from the file and constructs the list of column definitions"
@@ -94,56 +89,3 @@
     (catch Exception e
       (println (.getMessage e))
       (ex-data e))))
-
-
-;;======================================================================================================================
-
-(comment (with-open [out (io/writer "resources/test/source/big-data.txt" :append true)]
-           (loop [lines 100000000]
-             (if (= lines 0)
-               nil
-               (do
-                 (.write out "1970-01-01John           Smith           81.5\n")
-                 (recur (dec lines))))))
-         (dec 1))
-
-(comment (let [data '(["01/01/1970" "John             " "Smith           " 81.5]
-                       ["31/01/1975" "Jane            " "Doe             " 61.1]
-                       ["28/11/1988" "Bob             " "Big             " 102.4])]
-           (with-open [writer (io/writer "test.csv")]
-             (write-csv writer data))))
-
-(comment (spec/explain-data ::column-def {:column-name "Weight", :column-length -5, :column-type :numeric}))
-
-(comment (fixed-file->csv! "" "")
-         (->column-def-map ["Birth date" "10" "date"])
-         (Integer/parseInt "10")
-         (update-in {:tt "10"} [:tt] string->int)
-         (column-definitions "resources/test/meta/meta-1.csv")
-         (fixed-file->csv! "resources/test/meta/meta-1.csv" "resources/test/source/data-1.txt")
-
-         (read-source)
-
-         (quot (System/currentTimeMillis) 1000)
-
-         (str "data-" (quot (System/currentTimeMillis) 1000) ".csv")
-
-         (spec-validation-error-message (spec/explain-data ::column-defs '({:column-name "Birth date", :column-length 10, :column-type :date}
-                                                                            {:column-name "First name", :column-length 15, :column-type :string}
-                                                                            {:column-name "Last name", :column-length 15, :column-type :string}
-                                                                            {:column-name "Weight", :column-length -5, :column-type :numeric})))
-
-         (line->csv-data-array '({:column-name "Birth date", :column-length 10, :column-type :date}
-                                  {:column-name "First name", :column-length 15, :column-type :string}
-                                  {:column-name "Last name", :column-length 15, :column-type :string}
-                                  {:column-name "Weight", :column-length 5, :column-type :numeric})
-                               "1970-01-01John           Smith           81.5")
-
-         (subs "1970-01-01John           Smith           81.5" 0 10)
-         (subs "1970-01-01John           Smith           81.5" 10 25)
-         (subs "1970-01-01John           Smith           81.5" 25 40)
-         (subs "1970-01-01John           Smith           81.5" 40 45)
-
-         (tf/unparse (tf/formatter "dd/MM/yyyy") (tf/parse (tf/formatter "yyyy-MM-dd") "1970-01-01"))
-
-         (column-definitions "resources/test/meta/meta-missing-length.csv"))
