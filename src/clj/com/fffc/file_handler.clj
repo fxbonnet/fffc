@@ -83,7 +83,7 @@
         (do
           (csv/write-csv writer [(reduce #(conj %1 (:column-name %2)) [] col-defs)]) ;; write the header
           (->> (line-seq reader)
-               (map #(line->csv-data-array col-defs %))
+               (pmap #(line->csv-data-array col-defs %))
                (write-csv writer))
           (println (str "Successfully written to " out-file-name)))))
     (catch Exception e
