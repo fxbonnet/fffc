@@ -1,0 +1,9 @@
+1970-02-06John,y         Smith           81.5
+1975-03-31Janis          Doe             61.1
+1988-12-28Bobby          Big            102.4
+1970-05-01Jake           Smith           81.5
+1975-06-30Yine           Doe             61.1
+1988-10-28Ben            Big            102.4
+1970-07-04Rick           Smith           81.5
+1975-09-30Jamie          Doe             61.1
+1988-08-28Asma           Big            102.4
