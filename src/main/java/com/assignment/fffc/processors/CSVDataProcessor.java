@@ -3,6 +3,7 @@ package com.assignment.fffc.processors;
 import com.assignment.fffc.constants.Constants;
 import com.assignment.fffc.formats.ColumnFormatProvider;
 import com.assignment.fffc.model.Column;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -23,7 +24,7 @@ public class CSVDataProcessor implements DataProcessor {
     }
 
     @Override
-    public String process(String line, List<Column> columns) {
+    public String process(String line, @NonNull List<Column> columns) {
 
         return columns.stream()
                 .map(columnType ->

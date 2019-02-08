@@ -2,7 +2,9 @@ package com.assignment.fffc.processors;
 
 import com.assignment.fffc.constants.Constants;
 import com.assignment.fffc.model.Column;
+import com.assignment.fffc.validators.Validator;
 import com.pivovarit.function.ThrowingFunction;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +22,7 @@ public class CSVMetadataProcessor implements MetaDataProcessor {
 
 
     @Override
-    public List<Column> extractMetaData(String metadataFilePath) throws Exception {
+    public List<Column> extractMetaData(@NonNull String metadataFilePath) throws Exception {
 
         return Files.lines(new File(metadataFilePath).toPath()).map(ThrowingFunction.unchecked(
                 this::extractColumnDetails
@@ -34,11 +36,8 @@ public class CSVMetadataProcessor implements MetaDataProcessor {
             throw new ParseException("Invalid Column Definition : " + line +
                     "\n This should be of the format <Column-Name>,<Column-Size>,<Column-type>", metadata.length);
         }
-        return new Column(metadata[0].trim(), getSize(metadata[1]), metadata[2].trim());
+        return new Column(metadata[0].trim(), Validator.getSize(metadata[1]), metadata[2].trim());
 
     }
 
-    private int getSize(String metadatum) {
-        return Integer.parseInt(metadatum);
-    }
 }

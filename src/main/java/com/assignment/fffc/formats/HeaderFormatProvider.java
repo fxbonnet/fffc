@@ -30,7 +30,7 @@ public class HeaderFormatProvider {
         if (formats.containsKey(formatType)) {
             return formats.get(formatType).apply(columnList);
         } else {
-            throw new IllegalArgumentException("No format-type defined as: " + formatType + "\n Supported Format-Type are:"
+            throw new IllegalArgumentException("No format-type defined as: " + formatType + " Supported Format-Type are:"
                     + formats.keySet().stream().collect(Collectors.joining(Constants.CSV_SEPARATOR)));
         }
 

@@ -6,6 +6,7 @@ import com.assignment.fffc.processors.DataProcessor;
 import com.assignment.fffc.processors.MetaDataProcessor;
 import com.pivovarit.function.ThrowingConsumer;
 import com.pivovarit.function.ThrowingFunction;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -36,10 +37,10 @@ public class FormatConverter {
         this.headerFormatProvider = headerFormatProvider;
     }
 
-    public File convert(String metaDataFilePath, String dataFilePath, String outputFileName, String formatType) throws Exception {
+    public File convert(@NonNull String metaDataFilePath,@NonNull String dataFilePath,@NonNull String outputFileName,@NonNull String formatType) throws Exception {
 
         File output = new File(outputFileName);
-        try (BufferedWriter buffer = new BufferedWriter(new FileWriter(output))) {
+        try (BufferedWriter buffer = new BufferedWriter(new FileWriter(output),16384 )) {
 
             List<Column> columns = metadataProcessor.extractMetaData(metaDataFilePath);
 
