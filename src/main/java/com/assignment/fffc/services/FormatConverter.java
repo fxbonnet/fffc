@@ -48,7 +48,7 @@ public class FormatConverter {
             if (!StringUtils.isEmpty(header)) {
                 buffer.write(header);
             }
-            
+
             // Add Body
             Files.lines(new File(dataFilePath).toPath()).map(ThrowingFunction.unchecked(line -> {
                         return dataProcessor.process(line, columns);
