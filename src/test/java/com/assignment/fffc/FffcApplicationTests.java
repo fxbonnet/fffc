@@ -29,7 +29,7 @@ public class FffcApplicationTests {
 	public void shouldConvertFileFormat() throws Exception{
 
 		File sampleOutput = new File("src/test/resources/files/sample-output.txt");
-		File formattedFile = formatConverter.convert("src/test/resources/files/metadata.txt", "src/test/resources/files/data.txt", "src/test/resources/files/output.txt");
+		File formattedFile = formatConverter.convert("src/test/resources/files/metadata.txt", "src/test/resources/files/data.txt", "src/test/resources/files/output.txt","csv");
 		assert Arrays.equals(Files.readAllBytes(sampleOutput.toPath()), Files.readAllBytes(formattedFile.toPath()));
 	}
 }

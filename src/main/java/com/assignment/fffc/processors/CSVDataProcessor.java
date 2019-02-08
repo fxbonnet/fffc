@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 public class CSVDataProcessor implements DataProcessor {
 
     private ColumnFormatProvider columnFormatter;
-
     private int beginIndex = 0;
 
     @Autowired
@@ -31,18 +30,16 @@ public class CSVDataProcessor implements DataProcessor {
                         columnFormatter.format(columnType.
                                 getType()).apply(computeString(line, columnType)).toString()
                 )
-                .collect(Collectors.joining(Constants.CSV_SEPARATOR));
+                .collect(Collectors.joining(Constants.CSV_SEPARATOR)) + Constants.LINE_SEPARATOR;
 
     }
 
-    private String computeString(String parseMe, Column column) {
+    private String computeString(String unFormattedString, Column column) {
 
-        String computed = parseMe.substring(beginIndex, beginIndex + column.getSize());
-        if (beginIndex + column.getSize() >= parseMe.length()) {
-            beginIndex = 0;
-        } else {
-            beginIndex += column.getSize();
-        }
+        String computed = unFormattedString.substring(beginIndex, beginIndex + column.getSize());
+        beginIndex = beginIndex + column.getSize() >= unFormattedString.length() ? 0 :
+                beginIndex + column.getSize();
+
         return computed;
     }
 
