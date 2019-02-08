@@ -1,18 +1,15 @@
 package com.assignment.fffc.formats;
 
 import com.assignment.fffc.model.Column;
-import com.assignment.fffc.model.ColumnType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
 import static org.junit.Assert.*;
 
@@ -20,6 +17,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class HeaderFormatProviderTest {
 
+    public static final String EXPECTED_HEADER = "Birth date,First name,Last name,Weight\n";
     @Autowired
     private HeaderFormatProvider headerFormatProvider;
 
@@ -38,6 +36,6 @@ public class HeaderFormatProviderTest {
     @Test
     public void addHeader() {
         String headerRow = headerFormatProvider.addHeader("csv", columns);
-        assertEquals("Birth date,First name,Last name,Weight\n", headerRow);
+        assertEquals(EXPECTED_HEADER, headerRow);
     }
 }
