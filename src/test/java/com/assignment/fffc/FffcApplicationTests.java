@@ -3,6 +3,7 @@ package com.assignment.fffc;
 import com.assignment.fffc.model.Column;
 import com.assignment.fffc.services.FormatConverter;
 import com.assignment.fffc.processors.CSVMetadataProcessor;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +19,27 @@ import java.util.List;
 @SpringBootTest
 public class FffcApplicationTests {
 
-	@Autowired
-	private FormatConverter formatConverter;
+    private static final String OUTPUT_FILE_NAME = "src/test/resources/files/output.txt";
 
-	@Test
-	public void contextLoads() {
-	}
+    @Autowired
+    private FormatConverter formatConverter;
 
-	@Test
-	public void shouldConvertFileFormat() throws Exception{
+    @Test
+    public void contextLoads() {
+    }
 
-		File sampleOutput = new File("src/test/resources/files/sample-output.txt");
-		File formattedFile = formatConverter.convert("src/test/resources/files/metadata.txt", "src/test/resources/files/data.txt", "src/test/resources/files/output.txt","csv");
-		assert Arrays.equals(Files.readAllBytes(sampleOutput.toPath()), Files.readAllBytes(formattedFile.toPath()));
-	}
+    @Test
+    public void shouldConvertFileFormat() throws Exception {
+
+        File sampleOutput = new File("src/test/resources/files/sample-output.txt");
+        File formattedFile = formatConverter.convert("src/test/resources/files/metadata.txt", "src/test/resources/files/data.txt", OUTPUT_FILE_NAME, "csv");
+        assert Arrays.equals(Files.readAllBytes(sampleOutput.toPath()), Files.readAllBytes(formattedFile.toPath()));
+    }
+
+    @After
+    public void tearDown() {
+        new File(OUTPUT_FILE_NAME).delete();
+    }
+
 }
 

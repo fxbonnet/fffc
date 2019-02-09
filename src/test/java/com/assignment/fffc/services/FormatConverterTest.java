@@ -5,6 +5,7 @@ import com.assignment.fffc.formats.HeaderFormatProvider;
 import com.assignment.fffc.model.Column;
 import com.assignment.fffc.processors.DataProcessor;
 import com.assignment.fffc.processors.MetaDataProcessor;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -72,5 +73,11 @@ public class FormatConverterTest {
         assertEquals(EXPECTED_FILE_LENGTH, Files.lines(convertedFile.toPath()).count());
         assertEquals(HEADER, Files.lines(convertedFile.toPath()).findFirst().get());
         assertEquals(true, Files.lines(convertedFile.toPath()).anyMatch(x -> x.contains(PROCESSED_STRING)));
+    }
+
+    @After
+    public void tearDown() throws Exception {
+       File outputFile = new File(OUTPUT_FILE_NAME);
+       outputFile.delete();
     }
 }
