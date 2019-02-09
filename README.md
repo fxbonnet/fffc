@@ -84,3 +84,17 @@ POST Request to: http://localhost:8080/convert with the below json body :
 * formatType: [csv] as of now only supports csv
 
 You can either use Postman,RestClient etc to test this microservice.
+
+if the above request is successful, it will give the following output :
+
+```
+{
+    "outputFileName": "<abosolute path>/src/test/resources/files/output.txt",
+    "status": "converted"
+}
+
+```
+
+* outputFileName: Absolute Path to the converted File
+* status: [converted/failed]
+* exception: In case of failure, will print the message for failure.
