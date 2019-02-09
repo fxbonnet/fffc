@@ -4,8 +4,7 @@ import com.assignment.fffc.constants.Constants;
 import com.assignment.fffc.model.ConvertRequest;
 import com.assignment.fffc.model.ConvertResponse;
 import com.assignment.fffc.services.FormatConverter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,10 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
 
 @RestController
+@Slf4j
 public class FormatConverterController {
-
-    private static Logger LOG = LoggerFactory
-            .getLogger(FormatConverterController.class);
 
     private FormatConverter converter;
 
@@ -41,7 +38,7 @@ public class FormatConverterController {
         } catch (Exception ex) {
             response.setException(ex.toString());
             response.setStatus(Constants.FAILED);
-            LOG.info(Constants.FAILED, ex);
+            log.info(Constants.FAILED, ex);
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(response, HttpStatus.OK);

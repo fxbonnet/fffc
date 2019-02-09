@@ -1,5 +1,6 @@
 package com.assignment.fffc.formats;
 
+import com.assignment.fffc.constants.Constants;
 import com.assignment.fffc.model.ColumnType;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +17,10 @@ public class ColumnFormatProvider {
 
     private final Map<String, Function> formats = Collections.unmodifiableMap(
             new HashMap<String, Function<String, Object>>() {{
-                put(ColumnType.STRING.toString(), x -> Pattern.compile("\\p{Punct}").matcher(x.trim()).find() ?
+                put(ColumnType.STRING.toString(), x -> Pattern.compile(Constants.PUNCTUATIONS).matcher(x.trim()).find() ?
                         ("\"" + x.trim() + "\"") : x.trim());
                 put(ColumnType.NUMERIC.toString(), x -> Double.parseDouble(x.trim()));
-                put(ColumnType.DATE.toString(), x -> DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.parse(x)));
+                put(ColumnType.DATE.toString(), x -> DateTimeFormatter.ofPattern(Constants.DD_MM_YYYY_FORMAT).format(LocalDate.parse(x)));
             }}
     );
 

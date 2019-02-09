@@ -15,19 +15,19 @@ import lombok.ToString;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "inputFileLocation",
-        "metadataFileLocation",
+        "dataFilePath",
+        "metadataFilePath",
         "outputFileName",
         "formatType"
 })
 @Getter @Setter @ToString
 public class ConvertRequest {
 
-    @JsonProperty("inputFileLocation")
+    @JsonProperty("dataFilePath")
     @NonNull
     private String inputFileLocation;
 
-    @JsonProperty("metadataFileLocation")
+    @JsonProperty("metadataFilePath")
     @NonNull
     private String metadataFileLocation;
 

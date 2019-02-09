@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DataProcessor {
 
-    String process(String line, List<Column> columns) throws Exception;
+    String process(String line, List<Column> columns);
 }

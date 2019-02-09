@@ -17,7 +17,7 @@ public class HeaderFormatProvider {
 
     private final Map<String, Function<List<Column>, String>> formats = Collections.unmodifiableMap(
             new HashMap<String, Function<List<Column>, String>>() {{
-                put("csv", columns -> {
+                put(Constants.CSV_FORMAT, columns -> {
                     return columns.stream()
                             .map(column -> column.getName())
                             .collect(Collectors.joining(Constants.CSV_SEPARATOR)) + Constants.LINE_SEPARATOR;
