@@ -26,6 +26,12 @@ To run
 ------
 > Execute the following bat file
 > > D:\FixedFileFormatConverter>runFixedFileFormatConverter.bat c:\\temp\\data.csv  c:\\temp\\metadata.csv  c:\\temp\\output.csv
+> > 
+> > The implemented solution uses the shaded jar "fileformatconverter-0.0.1-SNAPSHOT-shaded.jar". 
+> > It contains the dependent jars i.e. univocity-parsers and allow users to run the executable jar file.
+
+
+ 
 
 Tests
 ------
