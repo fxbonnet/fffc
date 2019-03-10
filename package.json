@@ -1,0 +1,27 @@
+{
+  "name": "fffc",
+  "version": "1.0.0",
+  "description": "A Fixed File Format converter",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/purvishah165/fffc.git"
+  },
+  "author": "Purvi Shah",
+  "license": "MIT",
+  "homepage": "https://github.com/purvishah165/fffc",
+  "dependencies": {
+    "moment": "^2.15.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "sinon": "^7.2.7"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}

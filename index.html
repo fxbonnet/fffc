@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fixed File Format Converter</title>
+    <style>
+        .form {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            height: 80px;
+        }
+        .input-group * {
+            margin: 4px;
+        }
+        #btnGenerate {
+            width: 200px;
+            padding: 8px;
+        }
+    </style>
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+</head>
+<body>
+
+<form class="form">
+    <div class="input-group">
+        <label for="inputData">Select an input data file:</label>
+        <input type="file"
+               id="inputData"
+               name="inputData"
+               onchange="validateFileAndSave(this.files, 'inputData')">
+    </div>
+    <div class="input-group">
+        <label for="metadata">Select an metadata file:</label>
+        <input type="file"
+               id="metadata"
+               name="metadata"
+               onchange="validateFileAndSave(this.files, 'metadata')">
+    </div>
+    <button onclick="generateOutput()"
+            type="button"
+            id="btnGenerate">Click to generate output file</button>
+</form>
+
+<script src="node_modules/moment/min/moment.min.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>

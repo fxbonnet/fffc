@@ -1,8 +1,6 @@
 # Fixed File Format converter
 
-Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
-
-Feel free to use your favorite language and libraries if needed (but no proprietary libraries, only open source), fork this project and provide your complete code as a pull request (including source and tests).
+A generic Javascript tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
 
 ## Use case
 
@@ -56,3 +54,9 @@ Birth date,First name,Last name,Weight
 * in case the format of the file is not correct, the program should fail but say explicitly why
 * a fixed format file may be very big (several GB)
 
+## To setup
+1.npm install
+2.Run index.html on browser.
+3.Select your fixed file and metadata file.
+4.Generate csv file by clicking on the Generate button
+3.Run test.html to perform test cases.
