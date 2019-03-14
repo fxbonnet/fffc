@@ -1,0 +1,4 @@
+Birth date,First name,Last name,Weight
+01/01/1970,John,Smith,81.5
+31/01/1975,Jane,Doe,61.1
+Failed to parse numeric for line(1988-11-28sam            liu             liu). error:Failed to formate numeric "liu"
