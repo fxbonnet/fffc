@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "moment": "^2.24.0"
+  },
+  "name": "fffc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/octo-technology-downunder/fffc.git",
+  "author": "3jtechno <3j.techno@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --diff",
+    "coverage": "istanbul cover _mocha $(find ./lib -name \"*.spec.js\" -not -path \"./node_modules/*\")",
+    "start": "node src/demo"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.0.2"
+  }
+}
