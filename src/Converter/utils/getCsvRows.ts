@@ -22,7 +22,7 @@ export default function getCsvRows(file: string, structures: MetaData[]): Row[] 
             start = start + column.columnLength
 
             if (column.columnType === 'date') {
-                trimmedContent = moment(trimmedContent).format('L')
+                trimmedContent = moment(trimmedContent).format('DD/MM/YYYY')
             }
 
             acc.push(trimmedContent)
