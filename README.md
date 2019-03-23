@@ -1,2 +1,11 @@
 # Fixed File Format converter
-run: yarn && yarn start
+
+![](https://github.com/EmmmaG/readme-pics/blob/master/converter.gif)
+<hr />
+
+# Run
+```sh
+$ yarn
+
+$ yarn start
+```
