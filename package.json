@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -30,8 +30,11 @@
   "description": "This project was to conver a fixed format file into csv",
   "main": "index.js",
   "devDependencies": {
+    "@types/jest": "^23.1.5",
     "@typescript-eslint/eslint-plugin": "^1.5.0",
-    "@typescript-eslint/parser": "^1.5.0"
+    "@typescript-eslint/parser": "^1.5.0",
+    "jest": "^23.1.5",
+    "ts-jest": "^22.4.6"
   },
   "author": "",
   "license": "ISC"
