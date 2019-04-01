@@ -1,0 +1,9 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pytest = {version="*", index="home"}
+maya = {version="*", index="pypi"}
+records = "*
