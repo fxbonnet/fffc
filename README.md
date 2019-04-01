@@ -1,8 +1,21 @@
 # Fixed File Format converter
 
-Your goal is to write a generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
+A generic tool to convert fixed file format files to a csv file based on a metadata file describing its structure.
 
-Feel free to use your favorite language and libraries if needed (but no proprietary libraries, only open source), fork this project and provide your complete code as a pull request (including source and tests).
+## Requirements
+
+Python3.7+
+* pip install pipenv
+* pipenv install (creates a new virtual environment, dependencies are added to Pipfile).
+
+## Run the tool
+* pipenv run /src/convert_fttp_to_csv.py (using default files in input directory).
+* python .\src\convert_fttp_to_csv.py --input_data_file "path_to_file" --input_meta_data_file "metadata_file" --output_file "path_to_output_file" --> test with different files.
+
+## Run tests
+* pipenv shell
+* pytest pytest/test_data_type.py
+* pytest pytest/test_meta_file.py
 
 ## Use case
 
