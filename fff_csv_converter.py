@@ -12,7 +12,7 @@ import sys
 TEST_NO = '5'         # The folder path
 
 DATA_FILE = 'Tests/'+ TEST_NO + '/data.txt'
-METDATA_FILE = 'Tests/'+ TEST_NO + '/metadata.txt'
+METADATA_FILE = 'Tests/'+ TEST_NO + '/metadata.txt'
 OUTPUT_FILE = 'Tests/'+ TEST_NO + '/output.txt'
 '''
 
@@ -26,7 +26,7 @@ except FileNotFoundError:
     pass
 
 columns = []
-with open(METDATA_FILE) as file:
+with open(METADATA_FILE) as file:
     for line in file:
         if line[-1] == '\n':
             line = line[:-1]
