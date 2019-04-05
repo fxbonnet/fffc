@@ -8,12 +8,17 @@ Octo Task
 import os
 import sys
 
+'''
 TEST_NO = '5'         # The folder path
 
 DATA_FILE = 'Tests/'+ TEST_NO + '/data.txt'
 METDATA_FILE = 'Tests/'+ TEST_NO + '/metadata.txt'
 OUTPUT_FILE = 'Tests/'+ TEST_NO + '/output.txt'
+'''
 
+DATA_FILE = input('Path to input data file: ')
+METADATA_FILE = input('Path to metadata file: ')
+OUTPUT_FILE = input('Path to output file: ')
 # remove output file if it exists
 try:
     os.remove(OUTPUT_FILE)
@@ -93,4 +98,5 @@ with open(OUTPUT_FILE, 'w') as file:
         else:
             print(ans, file=file)
 
+print('OUTPUT file written')
 # Clearly state why the file format was wrong if it is
