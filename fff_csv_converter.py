@@ -99,4 +99,3 @@ with open(OUTPUT_FILE, 'w') as file:
             print(ans, file=file)
 
 print('OUTPUT file written')
-# Clearly state why the file format was wrong if it is
