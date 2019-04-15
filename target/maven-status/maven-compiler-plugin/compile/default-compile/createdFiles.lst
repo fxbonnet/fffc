@@ -1,0 +1,8 @@
+com\trips\ankur\fffc\metadata\MetaData.class
+com\trips\ankur\fffc\data\DataParserAndWriter.class
+com\trips\ankur\fffc\columns\Column.class
+com\trips\ankur\fffc\columns\ColumnType.class
+com\trips\ankur\fffc\exceptions\NotEnoughArgumentException.class
+com\trips\ankur\fffc\exceptions\InvalidFieldFormatException.class
+com\trips\ankur\fffc\exceptions\InvalidLineFormatException.class
+com\trips\ankur\fffc\main\ApplicationRunner.class
