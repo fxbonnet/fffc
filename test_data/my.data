@@ -1,0 +1,12 @@
+1970-01-01John           Gold           81.50:)All good with this line                 
+1985-06-08      Станислав      Гордиенко77.60:)Cyrilic text should be fine             
+2001-11-29             写汉Wong           54.00:)Chinese characters                      
+1995-11-11Mila           Tu              11.00:(Line is shorter than expected
+1996-9-1  David          Guero          -2.88:)Another date format                     
+Wrong line
+
+01-02-2012Alice          Meldenson       5.35:(Wrong date format                       
+2001-01-17Melgaärd                 Björn 1.00:)Should be parsed successfully           
+Some text First          Last            0.00:(Text instead of date                    
+1977-01-14First name     Last name       0.00:) Symbols: ~!@#$%^&*()_+[]{},./<>?;':"   
+1988-12-31Yu             Gu              f   :(Wrong numeric value                     
