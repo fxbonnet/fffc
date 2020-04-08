@@ -1,4 +1,13 @@
-# Fixed File Format converter
+# Fixed File Format Converter
+
+The folder is composed of several files :
+* file_converter.py, which contains the logic of the conversion task
+* command_line_parser.py, a module that recovers the arguments from command line
+* README.md
+* requirements.txt, that specifies the dependencies and help create a similar execution environment
+* unit_test.py, which unique purpose is to be called during unit testing 
+* test_data, a folder containing data used in the test phase
+* generate_large_file.py, that generates raw input files of a given size - used to test the program with 'large' input files
 
 ## Command Line Interface
 The CLI takes 3 arguments
@@ -22,6 +31,16 @@ Several checks are made on the input raw file :
 * Dates should be in the correct specified format yyyy-mm-dd.
 
 ## Tests
+To run the tests, just run ```pytest``` at the root, and it will call unit_test.py, containing 10 tests.
+
+## Large files
+The program can run on files too big to hold in RAM. To do so, files are never loaded entirely, but read line by line. I performed a conversion of a 2.0 Go file on my machine with success, in 18 minutes.
+
+## Improvements
+I am more than open to comments and suggestions about code quality, efficiency or bugs! Features that could be improved include :
+* A better exception management system, provinding more precise information and provide better testing abilities
+* A wider range of test use cases
+* A more robust deployment
 
 
 
