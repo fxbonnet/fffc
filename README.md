@@ -34,7 +34,7 @@ Several checks are made on the input raw file :
 To run the tests, just run ```pytest``` at the root, and it will call unit_test.py, containing 10 tests.
 
 ## Large files
-The program can run on files too big to hold in RAM. To do so, files are never loaded entirely, but read line by line. I performed a conversion of a 2.0 Go file on my machine with success, in 18 minutes.
+The program can run on files too big to hold in RAM. To do so, files are never loaded entirely, but read line by line. I performed a conversion of a 2.0 Go file on my machine with success, in 20 minutes.
 
 ## Improvements
 I am more than open to comments and suggestions about code quality, efficiency or bugs! Features that could be improved include :
