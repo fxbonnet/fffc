@@ -2,6 +2,7 @@ import argparse
 
 
 def get_args():
+    """Read the arguments from the command line."""
     parser = argparse.ArgumentParser()
     parser.add_argument('-i',
                         '--input_path',
@@ -24,7 +25,7 @@ def get_args():
                         action="store",
                         dest="output_path",
                         type=str,
-                        default='output.txt',
+                        default='output.csv',
                         help="Path towards the output, converted, csv file to be created.")
 
     return parser.parse_args()
