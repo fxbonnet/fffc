@@ -1,6 +1,6 @@
 # Fixed File Format Converter
 
-The folder is composed of several files :
+The folder is composed of several files/folder :
 * file_converter.py, which contains the logic of the conversion task
 * command_line_parser.py, a module that recovers the arguments from command line
 * README.md
