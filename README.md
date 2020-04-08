@@ -1,66 +1,49 @@
-# Fixed File Format converter
+# Fixed File Format Converter
 
-L'objectif de cet exercice est d'écrire un outil générique qui convertira un fichier d'entrée au format fixe en un fichier csv, en se basant sur un fichier de metadonnées décrivant sa structure.
+The folder is composed of several files/folder :
+* file_converter.py, which contains the logic of the conversion task
+* command_line_parser.py, a module that recovers the arguments from command line
+* README.md
+* requirements.txt, that specifies the dependencies and help create a similar execution environment
+* unit_test.py, which unique purpose is to be called during unit testing 
+* test_data, a folder containing data used in the test phase
+* generate_large_file.py, that generates raw input files of a given size - used to test the program with 'large' input files
 
-Vous êtes libre d'utiliser n'importe quel langage ou librairie open source si vous en avez besoin.
-Créez un fork de ce projet et fournissez nous votre code complet en pull request (en incluant le code source et les tests)
+## Command Line Interface
+The CLI takes 3 arguments
+* --input_path or -i (string, default 'input.txt'): path towards the input "raw" file
+* --meta_path or -m (string, default 'meta.txt'): path towards the metadata file
+* --output_path or -o (string, default 'output.csv'): path towards the output csv file after conversion (created if not found)
 
-## Cas d'usage
+Accordingly, a valid call could be ```python file_converter.py -i path/to/input.txt --output path/to/output.csv -m path/to/meta.txt```, or the simple ```python file_converter.py``` if the 3 files are named after the default and located at the root.
 
-Notre fichier d'entrée peut avoir n'importe quel nombre de colonnes
-Une colonne peut-être d'un de ces 3 formats:
-* date (format yyyy-mm-dd)
-* numerique (séparateur décimal '.', peut être négatif)
-* string
+## Execution Environnement
+This project uses Python 3.7.3 (and does not use any external package). If you encounter a problem running it, then installing the dependencies with ```pip install -r requirements.txt ``` should solve it.
 
-La structure du fichier est définie dans un fichier de métadonnées, au format csv, où chaque ligne décrit chaque colonne:
-* nom de la colonne
-* taille de la colonne
-* type de la colonne
+## Implementation Choices
+Several checks are made on the input and metadata files, and raise an exception if they fail.
 
-Vous devez transformer le fichier d'entrée en un fichier csv (séparateur ',' et séparateur de ligne CRLF)
+The only check performed on the metadata file is that the number of fields per line should be exactly 3 (name, size and type). 
 
-Les dates doivent être formatés en dd/mm/yyyy
+Several checks are made on the input raw file :
+* The length of each line should be the same, which is actually the sum of the length the fields.
+* Spaces are not allowed 'inside' the field, in such a way that '  bob ' is valid but ' b ob ' is not.
+* Dates should be in the correct specified format yyyy-mm-dd.
 
-Les espaces en fin de chaine de caractères doivent être nettoyés (trim)
+## Tests
+To run the tests, just run ```pytest``` at the root, and it will call unit_test.py, containing 10 tests.
 
-La première ligne du fichier csv doit être le nom des colonnes
+## Large files
+The program can run on files too big to hold in RAM. To do so, files are never loaded entirely, but read line by line. I performed a conversion of a 2.0 Go file on my machine with success, in 20 minutes.
 
-## Exemple
+## Improvements
+I am more than open to comments and suggestions about code quality, efficiency or bugs! Features that could be improved include :
+* A better exception management system, provinding more precise information and provide better testing abilities
+* A wider range of test use cases
+* A more robust deployment
 
-Fichier d'entrée :
-```
-1970-01-01John           Smith           81.5
-1975-01-31Jane           Doe             61.1
-1988-11-28Bob            Big            102.4
-```
 
-Fichier de métadonnées :
-```
-Birth date,10,date
-First name,15,string
-Last name,15,string
-Weight,5,numeric
-```
 
-Fichier csv de sortie :
-```
-Birth date,First name,Last name,Weight
-01/01/1970,John,Smith,81.5
-31/01/1975,Jane,Doe,61.1
-28/11/1988,Bob,Big,102.4
-```
 
-## Conditions supplémentaires
-* les fichiers sont encodés en UTF-8 et peuvent contenir des caractères spéciaux
-* les colonnes au format string peuvent contenir des séparateurs ','. Dans ce cas la chaîne de caractères complète doit être protégée par des " (double quote) 
-* dans le cas où le format de fichier n'est pas correct, le programme doit échouer en expliquant la raison
-* le fichier d'entrée peut être très volumineux (plusieurs Go)
 
-## Que voulons nous évaluer à travers ce test ? ##
 
-La manière de résoudre le problème et l'utilisation des bonnes pratiques de craft et de clean code.
-
-## Qu'est-ce que nous n'évaluons pas ? ##
-
-Les frameworks et technologies utilisés
