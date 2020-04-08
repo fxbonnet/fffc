@@ -1,66 +1,35 @@
 # Fixed File Format converter
 
-L'objectif de cet exercice est d'écrire un outil générique qui convertira un fichier d'entrée au format fixe en un fichier csv, en se basant sur un fichier de metadonnées décrivant sa structure.
+## Passing arguments via Command Line 
 
-Vous êtes libre d'utiliser n'importe quel langage ou librairie open source si vous en avez besoin.
-Créez un fork de ce projet et fournissez nous votre code complet en pull request (en incluant le code source et les tests)
+The CLI takes 3 arguments
+* --input_path or -i (string, default 'input.txt'): path towards the input file.
+* --meta_path or -m (string, default 'meta.txt'): path towards the metadata file.
+* --output_path or -o (string, default 'output.csv'): path towards the output file (if it does not exist, il will be created).
 
-## Cas d'usage
+Accordingly, a valid call is ```python file_converter.py -i path/to/input.txt -o output.csv -m meta.txt```
 
-Notre fichier d'entrée peut avoir n'importe quel nombre de colonnes
-Une colonne peut-être d'un de ces 3 formats:
-* date (format yyyy-mm-dd)
-* numerique (séparateur décimal '.', peut être négatif)
-* string
+## Execution Environnement
 
-La structure du fichier est définie dans un fichier de métadonnées, au format csv, où chaque ligne décrit chaque colonne:
-* nom de la colonne
-* taille de la colonne
-* type de la colonne
+This project is coded in Python 3.7.3. If you can't run it on your Python3, then install the dependencies with ```pip install -r requirements.txt ```
 
-Vous devez transformer le fichier d'entrée en un fichier csv (séparateur ',' et séparateur de ligne CRLF)
-
-Les dates doivent être formatés en dd/mm/yyyy
-
-Les espaces en fin de chaine de caractères doivent être nettoyés (trim)
-
-La première ligne du fichier csv doit être le nom des colonnes
-
-## Exemple
-
-Fichier d'entrée :
+### Example
+To run the training, the user would for example type :
 ```
-1970-01-01John           Smith           81.5
-1975-01-31Jane           Doe             61.1
-1988-11-28Bob            Big            102.4
+python train.py --mode 1 --delta 2 --nb_cycles 1
 ```
+This would provide a training of major triads. The user would be displayed all 12 major triads once and would have to play one every 2 seconds.
 
-Fichier de métadonnées :
-```
-Birth date,10,date
-First name,15,string
-Last name,15,string
-Weight,5,numeric
-```
+## Prerequisites
 
-Fichier csv de sortie :
-```
-Birth date,First name,Last name,Weight
-01/01/1970,John,Smith,81.5
-31/01/1975,Jane,Doe,61.1
-28/11/1988,Bob,Big,102.4
-```
+To make sure you have all the dependencies required in this project, run
 
-## Conditions supplémentaires
-* les fichiers sont encodés en UTF-8 et peuvent contenir des caractères spéciaux
-* les colonnes au format string peuvent contenir des séparateurs ','. Dans ce cas la chaîne de caractères complète doit être protégée par des " (double quote) 
-* dans le cas où le format de fichier n'est pas correct, le programme doit échouer en expliquant la raison
-* le fichier d'entrée peut être très volumineux (plusieurs Go)
 
-## Que voulons nous évaluer à travers ce test ? ##
 
-La manière de résoudre le problème et l'utilisation des bonnes pratiques de craft et de clean code.
+## Contributing
 
-## Qu'est-ce que nous n'évaluons pas ? ##
+If you're a piano jazz player and feel like contributing, that's great! Contact me to discuss feature enriching / fix. Any comment on my code is more than welcomed.
 
-Les frameworks et technologies utilisés
+## Acknowledgments
+
+I started this project in April 2019 to help me learn & memorize jazz chords and voicings. Hope it can help you too!
