@@ -11,9 +11,9 @@ The folder is composed of several files :
 
 ## Command Line Interface
 The CLI takes 3 arguments
-* --input_path or -i (string, default 'input.txt'): path towards the input "raw" file.
-* --meta_path or -m (string, default 'meta.txt'): path towards the metadata file.
-* --output_path or -o (string, default 'output.csv'): path towards the output csv file after conversion (created if not found).
+* --input_path or -i (string, default 'input.txt'): path towards the input "raw" file
+* --meta_path or -m (string, default 'meta.txt'): path towards the metadata file
+* --output_path or -o (string, default 'output.csv'): path towards the output csv file after conversion (created if not found)
 
 Accordingly, a valid call could be ```python file_converter.py -i path/to/input.txt --output path/to/output.csv -m path/to/meta.txt```, or the simple ```python file_converter.py``` if the 3 files are named after the default and located at the root.
 
